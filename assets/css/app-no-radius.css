@@ -4824,11 +4824,44 @@ li.social-networks a:hover {
   min-height: 40px;
 }
 .subnav-fixed {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #eee;
+  border-radius: 4px;
+  padding-left: 0;
+  padding-right: 0;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1020;
+}
+.subnav-fixed:before,
+.subnav-fixed:after {
+  content: " ";
+  display: table;
+}
+.subnav-fixed:after {
+  clear: both;
+}
+.subnav-fixed:before,
+.subnav-fixed:after {
+  content: " ";
+  display: table;
+}
+.subnav-fixed:after {
+  clear: both;
+}
+.subnav-fixed .nav > li.social-networks > a {
+  padding: 12px 0 0 0;
+}
+.subnav-fixed .nav a.login-link {
+  padding: 10px 10px 0 10px;
+}
+.subnav-fixed .brand {
+  padding: 9px 20px 9px;
 }
 .subnav-fixed:before,
 .subnav-fixed:after {
@@ -4902,4 +4935,8 @@ a.toggle-nav.black {
 #megaDrop {
   display: none;
   padding: 20px 10px;
+}
+.navbar {
+  padding-left: 0;
+  padding-right: 0;
 }

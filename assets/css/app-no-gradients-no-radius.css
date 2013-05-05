@@ -4601,6 +4601,16 @@ li.social-networks a:hover {
   min-height: 40px;
 }
 .subnav-fixed {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #eee;
+  border-radius: 4px;
+  *zoom: 1;
+  *zoom: 1;
+  padding-left: 0;
+  padding-right: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -4608,6 +4618,33 @@ li.social-networks a:hover {
   z-index: 1020;
   *zoom: 1;
   *zoom: 1;
+}
+.subnav-fixed:before,
+.subnav-fixed:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.subnav-fixed:after {
+  clear: both;
+}
+.subnav-fixed:before,
+.subnav-fixed:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.subnav-fixed:after {
+  clear: both;
+}
+.subnav-fixed .nav > li.social-networks > a {
+  padding: 12px 0 0 0;
+}
+.subnav-fixed .nav a.login-link {
+  padding: 10px 10px 0 10px;
+}
+.subnav-fixed .brand {
+  padding: 9px 20px 9px;
 }
 .subnav-fixed:before,
 .subnav-fixed:after {
@@ -4684,4 +4721,8 @@ a.toggle-nav.black {
 #megaDrop {
   display: none;
   padding: 20px 10px;
+}
+.navbar {
+  padding-left: 0;
+  padding-right: 0;
 }
