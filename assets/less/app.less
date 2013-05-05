@@ -174,18 +174,13 @@ li.social-networks {
 }
 
 .subnav-fixed {
+  navbar;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1020;  
-  height: @navbarHeight;
-  padding-left:  20px;
-  padding-right: 20px;
-  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
-  border: 1px solid @navbarBorder;
+  z-index: 1020;
   .border-radius(0);
-  .box-shadow(0 1px 4px rgba(0,0,0,.065));
 
   // Prevent floats from breaking the navbar
   .clearfix();
