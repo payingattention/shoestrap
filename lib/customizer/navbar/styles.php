@@ -62,7 +62,7 @@ function shoestrap_navbar_css(){
   $styles .= '.navbar-inner .dropdown-menu{padding: 0;}';
   
   // Navbar Button colors
-  $styles .= '.btn.btn-navbar{';
+  $styles .= '.btn.navbar-toggle{';
   if ( shoestrap_get_brightness( $navbar_color ) >= 160 ) {
     $styles .= 'background: ' . shoestrap_adjust_brightness( $navbar_color, -40 ) . ';';
   } else {
@@ -70,7 +70,7 @@ function shoestrap_navbar_css(){
   }
   $styles .= '}';
   
-  $styles .= '.btn.btn-navbar:hover, .btn.btn-navbar:active, .btn.btn-navbar:enabled{';
+  $styles .= '.btn.navbar-toggle:hover, .btn.navbar-toggle:active, .btn.navbar-toggle:enabled{';
   if ( shoestrap_get_brightness( $navbar_color ) >= 160 ) {
     $styles .= 'background: ' . shoestrap_adjust_brightness( $navbar_color, -30 ) . ';';
   } else {

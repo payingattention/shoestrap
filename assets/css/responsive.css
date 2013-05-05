@@ -356,7 +356,7 @@
     overflow: hidden;
     height: 0;
   }
-  .navbar .btn-navbar {
+  .navbar .navbar-toggle {
     display: block;
   }
   .navbar-static .navbar-inner {

@@ -8,7 +8,7 @@ else
 <header id="banner" class="topnavbar <?php echo $navbar_class; ?>" role="banner">
   <div class="navbar-inner">
     <div class="<?php shoestrap_fluid_body_classes( 'container' ); ?>">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <a class="btn navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
