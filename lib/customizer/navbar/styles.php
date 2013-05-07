@@ -26,12 +26,12 @@ function shoestrap_navbar_css(){
   $styles = '<style>';
   if ( get_theme_mod( 'shoestrap_logo' ) ) {
     if ( get_theme_mod( 'shoestrap_header_mode' ) == 'navbar' ) {
-      '.navbar a.brand{padding: 5px 20px 5px;}';
+      '.navbar a.navbar-brand{padding: 5px 20px 5px;}';
     }
   }
   
   // Navbar colors
-  $styles .= '.navbar-inner, #main-subnav.subnav-fixed, .navbar-inner .dropdown-menu{';
+  $styles .= '.navbar, #main-subnav.subnav-fixed, .navbar .dropdown-menu{';
   $styles .= 'background-color:' . $navbar_color . ';';
   if ( $no_gradients != 1 ) {
     if ( $navbar_no_gradient != 1 ) {
@@ -56,10 +56,10 @@ function shoestrap_navbar_css(){
   
   // Disable NavBar border & shadow
   if ( $no_borders == 1 ) {
-    $styles .= '.navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner {-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; border-bottom: 0;}';
+    $styles .= '.navbar-fixed-top, .navbar-static-top {-webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; border-bottom: 0;}';
   }
   // Navbar Dropdown colors
-  $styles .= '.navbar-inner .dropdown-menu{padding: 0;}';
+  $styles .= '.navbar .dropdown-menu{padding: 0;}';
   
   // Navbar Button colors
   $styles .= '.btn.navbar-toggle{';
@@ -81,14 +81,14 @@ function shoestrap_navbar_css(){
   // Navbar Padding
   if ( $navbar_logo_padding != '' && $navbar_logo_padding >= 1 ) {
     $styles .= '.navbar .nav > li > a {padding:' . ( $navbar_logo_padding + 15 ) . 'px 15px;}';
-    $styles .= '.navbar a.brand{padding-top:' . ( $navbar_logo_padding + 10 ) . 'px;}';
+    $styles .= '.navbar a.navbar-brand{padding-top:' . ( $navbar_logo_padding + 10 ) . 'px;}';
     $styles .= '.navbar .toggle-nav {padding-top:' . ( 2 * $navbar_logo_padding + 10 ) . 'px;}';
     $styles .= '.navbar li.social-networks, .navbar .navbar-search{padding-top:' . $navbar_logo_padding . 'px;}';
     $styles .= 'body.top-navbar{padding-top:' . ( 2 * $navbar_logo_padding + 60 ) . 'px;}';
   }
 
   // Navbar menu items text-color and active menu styling
-  $styles .= '.navbar-inner a, .navbar-inner .brand, .navbar .nav > li > a{';
+  $styles .= '.navbar a, .navbar .navbar-brand, .navbar .nav > li > a{';
   if ( strlen( $navbar_textcolor ) < 6 ) {
     if ( shoestrap_get_brightness( $navbar_color ) >= 160 ) {
       $styles .= 'color: ' . shoestrap_adjust_brightness( $navbar_color, -160 ) . ';';
@@ -99,7 +99,7 @@ function shoestrap_navbar_css(){
     $styles .= 'color: ' . $navbar_textcolor . ';';
   }
   $styles .= 'text-shadow: 0 1px 0 ' . shoestrap_adjust_brightness( $navbar_color, -15 ) . ';}';
-  $styles .= '.navbar-inner a:hover, .navbar-inner .brand:hover, .navbar .nav > li > a:hover{';
+  $styles .= '.navbar a:hover, .navbar .navbar-brand:hover, .navbar .nav > li > a:hover{';
   if ( strlen( $navbar_textcolor ) < 6 ) {
     if ( shoestrap_get_brightness( $navbar_color ) >= 160 ) {
       $styles .= 'color: ' . shoestrap_adjust_brightness( $navbar_color, -200 ) . ';';
@@ -163,7 +163,7 @@ function shoestrap_navbar_dropdown_css(){
   $navbar_textcolor = '#' . str_replace( '#', '', $navbar_textcolor );
   
   $styles = '<style>';
-  $styles .= '.navbar-inner ul.dropdown-menu{';
+  $styles .= '.navbar ul.dropdown-menu{';
   $styles .= 'background-color:' . $navbar_color . ';';
   if ( $no_gradients != 1 ) {
     $styles .= 'background-image: -moz-linear-gradient(top, ' . $navbar_color . ', ' . shoestrap_adjust_brightness( $navbar_color, -10 ) . ') !important;';
@@ -178,7 +178,7 @@ function shoestrap_navbar_dropdown_css(){
   $styles .= '.navbar .nav > li > .dropdown-menu::before{border-bottom: 7px solid ' . $navbar_color . ';}';
   $styles .= '.navbar .nav > li > .dropdown-menu::after{border-bottom: 6px solid ' . $navbar_color . ';}';
   
-  $styles .= '.navbar-inner .dropdown-menu li > a, .navbar-inner .dropdown-menu li > a:hover, .navbar-inner .dropdown-menu li > a:focus, .navbar-inner .dropdown-submenu:hover > a{';
+  $styles .= '.navbar .dropdown-menu li > a, .navbar .dropdown-menu li > a:hover, .navbar .dropdown-menu li > a:focus, .navbar .dropdown-submenu:hover > a{';
   if ( strlen( $navbar_textcolor ) < 6 ) {
     if ( shoestrap_get_brightness( $navbar_color ) >= 160 ) {
       $styles .= 'color: ' . shoestrap_adjust_brightness( $navbar_color, -160 ) . ';';

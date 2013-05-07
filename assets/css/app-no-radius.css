@@ -5011,3 +5011,6 @@ fieldset[disabled] .button.active {
   position: relative;
   top: -1px;
 }
+.navbar-brand {
+  padding: 9px;
+}
