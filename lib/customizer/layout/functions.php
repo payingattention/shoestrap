@@ -90,45 +90,45 @@ function shoestrap_sidebar_class_calc( $target, $offset = '', $echo = false ) {
   
   // If secondary sidebar is empty, ignore it.
   if ( !is_active_sidebar( 'sidebar-secondary' ) ) {
-    $main      = 'col-span-' . ( 12 - $first );
-    $primary   = 'col-span-' . $first;
+    $main      = 'col col-lg-' . ( 12 - $first );
+    $primary   = 'col col-lg-' . $first;
   // If secondary sidebar is not empty, do not ignore it.
   } else {
-    $main      = 'col-span-' . ( 12 - $first - $second );
-    $primary   = 'col-span-' . $first;
-    $secondary = 'col-span-' . $second;
+    $main      = 'col col-lg-' . ( 12 - $first - $second );
+    $primary   = 'col col-lg-' . $first;
+    $secondary = 'col col-lg-' . $second;
   }
 
   if ( ( $layout == 'pms' ) || ( $layout == 'mps' ) || ( $layout == 'smp' ) || ( $layout == 'spm' ) ) {
-    $main = 'col-span-' . ( 12 - $first );
+    $main = 'col col-lg-' . ( 12 - $first );
   }
 
-  $main_primary = 'col-span-' . ( 12 - $second );
+  $main_primary = 'col col-lg-' . ( 12 - $second );
   
-  // If the layout is "Main only", the main area should have a class of col-span-12
+  // If the layout is "Main only", the main area should have a class of col col-lg-12
   if ( $layout == 'm' ) {
-    $main = 'col-span-12';
+    $main = 'col col-lg-12';
   }
   
   // If the layout contains only the main area and primary sidebar, ignore the secondary sidebar width
   if ( in_array( $layout, array( 'mp', 'pm' ) ) ) {
-    $main = 'col-span-' . ( 12 - $first );
+    $main = 'col col-lg-' . ( 12 - $first );
   }
   
   // If the layout contains only the main area and secondary sidebar, ignore the primary sidebar width
   if ( in_array( $layout, array( 'ms', 'sm' ) ) ) {
-    $main = 'col-span-' . ( 12 - $second );
+    $main = 'col col-lg-' . ( 12 - $second );
   }
   
   // Overrides main region class when selected template is page-full.php
   if ( is_page_template('page-full.php') ) {
-    $main = 'col-span-12';
+    $main = 'col col-lg-12';
   }
 
   // Overrides main and primary region classes when selected template is page-primary-sidebar.php
   if ( is_page_template('page-primary-sidebar.php') ) {
-    $main      = 'col-span-' . ( 12 - $first );
-    $primary   = 'col-span-' . $first;
+    $main      = 'col col-lg-' . ( 12 - $first );
+    $primary   = 'col col-lg-' . $first;
   }  
 
   if ( $target == 'primary' ) {

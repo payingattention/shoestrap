@@ -76,7 +76,7 @@ function shoestrap_branding() {
     <div class="container logo-wrapper">
       <div class="logo container">
         <div class="row">
-          <div class="col-span-8">
+          <div class="col col-lg-8">
             <a class="brand-logo" href="<?php echo home_url(); ?>/">
               <h1><?php if ( function_exists( 'shoestrap_logo' ) ) { shoestrap_logo(); } ?></h1>
             </a>

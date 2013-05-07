@@ -1,9 +1,9 @@
 <div id="footer-wrapper" class="container">
   <footer id="content-info" class="<?php shoestrap_fluid_body_classes( 'container' ); ?>" role="contentinfo">
     <div class="row">
-      <div class="col-span-4"><?php dynamic_sidebar( 'sidebar-footer-left' ); ?></div>
-      <div class="col-span-4"><?php dynamic_sidebar( 'sidebar-footer-center' ); ?></div>
-      <div class="col-span-4"><?php dynamic_sidebar( 'sidebar-footer-right' ); ?></div>
+      <div class="col col-lg-4"><?php dynamic_sidebar( 'sidebar-footer-left' ); ?></div>
+      <div class="col col-lg-4"><?php dynamic_sidebar( 'sidebar-footer-center' ); ?></div>
+      <div class="col col-lg-4"><?php dynamic_sidebar( 'sidebar-footer-right' ); ?></div>
     </div>
     <p><?php if ( get_theme_mod( 'shoestrap_footer_text' ) ) { echo get_theme_mod( 'shoestrap_footer_text' ); } else { echo '&copy; ' . date( 'Y' ); ?> <?php bloginfo( 'name' ); } ?></p>
   </footer>
