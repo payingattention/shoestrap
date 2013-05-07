@@ -34,7 +34,7 @@ function shoestrap_navbar_widget_area_class() {
 function shoestrap_navbar_slidedown_content() {
   echo '<div id="megaDrop" class="container top-megamenu">';
   echo '<div class="container">';
-  $widgetareaclass = 'span' . shoestrap_navbar_widget_area_class();
+  $widgetareaclass = 'col-span-' . shoestrap_navbar_widget_area_class();
   
   dynamic_sidebar('navbar-slide-down-top');
   

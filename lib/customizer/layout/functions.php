@@ -90,45 +90,45 @@ function shoestrap_sidebar_class_calc( $target, $offset = '', $echo = false ) {
   
   // If secondary sidebar is empty, ignore it.
   if ( !is_active_sidebar( 'sidebar-secondary' ) ) {
-    $main      = 'span' . ( 12 - $first );
-    $primary   = 'span' . $first;
+    $main      = 'col-span-' . ( 12 - $first );
+    $primary   = 'col-span-' . $first;
   // If secondary sidebar is not empty, do not ignore it.
   } else {
-    $main      = 'span' . ( 12 - $first - $second );
-    $primary   = 'span' . $first;
-    $secondary = 'span' . $second;
+    $main      = 'col-span-' . ( 12 - $first - $second );
+    $primary   = 'col-span-' . $first;
+    $secondary = 'col-span-' . $second;
   }
 
   if ( ( $layout == 'pms' ) || ( $layout == 'mps' ) || ( $layout == 'smp' ) || ( $layout == 'spm' ) ) {
-    $main = 'span' . ( 12 - $first );
+    $main = 'col-span-' . ( 12 - $first );
   }
 
-  $main_primary = 'span' . ( 12 - $second );
+  $main_primary = 'col-span-' . ( 12 - $second );
   
-  // If the layout is "Main only", the main area should have a class of span12
+  // If the layout is "Main only", the main area should have a class of col-span-12
   if ( $layout == 'm' ) {
-    $main = 'span12';
+    $main = 'col-span-12';
   }
   
   // If the layout contains only the main area and primary sidebar, ignore the secondary sidebar width
   if ( in_array( $layout, array( 'mp', 'pm' ) ) ) {
-    $main = 'span' . ( 12 - $first );
+    $main = 'col-span-' . ( 12 - $first );
   }
   
   // If the layout contains only the main area and secondary sidebar, ignore the primary sidebar width
   if ( in_array( $layout, array( 'ms', 'sm' ) ) ) {
-    $main = 'span' . ( 12 - $second );
+    $main = 'col-span-' . ( 12 - $second );
   }
   
   // Overrides main region class when selected template is page-full.php
   if ( is_page_template('page-full.php') ) {
-    $main = 'span12';
+    $main = 'col-span-12';
   }
 
   // Overrides main and primary region classes when selected template is page-primary-sidebar.php
   if ( is_page_template('page-primary-sidebar.php') ) {
-    $main      = 'span' . ( 12 - $first );
-    $primary   = 'span' . $first;
+    $main      = 'col-span-' . ( 12 - $first );
+    $primary   = 'col-span-' . $first;
   }  
 
   if ( $target == 'primary' ) {

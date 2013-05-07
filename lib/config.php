@@ -114,7 +114,7 @@ function shoestrap_main_class() {
   if (shoestrap_display_sidebar()) {
     $class = shoestrap_sidebar_class_calc( 'main' );
   } else {
-    $class = 'span12';
+    $class = 'col-span-12';
   }
 
   return $class;
