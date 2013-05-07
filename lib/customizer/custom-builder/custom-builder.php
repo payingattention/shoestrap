@@ -12,7 +12,7 @@ require_once locate_template( '/lib/customizer/custom-builder/components/customi
  * In order to do that, we 'll have to provide a minimum amount of options 
  * and calculate the rest based on the user's selections.
  * 
- * based on the textcolor and bodybackground, we can calculate the following options:
+ * based on the text_color and body_bg, we can calculate the following options:
  * @black, @grayDarker, @grayDark, @gray, @grayLight, @grayLighter, @white
  * 
  * based on the baseBorderRadius we can calculate the borderRadiusLarge and borderRadiusSmall.
@@ -31,116 +31,67 @@ require_once locate_template( '/lib/customizer/custom-builder/components/customi
  */
 function shoestrap_custom_builder_rewrite_variables() {
   // main body & text colors
-  $bodyBackground       = get_theme_mod( 'shoestrap_background_color' );
-  $textColor            = get_theme_mod( 'shoestrap_text_color' );
+  $body_bg              = get_theme_mod( 'shoestrap_background_color', '#fff' );
+  $text_color           = get_theme_mod( 'shoestrap_text_color', '#333' );
+  $link_color           = get_theme_mod( 'shoestrap_link_color', '#428bca' );
 
   // fonts
-  $sansFontFamily       = get_theme_mod( 'strp_cb_sansfont' );
-  $serifFontFamily      = get_theme_mod( 'strp_cb_serifont' );
-  $monoFontFamily       = get_theme_mod( 'strp_cb_monofont' );
-  $baseFontSize         = get_theme_mod( 'strp_cb_basefontsize' );
-  $baseLineHeight       = get_theme_mod( 'strp_cb_baselineheight' );
-  $fontSizeLarge        = get_theme_mod( 'strp_cb_fontsizelarge' );
-  $fontSizeSmall        = get_theme_mod( 'strp_cb_fontsizesmall' );
-  $fontSizeMini         = get_theme_mod( 'strp_cb_fontsizemini' );
+  $font_family_sans_serif = get_theme_mod( 'strp_cb_sansfont', '"Helvetica Neue", Helvetica, Arial, sans-serif' );
+  $font_family_serif      = get_theme_mod( 'strp_cb_serifont', 'Georgia, "Times New Roman", Times, serif' );
+  $font_family_monospace  = get_theme_mod( 'strp_cb_monofont', 'Monaco, Menlo, Consolas, "Courier New", monospace' );
+  $font_size_base         = get_theme_mod( 'strp_cb_basefontsize', '14' );
+  $line_height_base       = get_theme_mod( 'strp_cb_baselineheight', '20' );
   
   // border
-  $baseBorderRadius     = get_theme_mod( 'strp_cb_baseborderradius' );
+  $border_radius_base     = get_theme_mod( 'strp_cb_baseborderradius', '4' );
   
   // grids
-  $gridWidthNormal      = get_theme_mod( 'strp_cb_gridwidth_normal' );
-  $gridWidthWide        = get_theme_mod( 'strp_cb_gridwidth_wide' );
-  $gridWidthNarrow      = get_theme_mod( 'strp_cb_gridwidth_narrow' );
-  $gridGutterNormal     = get_theme_mod( 'strp_cb_gridgutter_normal' );
-  $gridGutterWide       = get_theme_mod( 'strp_cb_gridgutter_wide' );
-  
-  $flatbuttons          = get_theme_mod( 'shoestrap_flat_buttons' );
-
-  if ( is_null( $bodyBackground ) || strlen( $bodyBackground ) < 6 ) { $bodyBackground == '#ffffff'; }
-  if ( is_null( $textColor ) || strlen( $textColor ) < 6 ) { $bodyBackground == '#333333'; }
-  if ( is_null( $sansFontFamily ) || strlen( $sansFontFamily ) < 3 ) { $sansFontFamily == '"Helvetica Neue", Helvetica, Arial, sans-serif'; }
-  if ( is_null( $serifFontFamily ) || strlen( $serifFontFamily ) < 3 ) { $serifFontFamily == 'Georgia, "Times New Roman", Times, serif'; }
-  if ( is_null( $monoFontFamily ) || strlen( $monoFontFamily ) < 3 ) { $monoFontFamily == 'Monaco, Menlo, Consolas, "Courier New", monospace'; }
-  if ( is_null( $baseFontSize ) || $baseFontSize == '' ) { $baseFontSize == '14'; }
-  if ( is_null( $baseLineHeight ) || $baseLineHeight == '' ) { $baseLineHeight == '20'; }
-  if ( is_null( $fontSizeLarge ) || $fontSizeLarge == '' ) { $fontSizeLarge == '1.25'; }
-  if ( is_null( $fontSizeSmall ) || $fontSizeSmall == '' ) { $fontSizeSmall == '0.85'; }
-  if ( is_null( $fontSizeMini ) || $fontSizeMini == '' ) { $fontSizeMini == '0.75'; }
-  if ( is_null( $baseBorderRadius ) || $baseBorderRadius == '' ) { $baseBorderRadius == '4'; }
-  if ( is_null( $gridWidthNormal ) || $gridWidthNormal == '' ) { $gridWidthNormal == '940'; }
-  if ( is_null( $gridWidthWide ) || $gridWidthWide == '' ) { $gridWidthWide == '1200'; }
-  if ( is_null( $gridWidthNarrow ) || $gridWidthNarrow == '' ) { $gridWidthNarrow == '768'; }
-  if ( is_null( $gridGutterNormal ) || $gridGutterNormal == '' ) { $gridGutterNormal == '20'; }
-  if ( is_null( $gridGutterWide ) || $gridGutterWide == '' ) { $gridGutterWide == '30'; }
-
+  $gridWidthNormal      = get_theme_mod( 'strp_cb_gridwidth_normal', '940' );
+  $gridWidthWide        = get_theme_mod( 'strp_cb_gridwidth_wide', '1200' );
+  $gridWidthNarrow      = get_theme_mod( 'strp_cb_gridwidth_narrow', '768' );
+  $gridGutterNormal     = get_theme_mod( 'strp_cb_gridgutter_normal', '20' );
+  $gridGutterWide       = get_theme_mod( 'strp_cb_gridgutter_wide', '30' );
   $gridColumns          = 12;
   
-  // calculate shadows of gray, depending on background and textcolor
-  if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
-    $black        = shoestrap_adjust_brightness( $textColor, -64 );
-    $grayDarker   = shoestrap_adjust_brightness( $textColor, -17 );
+  // calculate shadows of gray, depending on background and text_color
+  if ( shoestrap_get_brightness( $body_bg ) >= 128 ) {
+    $gray_darker  = 'lighten(#000, 13.5%)';
+    $gray_dark    = 'lighten(#000, 20%)';
+    $gray         = 'lighten(#000, 33.5%)';
+    $gray_light   = 'lighten(#000, 60%)';
+    $gray_lighter = 'lighten(#000, 93.5%)';
   } else {
-    $black        = shoestrap_adjust_brightness( $textColor, 64 );
-    $grayDarker   = shoestrap_adjust_brightness( $textColor, 17 );
+    $gray_darker  = 'darken(#000, 13.5%)';
+    $gray_dark    = 'darken(#000, 20%)';
+    $gray         = 'darken(#000, 33.5%)';
+    $gray_light   = 'darken(#000, 60%)';
+    $gray_lighter = 'darken(#000, 93.5%)';
   }
-  $grayDark     = shoestrap_adjust_brightness( $textColor, 0 );
-  $gray         = shoestrap_mix_colors( $textColor, $bodyBackground, 83 );
-  $grayLight    = shoestrap_mix_colors( $textColor, $bodyBackground, 50 );
-  $grayLighter  = shoestrap_mix_colors( $textColor, $bodyBackground, 8 );
-  $white        = shoestrap_adjust_brightness( $bodyBackground, 0 );
-  
-  $borderRadiusLarge  = round( $baseBorderRadius * 1.5 );
-  $borderRadiusSmall  = round( $baseBorderRadius * 3 / 4 );
 
   // Link color (on hover) based on background brightness
-  if ( shoestrap_get_brightness( $bodyBackground ) >= 50 ) {
-    $linkColorHover = 'darken(@linkColor, 15%)';
+  if ( shoestrap_get_brightness( $body_bg ) >= 50 ) {
+    $linkColorHover = 'darken(@link-color, 15%)';
   } else {
-    $linkColorHover = 'lighten(@linkColor, 15%)';
+    $linkColorHover = 'lighten(@link-color, 15%)';
   }
   
-  // Table accents and border based on bodyBackground
-  if ( shoestrap_get_brightness( $bodyBackground ) >= 50 ) {
-    $tableBackgroundAccent  = shoestrap_adjust_brightness( $bodyBackground, -6 );
-    $tableBackgroundHover   = shoestrap_adjust_brightness( $bodyBackground, -10 );
-    $tableBorder            = shoestrap_adjust_brightness( $bodyBackground, -34 );
+  // Table accents and border based on body_bg
+  if ( shoestrap_get_brightness( $body_bg ) >= 50 ) {
+    $table_bg_accent    = 'lighten(@body-bg, 5%)';
+    $table_bg_hover     = 'lighten(@body-bg, 7%)';
+    $table_border_color = 'lighten(@body-bg, 13%)';
   } else {
-    $tableBackgroundAccent  = shoestrap_adjust_brightness( $bodyBackground, 6 );
-    $tableBackgroundHover   = shoestrap_adjust_brightness( $bodyBackground, 10 );
-    $tableBorder            = shoestrap_adjust_brightness( $bodyBackground, 34 );
+    $table_bg_accent    = 'darken(@body-bg, 5%)';
+    $table_bg_hover     = 'darken(@body-bg, 7%)';
+    $table_border_color = 'darken(@body-bg, 13%)';
   }
-  
-  $inputBorder = shoestrap_mix_colors( $grayLight, $grayLighter, 50 );
-
-  // Grid Columns
-  $gridColumnNormal = number_format( ( $gridWidthNormal - ( $gridGutterNormal * ( $gridColumns - 1 ) ) ) / $gridColumns, 0 );
-  $gridColumnWide   = number_format( ( $gridWidthWide - $gridGutterWide * $gridColumns ) / $gridColumns, 0 );
-  $gridColumnNarrow = number_format( ( $gridWidthNarrow - $gridGutterNormal * ( $gridColumns + 1 ) ) / $gridColumns, 0 );
   
   // width of input elements
-  $horizontalComponentOffset = 3 * $gridColumnNormal;
+//  $horizontalComponentOffset = 3 * $gridColumnNormal;
   
   // NavBar width
   $navbarCollapseWidth = ( ( $gridWidthNormal + ( 2 * $gridGutterNormal ) ) - 1 );
   
-  if ( $flatbuttons == 1 ) {
-    $btnBackgroundHighlight         = '@white';
-    $btnPrimaryBackgroundHighlight  = '@btnPrimaryBackground';
-    $btnInfoBackgroundHighlight     = '@btnInfoBackground';
-    $btnSuccessBackgroundHighlight  = '@btnSuccessBackground';
-    $btnWarningBackgroundHighlight  = '@btnWarningBackground';
-    $btnDangerBackgroundHighlight   = '@btnDangerBackground';
-    $btnInverseBackgroundHighlight  = '@grayDark';
-  } else {
-    $btnBackgroundHighlight         = 'darken(@white, 10%)';
-    $btnPrimaryBackgroundHighlight  = 'spin(@btnPrimaryBackground, 20%)';
-    $btnInfoBackgroundHighlight     = 'darken(spin(@btnInfoBackground, 15%), 7%)';
-    $btnSuccessBackgroundHighlight  = 'darken(spin(@btnSuccessBackground, 15%), 7%)';
-    $btnWarningBackgroundHighlight  = 'darken(@btnWarningBackground, 15%)';
-    $btnDangerBackgroundHighlight   = 'darken(spin(@btnDangerBackground, 15%), 7%)';
-    $btnInverseBackgroundHighlight  = 'darken(@grayDark, 10%)';
-  }
-
   // locate the variables file
   $variables_file = locate_template( 'assets/less/bootstrap/variables.less' );
   // open the variables file
@@ -157,128 +108,134 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Grays
 // -------------------------
-@black:                 ' . $black . ';
-@grayDarker:            ' . $grayDarker . ';
-@grayDark:              ' . $grayDark . ';
-@gray:                  ' . $gray . ';
-@grayLight:             ' . $grayLight . ';
-@grayLighter:           ' . $grayLighter . ';
-@white:                 ' . $white . ';
 
+@gray-darker:            ' . $gray_darker . ';
+@gray-dark:              ' . $gray_dark . ';
+@gray:                   ' . $gray . ';
+@gray-light:             ' . $gray_light . ';
+@gray-lighter:           ' . $gray_lighter . ';
 
-// Accent colors
+// Brand colors
 // -------------------------
-@blue:                  #049cdb;
-@blueDark:              #0064cd;
-@green:                 #46a546;
-@red:                   #9d261d;
-@yellow:                #ffc40d;
-@orange:                #f89406;
-@pink:                  #c3325f;
-@purple:                #7a43b6;
 
+@brand-primary:         ' . $link_color . ';
+@brand-success:         #5cb85c;
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
+@brand-info:            #5bc0de;
 
 // Scaffolding
 // -------------------------
-@bodyBackground:        ' . $bodyBackground . ';
-@textColor:             ' . $textColor . ';
 
+@body-bg:               ' . $body_bg . ';
+@text-color:            ' . $text_color . ';
 
 // Links
 // -------------------------
-@linkColor:             #08c;
-@linkColorHover:        ' . $linkColorHover . ';
 
+@link-color:            @brand-primary;
+@link-hover-color:      darken(@link-color, 15%);
 
 // Typography
 // -------------------------
-@sansFontFamily:        ' . $sansFontFamily . ';
-@serifFontFamily:       ' . $serifFontFamily . ';
-@monoFontFamily:        ' . $monoFontFamily . ';
 
-@baseFontSize:          ' . $baseFontSize . 'px;
-@baseFontFamily:        @sansFontFamily;
-@baseLineHeight:        ' . $baseLineHeight . 'px;
-@altFontFamily:         @serifFontFamily;
+@font-family-sans-serif:  ' . $font_family_sans_serif . ';
+@font-family-serif:       ' . $font_family_serif . ';
+@font-family-monospace:   ' . $font_family_monospace . ';
+@font-family-base:        @font-family-sans-serif;
 
-@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
-@headingsFontWeight:    bold;    // instead of browser default, bold
-@headingsColor:         inherit; // empty to use BS default, @textColor
+@font-size-base:          ' . $font_size_base . 'px;
+@font-size-large:         (@font-size-base * 1.25); // ~18px
+@font-size-small:         (@font-size-base * 0.85); // ~12px
+@font-size-mini:          (@font-size-base * 0.75); // ~11px
+
+@line-height-base:        ' . $line_height_base . 'px;
+
+@headings-font-family:    inherit; // empty to use BS default, @font-family-base
+@headings-font-weight:    500;
 
 
-// Component sizing
+// Components
 // -------------------------
-// Based on 14px font-size and 20px line-height
+// Based on 14px font-size and 1.5 line-height
 
-@fontSizeLarge:         @baseFontSize * ' . $fontSizeLarge . '; // ~18px
-@fontSizeSmall:         @baseFontSize * ' . $fontSizeSmall . '; // ~12px
-@fontSizeMini:          @baseFontSize * ' . $fontSizeMini . '; // ~11px
+@padding-large:           11px 14px; // 44px
+@padding-small:           2px 10px;  // 26px
+@padding-mini:            0 6px;   // 22px
 
-@paddingLarge:          11px 19px; // 44px
-@paddingSmall:          2px 10px;  // 26px
-@paddingMini:           1px 6px;   // 24px
+@border-radius-base:      ' . $border_radius_base . 'px;
+@border-radius-large:     ' . ( $border_radius_base * 1.5 ) . 'px;
+@border-radius-small:     ' . ( $border_radius_base * 0.75 ) . 'px;
 
-@baseBorderRadius:      ' . $baseBorderRadius . 'px;
-@borderRadiusLarge:     ' . $borderRadiusLarge . 'px;
-@borderRadiusSmall:     ' . $borderRadiusSmall . 'px;
+@component-active-bg:            @brand-primary;
 
 
 // Tables
 // -------------------------
-@tableBackground:                   transparent; // overall background-color
-@tableBackgroundAccent:             ' . $tableBackgroundAccent . '; // for striping
-@tableBackgroundHover:              ' . $tableBackgroundHover . '; // for hover
-@tableBorder:                       ' . $tableBorder . '; // table and cell border
+
+@table-bg:                           transparent; // overall background-color
+@table-bg-accent:                    ' . $table_bg_accent . '; // for striping
+@table-bg-hover:                     ' . $table_bg_hover . ';// for hover
+
+@table-border-color:                 ' . $table_border_color . '; // table and cell border
+
 
 // Buttons
 // -------------------------
-@btnBackground:                     @white;
-@btnBackgroundHighlight:            darken(@white, 10%);
-@btnBorder:                         #ccc;
 
-@btnPrimaryBackground:              @linkColor;
-@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
+@btn-color:                      #fff;
+@btn-bg:                         #a7a9aa;
+@btn-border:                     @btn-bg;
 
-@btnInfoBackground:                 #5bc0de;
-@btnInfoBackgroundHighlight:        #2f96b4;
+@btn-primary-bg:                 @brand-primary;
+@btn-primary-border:             @btn-primary-bg;
 
-@btnSuccessBackground:              #62c462;
-@btnSuccessBackgroundHighlight:     #51a351;
+@btn-success-bg:                 @brand-success;
+@btn-success-border:             @btn-success-bg;
 
-@btnWarningBackground:              lighten(@orange, 15%);
-@btnWarningBackgroundHighlight:     @orange;
+@btn-warning-bg:                 @brand-warning;
+@btn-warning-border:             @btn-warning-bg;
 
-@btnDangerBackground:               #ee5f5b;
-@btnDangerBackgroundHighlight:      #bd362f;
+@btn-danger-bg:                  @brand-danger;
+@btn-danger-border:              @btn-danger-bg;
 
-@btnInverseBackground:              #444;
-@btnInverseBackgroundHighlight:     @grayDarker;
+@btn-info-bg:                    @brand-info;
+@btn-info-border:                @btn-info-bg;
+
 
 
 // Forms
 // -------------------------
-@inputBackground:               @white;
-@inputBorder:                   ' . $inputBorder . ';
-@inputBorderRadius:             @baseBorderRadius;
-@inputDisabledBackground:       @grayLighter;
-@formActionsBackground:         @tableBackgroundHover;
-@inputHeight:                   @baseLineHeight + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
+
+@input-bg:                       lighten(@body-bg, 3%);
+@input-bg-disabled:              @gray-lighter;
+
+@input-border:                   @gray-lighter;
+@input-border-radius:            @border-radius-base;
+
+@input-color-placeholder:        @gray-light;
+
+@input-height-base:              (@line-height-base + 14px); // base line-height + 12px vertical padding + 2px top/bottom border
+@input-height-large:             (@line-height-base + 24px); // base line-height + 22px vertical padding + 2px top/bottom border
+@input-height-small:             (@line-height-base + 6px);  // base line-height + 4px vertical padding + 2px top/bottom border
+
+@form-actions-bg:                 darken(@input-bg, 2%);
 
 
 // Dropdowns
 // -------------------------
-@dropdownBackground:            @white;
-@dropdownBorder:                rgba(0,0,0,.2);
-@dropdownDividerTop:            @grayLighter;
-@dropdownDividerBottom:         @white;
 
-@dropdownLinkColor:             @grayDark;
-@dropdownLinkColorHover:        @white;
-@dropdownLinkColorActive:       @dropdownLinkColor;
+@dropdown-bg:                    @body-bg;
+@dropdown-border:                rgba(0,0,0,.15);
+@dropdown-divider-top:           @gray-lighter;
+@dropdown-divider-bottom:        @body-bg;
 
-@dropdownLinkBackgroundActive:  @linkColor;
-@dropdownLinkBackgroundHover:   @dropdownLinkBackgroundActive;
+@dropdown-link-active-color:     @body-bg;
+@dropdown-link-active-bg:        @component-active-bg;
 
+@dropdown-link-color:            @gray-dark;
+@dropdown-link-hover-color:      @body-bg;
+@dropdown-link-hover-bg:         @dropdown-link-active-bg;
 
 
 // COMPONENT VARIABLES
@@ -289,164 +246,262 @@ function shoestrap_custom_builder_rewrite_variables() {
 // -------------------------
 // Used for a birds eye view of components dependent on the z-axis
 // Try to avoid customizing these :)
-@zindexDropdown:          1000;
-@zindexPopover:           1010;
-@zindexTooltip:           1030;
-@zindexFixedNavbar:       1030;
-@zindexModalBackdrop:     1040;
-@zindexModal:             1050;
+
+@zindex-dropdown:          1000;
+@zindex-popover:           1010;
+@zindex-tooltip:           1030;
+@zindex-navbar-fixed:      1030;
+@zindex-modal-background:  1040;
+@zindex-modal:             1050;
 
 
-// Sprite icons path
+// Glyphicons font path
 // -------------------------
-@iconSpritePath:          "../img/glyphicons-halflings.png";
-@iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
-
-
-// Input placeholder text color
-// -------------------------
-@placeholderText:         @grayLight;
-
-
-// Hr border color
-// -------------------------
-@hrBorder:                @grayLighter;
-
-
-// Horizontal forms & lists
-// -------------------------
-@horizontalComponentOffset:       ' . $horizontalComponentOffset . 'px;
-
-
-// Wells
-// -------------------------
-@wellBackground:                  @tableBackgroundHover;
+@glyphicons-font-path:          "../fonts";
 
 
 // Navbar
 // -------------------------
-@navbarCollapseWidth:             ' . $navbarCollapseWidth . 'px;
-@navbarCollapseDesktopWidth:      @navbarCollapseWidth + 1;
 
-@navbarHeight:                    40px;
-@navbarBackgroundHighlight:       #ffffff;
-@navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
-@navbarBorder:                    darken(@navbarBackground, 12%);
+// Basics of a navbar
+@navbar-height:                    50px;
+@navbar-color:                     #777;
+@navbar-bg:                        #eee;
 
-@navbarText:                      #777;
-@navbarLinkColor:                 @navbarText;
-@navbarLinkColorHover:            @grayDark;
-@navbarLinkColorActive:           @gray;
-@navbarLinkBackgroundHover:       transparent;
-@navbarLinkBackgroundActive:      darken(@navbarBackground, 5%);
+// Navbar links
+@navbar-link-color:                #777;
+@navbar-link-hover-color:          #333;
+@navbar-link-hover-bg:             transparent;
+@navbar-link-active-color:         #555;
+@navbar-link-active-bg:            darken(@navbar-bg, 10%);
+@navbar-link-disabled-color:       #ccc;
+@navbar-link-disabled-bg:          transparent;
 
-@navbarBrandColor:                @navbarLinkColor;
+// Navbar brand label
+@navbar-brand-color:               @navbar-link-color;
+@navbar-brand-hover-color:         darken(@navbar-link-color, 10%);
+@navbar-brand-hover-bg:            transparent;
 
 // Inverted navbar
-@navbarInverseBackground:                #111111;
-@navbarInverseBackgroundHighlight:       #222222;
-@navbarInverseBorder:                    #252525;
+@navbar-inverse-color:                       @gray-light;
+@navbar-inverse-bg:                         #222;
 
-@navbarInverseText:                      @grayLight;
-@navbarInverseLinkColor:                 @grayLight;
-@navbarInverseLinkColorHover:            @white;
-@navbarInverseLinkColorActive:           @navbarInverseLinkColorHover;
-@navbarInverseLinkBackgroundHover:       transparent;
-@navbarInverseLinkBackgroundActive:      @navbarInverseBackground;
+// Inverted navbar links
+@navbar-inverse-link-color:                 @gray-light;
+@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color:        #444;
+@navbar-inverse-link-disabled-bg:           transparent;
 
-@navbarInverseSearchBackground:          lighten(@navbarInverseBackground, 25%);
-@navbarInverseSearchBackgroundFocus:     @white;
-@navbarInverseSearchBorder:              @navbarInverseBackground;
-@navbarInverseSearchPlaceholderColor:    #ccc;
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          #fff;
+@navbar-inverse-brand-hover-bg:             transparent;
 
-@navbarInverseBrandColor:                @navbarInverseLinkColor;
+// Inverted navbar search
+// Normal navbar needs no special styles or vars
+@navbar-inverse-search-bg:                  lighten(@navbar-inverse-bg, 25%);
+@navbar-inverse-search-bg-focus:            #fff;
+@navbar-inverse-search-border:              @navbar-inverse-bg;
+@navbar-inverse-search-placeholder-color:   #ccc;
 
 
 // Pagination
 // -------------------------
-@paginationBackground:                @white;
-@paginationBorder:                    @tableBorder;
-@paginationActiveBackground:          @tableBackgroundHover;
+
+@pagination-bg:                        @body-bg;
+@pagination-border:                    @gray_lighter;
+@pagination-active-bg:                 darken(@body-bg, 2%);
 
 
-// Hero unit
+// Jumbotron
 // -------------------------
-@heroUnitBackground:              @grayLighter;
-@heroUnitHeadingColor:            inherit;
-@heroUnitLeadColor:               inherit;
+
+@jumbotron-bg:                   @gray-lighter;
+@jumbotron-heading-color:        inherit;
+@jumbotron-lead-color:           inherit;
 
 
 // Form states and alerts
 // -------------------------
-@warningText:             #c09853;
-@warningBackground:       #fcf8e3;
-@warningBorder:           darken(spin(@warningBackground, -10), 3%);
 
-@errorText:               #b94a48;
-@errorBackground:         #f2dede;
-@errorBorder:             darken(spin(@errorBackground, -10), 3%);
+@state-warning-text:             #c09853;
+@state-warning-bg:               #fcf8e3;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 3%);
 
-@successText:             #468847;
-@successBackground:       #dff0d8;
-@successBorder:           darken(spin(@successBackground, -10), 5%);
+@state-danger-text:              #b94a48;
+@state-danger-bg:                #f2dede;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 3%);
 
-@infoText:                #3a87ad;
-@infoBackground:          #d9edf7;
-@infoBorder:              darken(spin(@infoBackground, -10), 7%);
+@state-success-text:             #468847;
+@state-success-bg:               #dff0d8;
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text:                #3a87ad;
+@state-info-bg:                  #d9edf7;
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
 
 // Tooltips and popovers
 // -------------------------
-@tooltipColor:            @white;
-@tooltipBackground:       @black;
-@tooltipArrowWidth:       5px;
-@tooltipArrowColor:       @tooltipBackground;
+@tooltip-color:               @body-bg;
+@tooltip-bg:                  rgba(0,0,0,.9);
+@tooltip-arrow-width:         5px;
+@tooltip-arrow-color:         @tooltip-bg;
 
-@popoverBackground:       @white;
-@popoverArrowWidth:       10px;
-@popoverArrowColor:       @white;
-@popoverTitleBackground:  darken(@popoverBackground, 3%);
+@popover-bg:                  @body-bg;
+@popover-arrow-width:         10px;
+@popover-arrow-color:         @body-bg;
+@popover-title-bg:            darken(@popover-bg, 3%);
 
 // Special enhancement for popovers
-@popoverArrowOuterWidth:  @popoverArrowWidth + 1;
-@popoverArrowOuterColor:  rgba(0,0,0,.25);
+@popover-arrow-outer-width:   (@popover-arrow-width + 1);
+@popover-arrow-outer-color:   rgba(0,0,0,.25);
 
 
+// Labels
+// -------------------------
+@label-success-bg:            @brand-success;
+@label-info-bg:               @brand-info;
+@label-warning-bg:            @brand-warning;
+@label-danger-bg:             @brand-danger;
 
-// GRID
+
+// Modals
+// -------------------------
+@modal-inner-padding:         20px;
+
+@modal-title-padding:         15px;
+@modal-title-line-height:     @line-height-base;
+
+// Alerts
+// -------------------------
+@alert-bg:                    @state-warning-bg;
+@alert-text:                  @state-warning-text;
+@alert-border:                @state-warning-border;
+@alert-border-radius:         @border-radius-base;
+
+@alert-success-bg:            @state-success-bg;
+@alert-success-text:          @state-success-text;
+@alert-success-border:        @state-success-border;
+
+@alert-danger-bg:             @state-danger-bg;
+@alert-danger-text:           @state-danger-text;
+@alert-danger-border:         @state-danger-border;
+
+@alert-info-bg:               @state-info-bg;
+@alert-info-text:             @state-info-text;
+@alert-info-border:           @state-info-border;
+
+
+// Progress bars
+// -------------------------
+@progress-bg:                 #f5f5f5;
+@progress-bar-bg:             @brand-primary;
+@progress-bar-success-bg:     @brand-success;
+@progress-bar-warning-bg:     @brand-warning;
+@progress-bar-danger-bg:      @brand-danger;
+@progress-bar-info-bg:        @brand-info;
+
+
+// List group
+// -------------------------
+@list-group-bg:               @body-bg;
+@list-group-border:           #ddd;
+@list-group-border-radius:    @border-radius-base;
+
+@list-group-hover-bg:         #f5f5f5;
+@list-group-active-text:      @body-bg;
+@list-group-active-bg:        @component-active-bg;
+@list-group-active-border:    @list-group-active-bg;
+
+// Panels
+// -------------------------
+@panel-bg:                    @body-bg;
+@panel-border:                #ddd;
+@panel-border-radius:         @border-radius-base;
+@panel-heading-bg:            #f5f5f5;
+
+@panel-primary-text:          @body-bg;
+@panel-primary-border:        @brand-primary;
+@panel-primary-heading-bg:    @brand-primary;
+
+@panel-success-text:          @state-success-text;
+@panel-success-border:        @state-success-border;
+@panel-success-heading-bg:    @state-success-bg;
+
+@panel-warning-text:          @state-warning-text;
+@panel-warning-border:        @state-warning-border;
+@panel-warning-heading-bg:    @state-warning-bg;
+
+@panel-danger-text:           @state-danger-text;
+@panel-danger-border:         @state-danger-border;
+@panel-danger-heading-bg:     @state-danger-bg;
+
+@panel-info-text:             @state-info-text;
+@panel-info-border:           @state-info-border;
+@panel-info-heading-bg:       @state-info-bg;
+
+
+// Thumbnails
+// -------------------------
+@thumbnail-caption-color:     @text-color;
+@thumbnail-bg:                @body-bg;
+@thumbnail-border:            #ddd;
+@thumbnail-border-radius:     @border-radius-base;
+
+
+// Wells
+// -------------------------
+@well-bg:                     #f5f5f5;
+
+
+// Miscellaneous
+// -------------------------
+
+// Hr border color
+@hr-border:                   @gray-lighter;
+
+// Horizontal forms & lists
+@component-offset-horizontal: 180px;
+
+
+// Media queries breakpoints
 // --------------------------------------------------
 
+// Tiny screen / phone
+@screen-tiny:                480px;
+@screen-phone:               @screen-tiny;
 
-// Default 940px grid
-// -------------------------
-@gridColumns:             ' . $gridColumns . ';
-@gridColumnWidth:         ' . $gridColumnNormal . 'px;
-@gridGutterWidth:         ' . $gridGutterNormal . 'px;
-@gridRowWidth:            ' . $gridWidthNormal . 'px;
+// Small screen / tablet
+@screen-small:               768px;
+@screen-tablet:              @screen-small;
 
-// 1200px min
-@gridColumnWidth1200:     ' . $gridColumnWide . 'px;
-@gridGutterWidth1200:     ' . $gridGutterWide . 'px;
-@gridRowWidth1200:        ' . $gridWidthWide . 'px;
+// Medium screen / desktop
+@screen-medium:              992px;
+@screen-desktop:             @screen-medium;
 
-// 768px-979px
-@gridColumnWidth768:      ' . $gridColumnNarrow . 'px;
-@gridGutterWidth768:      ' . $gridGutterNormal . 'px;
-@gridRowWidth768:         ' . $gridWidthNarrow . 'px;
+// So media queries dont overlap when required, provide a maximum
+@screen-small-max:           (@screen-medium - 1);
+@screen-tablet-max:          @screen-small-max;
+
+// Large screen / wide desktop
+@screen-large:               1200px;
+@screen-large-desktop:       @screen-large;
 
 
-// Fluid grid
-// -------------------------
-@fluidGridColumnWidth:    percentage(' . number_format( ( $gridColumnNormal / $gridWidthNormal ), 4 ). ');
-@fluidGridGutterWidth:    percentage(' . number_format( ( $gridGutterNormal / $gridWidthNormal ), 4 ) . ');
+// Grid system
+// --------------------------------------------------
 
-// 1200px min
-@fluidGridColumnWidth1200:     percentage(' . number_format( ( $gridColumnWide / $gridWidthWide ), 4 ) . ');
-@fluidGridGutterWidth1200:     percentage(' . number_format( ( $gridGutterWide / $gridWidthWide ), 4 ) . ');
+// Number of columns in the grid system
+@grid-columns:              12;
+// Padding, to be divided by two and applied to the left and right of all columns
+@grid-gutter-width:         30px;
+// Point at which the navbar stops collapsing
+@grid-float-breakpoint:     @screen-tablet;
 
-// 768px-979px
-@fluidGridColumnWidth768:      percentage(' . number_format( ( $gridColumnNarrow / $gridWidthNarrow ), 4 ) . ');
-@fluidGridGutterWidth768:      percentage(' . number_format( ( $gridGutterNormal / $gridWidthNarrow), 4 ) . ');
 ';
   
   // write the content to the variations file
