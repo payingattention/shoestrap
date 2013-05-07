@@ -5,10 +5,6 @@
 .gallery-caption {}
 .bypostauthor {}
 
-#wrap {
-  padding: @gridGutterWidth;
-}
-
 /* Fixed Topbar Navigation */
 body {
   &.top-navbar {
@@ -180,7 +176,7 @@ li.social-networks {
   left: 0;
   right: 0;
   z-index: 1020;
-  .border-radius(0);
+  // .border-radius(0px);
 
   // Prevent floats from breaking the navbar
   .clearfix();
@@ -190,13 +186,13 @@ li.social-networks {
     > li:first-child {
       > a,
       a:hover {
-        .border-radius(0px);
+        // .border-radius(0px);
       }
     }
   }
   .navbar-inner {
     border: 0px !important;
-    .border-radius(0px);
+    // .border-radius(0px);
     .box-shadow(0 0 0 rgba(0,0,0,0));
   }
 }
