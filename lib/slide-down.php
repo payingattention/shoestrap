@@ -32,7 +32,7 @@ function shoestrap_navbar_widget_area_class() {
  * Prints the content of the slide-down widget areas.
  */
 function shoestrap_navbar_slidedown_content() {
-  echo '<div id="megaDrop" class="container-fluid top-megamenu">';
+  echo '<div id="megaDrop" class="container top-megamenu">';
   echo '<div class="container">';
   $widgetareaclass = 'span' . shoestrap_navbar_widget_area_class();
   

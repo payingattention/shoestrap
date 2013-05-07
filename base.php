@@ -37,7 +37,7 @@ $layout = get_theme_mod( 'shoestrap_layout' );
 
       <?php if ( in_array ( $layout, array ( 'mps', 'pms', 'smp', 'spm' ) ) && shoestrap_display_sidebar() && shoestrap_display_primary_sidebar() ) { ?>
         <div class="m_p_wrap <?php shoestrap_sidebar_class_calc( 'main-primary', '', true ); ?>">
-          <div class="row-fluid">
+          <div class="row">
       <?php } ?>
 
       <?php do_action('shoestrap_pre_main'); ?>

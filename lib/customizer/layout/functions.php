@@ -68,18 +68,12 @@ function shoestrap_fluid_body_classes( $context ) {
   $layout = get_theme_mod( 'shoestrap_layout' );
   $fluid  = get_theme_mod( 'shoestrap_fluid' );
 
-  // Use row-fluid for rows
   if ( $context == 'row' ) {
-    $class = 'row-fluid';
+    $class = 'row';
   }
 
-  // Choose between container and container-fluid, depending on the layout
   if ( $context == 'container' ) {
-    if ( ( $fluid == 1 ) ) {
-      $class = 'container-fluid';
-    } else {
-      $class = 'container';
-    }
+    $class = 'container';
   }
   
   echo $class;

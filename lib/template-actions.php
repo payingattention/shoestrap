@@ -38,7 +38,7 @@ function shoestrap_article_metadata() { ?>
   <p class="byline author vcard"><?php echo __( 'By', 'shoestrap' ); ?>
     <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" rel="author" class="fn"><?php echo get_the_author(); ?></a>
   </p>
-  <div class="row-fluid">
+  <div class="row">
     <div class="span4">
       <i class="time-icon icon-time-alt"></i>
       <time class="updated" datetime="<?php echo get_the_time( 'c' ); ?>" pubdate><?php echo get_the_date(); ?></time>
