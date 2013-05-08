@@ -33,26 +33,26 @@ function shoestrap_social_customizer( $wp_customize ){
   }
 
   $checkbox_controls = array();
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_facebook_on_posts',     'label' => 'Share Buttons on Posts: Facebook',    'section' => 'shoestrap_social',  'priority' => 5 );
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_twitter_on_posts',      'label' => 'Share Buttons on Posts: Twitter',     'section' => 'shoestrap_social',  'priority' => 6 );
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_gplus_on_posts',        'label' => 'Share Buttons on Posts: Google Plus', 'section' => 'shoestrap_social',  'priority' => 7 );
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_linkedin_on_posts',     'label' => 'Share Buttons on Posts: Linkedin',    'section' => 'shoestrap_social',  'priority' => 8 );
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_pinterest_on_posts',    'label' => 'Share Buttons on Posts: Pinterest',   'section' => 'shoestrap_social',  'priority' => 9 );
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_digg_on_posts',         'label' => 'Share Buttons on Posts: Digg',        'section' => 'shoestrap_social',  'priority' => 9 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_facebook_on_posts',     'label' => __( 'Share Buttons on Posts: Facebook', 'shoestrap' ),    'section' => 'shoestrap_social',  'priority' => 5 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_twitter_on_posts',      'label' => __( 'Share Buttons on Posts: Twitter', 'shoestrap' ),     'section' => 'shoestrap_social',  'priority' => 6 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_gplus_on_posts',        'label' => __( 'Share Buttons on Posts: Google Plus', 'shoestrap' ), 'section' => 'shoestrap_social',  'priority' => 7 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_linkedin_on_posts',     'label' => __( 'Share Buttons on Posts: Linkedin', 'shoestrap' ),    'section' => 'shoestrap_social',  'priority' => 8 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_pinterest_on_posts',    'label' => __( 'Share Buttons on Posts: Pinterest', 'shoestrap' ),   'section' => 'shoestrap_social',  'priority' => 9 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_digg_on_posts',         'label' => __( 'Share Buttons on Posts: Digg', 'shoestrap' ),        'section' => 'shoestrap_social',  'priority' => 9 );
 
   $select_controls = array();
-  $select_controls[] = array( 'setting' => 'shoestrap_single_social_position',  'label' => 'Location of social shares',           'section' => 'shoestrap_social',  'priority' => 10,'choises' => array( 'top' => __( 'Top', 'shoestrap' ), 'bottom' => __( 'Bottom', 'shoestrap' ), 'both' => __( 'Both', 'shoestrap' ), 'none' => __( 'None', 'shoestrap' ) ) );
+  $select_controls[] = array( 'setting' => 'shoestrap_single_social_position',  'label' => __( 'Location of social shares', 'shoestrap' ),           'section' => 'shoestrap_social',  'priority' => 10,'choises' => array( 'top' => __( 'Top', 'shoestrap' ), 'bottom' => __( 'Bottom', 'shoestrap' ), 'both' => __( 'Both', 'shoestrap' ), 'none' => __( 'None', 'shoestrap' ) ) );
 
   $text_controls = array();
-  $text_controls[]  = array( 'setting' => 'shoestrap_facebook_link',            'label' => 'Facebook Page Link',                  'section' => 'shoestrap_social',  'priority' => 1 );
-  $text_controls[]  = array( 'setting' => 'shoestrap_twitter_link',             'label' => 'Twitter URL or @username',            'section' => 'shoestrap_social',  'priority' => 2 );
-  $text_controls[]  = array( 'setting' => 'shoestrap_google_plus_link',         'label' => 'Google+ Profile Link',                'section' => 'shoestrap_social',  'priority' => 3 );
-  $text_controls[]  = array( 'setting' => 'shoestrap_pinterest_link',           'label' => 'Pinterest Profile Link',              'section' => 'shoestrap_social',  'priority' => 4 );
-  $text_controls[]  = array( 'setting' => 'shoestrap_single_social_text',       'label' => 'Single Social Text',                  'section' => 'shoestrap_social',  'priority' => 10 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_facebook_link',            'label' => __( 'Facebook Page Link', 'shoestrap' ),                  'section' => 'shoestrap_social',  'priority' => 1 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_twitter_link',             'label' => __( 'Twitter URL or @username', 'shoestrap' ),            'section' => 'shoestrap_social',  'priority' => 2 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_google_plus_link',         'label' => __( 'Google+ Profile Link', 'shoestrap' ),                'section' => 'shoestrap_social',  'priority' => 3 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_pinterest_link',           'label' => __( 'Pinterest Profile Link', 'shoestrap' ),              'section' => 'shoestrap_social',  'priority' => 4 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_single_social_text',       'label' => __( 'Single Social Text', 'shoestrap' ),                  'section' => 'shoestrap_social',  'priority' => 10 );
 
   foreach ( $checkbox_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'checkbox',
@@ -62,7 +62,7 @@ function shoestrap_social_customizer( $wp_customize ){
   
   foreach ( $select_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'select',
@@ -73,7 +73,7 @@ function shoestrap_social_customizer( $wp_customize ){
 
   foreach ( $text_controls as $control) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'text',

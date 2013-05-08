@@ -34,15 +34,15 @@ function shoestrap_feat_image_customizer( $wp_customize ){
 
   // Text Controls
   $text_controls    = array();
-  $text_controls[]  = array( 'setting' => 'shoestrap_feat_img_archive_width',   'label' => 'Image width (archives)',      'section' => 'shoestrap_feat_image',  'priority' => 4 );
-  $text_controls[]  = array( 'setting' => 'shoestrap_feat_img_archive_height',  'label' => 'Image height (archives)',     'section' => 'shoestrap_feat_image',  'priority' => 5 );
-  $text_controls[]  = array( 'setting' => 'shoestrap_feat_img_post_width',      'label' => 'Image width (single posts)',  'section' => 'shoestrap_feat_image',  'priority' => 7 );
-  $text_controls[]  = array( 'setting' => 'shoestrap_feat_img_post_height',     'label' => 'Image height (single posts)', 'section' => 'shoestrap_feat_image',  'priority' => 8 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_feat_img_archive_width',   'label' => __( 'Image width (archives)', 'shoestrap' ),      'section' => 'shoestrap_feat_image',  'priority' => 4 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_feat_img_archive_height',  'label' => __( 'Image height (archives)', 'shoestrap' ),     'section' => 'shoestrap_feat_image',  'priority' => 5 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_feat_img_post_width',      'label' => __( 'Image width (single posts)', 'shoestrap' ),  'section' => 'shoestrap_feat_image',  'priority' => 7 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_feat_img_post_height',     'label' => __( 'Image height (single posts)', 'shoestrap' ), 'section' => 'shoestrap_feat_image',  'priority' => 8 );
   
    // Checkbox Controls
   $checkbox_controls = array();
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_feat_img_archive',  'label' => 'Show featured images on archives',      'section' => 'shoestrap_feat_image',  'priority' => 1 );
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_feat_img_post',     'label' => 'Show featured images on single posts',  'section' => 'shoestrap_feat_image',  'priority' => 2 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_feat_img_archive',  'label' => __( 'Show featured images on archives', 'shoestrap' ),      'section' => 'shoestrap_feat_image',  'priority' => 1 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_feat_img_post',     'label' => __( 'Show featured images on single posts', 'shoestrap' ),  'section' => 'shoestrap_feat_image',  'priority' => 2 );
 
   $help_controls    = array();
   $help_controls[]  = array( 'setting' => 'shoestrap_feat_img_enabling_help',           'label' => $feat_img_enabling_help,           'section' => 'shoestrap_feat_image', 'priority' => 3 );
@@ -51,7 +51,7 @@ function shoestrap_feat_image_customizer( $wp_customize ){
 
   foreach ( $checkbox_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'checkbox',
@@ -61,7 +61,7 @@ function shoestrap_feat_image_customizer( $wp_customize ){
   
  foreach ( $text_controls as $control) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'text',

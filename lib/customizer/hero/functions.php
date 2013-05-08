@@ -30,34 +30,34 @@ function shoestrap_hero_customizer( $wp_customize ){
 
   // Color Controls
   $color_controls   = array();
-  $color_controls[] = array( 'setting' => 'shoestrap_hero_cta_color',         'label' => 'Call To Action Button Color',   'section' => 'shoestrap_hero',  'priority' => 5 );
-  $color_controls[] = array( 'setting' => 'shoestrap_hero_background_color',  'label' => 'Hero Region Background Color',  'section' => 'shoestrap_hero',  'priority' => 7 );
-  $color_controls[] = array( 'setting' => 'shoestrap_hero_textcolor',         'label' => 'Hero Region Text Color',        'section' => 'shoestrap_hero',  'priority' => 8 );
+  $color_controls[] = array( 'setting' => 'shoestrap_hero_cta_color',         'label' => __( 'Call To Action Button Color', 'shoestrap' ),   'section' => 'shoestrap_hero',  'priority' => 5 );
+  $color_controls[] = array( 'setting' => 'shoestrap_hero_background_color',  'label' => __( 'Hero Region Background Color', 'shoestrap' ),  'section' => 'shoestrap_hero',  'priority' => 7 );
+  $color_controls[] = array( 'setting' => 'shoestrap_hero_textcolor',         'label' => __( 'Hero Region Text Color', 'shoestrap' ),        'section' => 'shoestrap_hero',  'priority' => 8 );
 
   // Image Controls
   $image_controls = array();
-  $image_controls[] = array( 'setting' => 'shoestrap_hero_background',        'label' => 'Hero Background Image',         'section' => 'shoestrap_hero',  'priority' => 6 );
+  $image_controls[] = array( 'setting' => 'shoestrap_hero_background',        'label' => __( 'Hero Background Image', 'shoestrap' ),         'section' => 'shoestrap_hero',  'priority' => 6 );
 
   // Dropdown (Select) Controls
   $select_controls = array();
-  $select_controls[] = array( 'setting' => 'shoestrap_hero_visibility',       'label' => 'Hero Region Visibility',        'section' => 'shoestrap_hero',  'priority' => 9, 'choises' => array( 'front' => __( 'Frontpage', 'shoestrap' ), 'site' => __( 'Site-Wide', 'shoestrap' ) ) );
+  $select_controls[] = array( 'setting' => 'shoestrap_hero_visibility',       'label' => __( 'Hero Region Visibility', 'shoestrap' ),        'section' => 'shoestrap_hero',  'priority' => 9, 'choises' => array( 'front' => __( 'Frontpage', 'shoestrap' ), 'site' => __( 'Site-Wide', 'shoestrap' ) ) );
 
   // Text Controls
   $text_controls = array();
-  $text_controls[]  = array( 'setting' => 'shoestrap_hero_title',             'label' => 'Title',                         'section' => 'shoestrap_hero',  'priority' => 1 );
-  $text_controls[]  = array( 'setting' => 'shoestrap_hero_cta_text',          'label' => 'Call To Action Button Text',    'section' => 'shoestrap_hero',  'priority' => 3 );
-  $text_controls[]  = array( 'setting' => 'shoestrap_hero_cta_link',          'label' => 'Call To Action Button Link',    'section' => 'shoestrap_hero',  'priority' => 4 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_hero_title',             'label' => __( 'Title', 'shoestrap' ),                         'section' => 'shoestrap_hero',  'priority' => 1 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_hero_cta_text',          'label' => __( 'Call To Action Button Text', 'shoestrap' ),    'section' => 'shoestrap_hero',  'priority' => 3 );
+  $text_controls[]  = array( 'setting' => 'shoestrap_hero_cta_link',          'label' => __( 'Call To Action Button Link', 'shoestrap' ),    'section' => 'shoestrap_hero',  'priority' => 4 );
 
   //Checkbox Controls
   $checkbox_controls = array();
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_hero_title_fittext',  'label' => 'Use FitText for the Title',     'section' => 'shoestrap_hero',  'priority' => 2 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_hero_title_fittext',  'label' => __( 'Use FitText for the Title', 'shoestrap' ),     'section' => 'shoestrap_hero',  'priority' => 2 );
 
   foreach( $color_controls as $control ){
     $wp_customize->add_control( new WP_Customize_Color_Control(
       $wp_customize,
       $control['setting'],
       array(
-        'label'     => __( $control['label'], 'shoestrap' ),
+        'label'     => $control['label'],
         'section'   => $control['section'],
         'settings'  => $control['setting'],
         'priority'  => $control['priority'],
@@ -70,7 +70,7 @@ function shoestrap_hero_customizer( $wp_customize ){
       $wp_customize,
       $control['setting'],
       array(
-        'label'     => __( $control['label'], 'shoestrap' ),
+        'label'     => $control['label'],
         'section'   => $control['section'],
         'settings'  => $control['setting'],
         'priority'  => $control['priority']
@@ -80,7 +80,7 @@ function shoestrap_hero_customizer( $wp_customize ){
 
   foreach ( $select_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'select',
@@ -91,7 +91,7 @@ function shoestrap_hero_customizer( $wp_customize ){
 
   foreach ( $text_controls as $control) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'text',
@@ -101,7 +101,7 @@ function shoestrap_hero_customizer( $wp_customize ){
 
   foreach ( $checkbox_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'checkbox',

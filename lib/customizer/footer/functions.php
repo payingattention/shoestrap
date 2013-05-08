@@ -25,8 +25,8 @@ function shoestrap_footer_customizer( $wp_customize ){
    * Color Controls
    */
   $color_controls   = array();
-  $color_controls[] = array( 'setting' => 'shoestrap_footer_background_color','label' => 'Footer Background Color', 'section' => 'shoestrap_footer',  'priority' => 1 );
-  $color_controls[] = array( 'setting' => 'shoestrap_footer_text_color',      'label' => 'Footer Text Color',       'section' => 'shoestrap_footer',  'priority' => 2 );
+  $color_controls[] = array( 'setting' => 'shoestrap_footer_background_color','label' => __( 'Footer Background Color', 'shoestrap' ), 'section' => 'shoestrap_footer',  'priority' => 1 );
+  $color_controls[] = array( 'setting' => 'shoestrap_footer_text_color',      'label' => __( 'Footer Text Color', 'shoestrap' ),       'section' => 'shoestrap_footer',  'priority' => 2 );
   
   // Text Controls
   $text_controls = array();
@@ -37,7 +37,7 @@ function shoestrap_footer_customizer( $wp_customize ){
       $wp_customize,
       $control['setting'],
       array(
-        'label'     => __( $control['label'], 'shoestrap' ),
+        'label'     => $control['label'],
         'section'   => $control['section'],
         'settings'  => $control['setting'],
         'priority'  => $control['priority'],
@@ -47,7 +47,7 @@ function shoestrap_footer_customizer( $wp_customize ){
 
   foreach ( $text_controls as $control) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'text',

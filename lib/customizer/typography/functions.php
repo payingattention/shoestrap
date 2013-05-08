@@ -28,21 +28,21 @@ function shoestrap_typography_customizer( $wp_customize ){
 
   // Color Controls
   $color_controls   = array();
-  $color_controls[] = array( 'setting' => 'shoestrap_text_color',             'label' => 'Text Color',              'section' => 'shoestrap_typography',  'priority' => 1 );
-  $color_controls[] = array( 'setting' => 'shoestrap_link_color',             'label' => 'Links Color',             'section' => 'shoestrap_typography',  'priority' => 2 );
+  $color_controls[] = array( 'setting' => 'shoestrap_text_color',             'label' => __( 'Text Color', 'shoestrap' ),              'section' => 'shoestrap_typography',  'priority' => 1 );
+  $color_controls[] = array( 'setting' => 'shoestrap_link_color',             'label' => __( 'Links Color', 'shoestrap' ),             'section' => 'shoestrap_typography',  'priority' => 2 );
 
   // Dropdown (Select) Controls
   $select_controls = array();
-  $select_controls[] = array( 'setting' => 'shoestrap_webfonts_weight',         'label' => 'Webfont weight:',         'section' => 'shoestrap_typography',  'priority' => 4, 'choises' => array( '200' => __( '200', 'shoestrap' ), '300' => __( '300', 'shoestrap' ), '400' => __( '400', 'shoestrap' ), '600' => __( '600', 'shoestrap' ), '700' => __( '700', 'shoestrap' ), '800' => __( '800', 'shoestrap' ), '900' => __( '900', 'shoestrap' ) ) );
-  $select_controls[] = array( 'setting' => 'shoestrap_webfonts_character_set',  'label' => 'Webfont character set:',  'section' => 'shoestrap_typography',  'priority' => 5, 'choises' => array( 'cyrillic' => __( 'Cyrillic', 'shoestrap' ), 'cyrillic-ext' => __( 'Cyrillic Extended', 'shoestrap' ), 'greek' => __( 'Greek', 'shoestrap' ), 'greek-ext' => __( 'Greek Extended', 'shoestrap' ), 'latin' => __( 'Latin', 'shoestrap' ), 'latin-ext' => __( 'Latin Extended', 'shoestrap' ), 'vietnamese' => __( 'Vietnamese', 'shoestrap' ) ) );
-  $select_controls[] = array( 'setting' => 'shoestrap_webfonts_assign',         'label' => 'Apply Webfont to:',       'section' => 'shoestrap_typography',  'priority' => 6, 'choises' => array( 'sitename' => __( 'Site Name', 'shoestrap' ), 'headers' => __( 'Headers', 'shoestrap' ), 'all' => __( 'Everywhere', 'shoestrap' ) ) );
+  $select_controls[] = array( 'setting' => 'shoestrap_webfonts_weight',         'label' => __( 'Webfont weight:', 'shoestrap' ),         'section' => 'shoestrap_typography',  'priority' => 4, 'choises' => array( '200' => __( '200', 'shoestrap' ), '300' => __( '300', 'shoestrap' ), '400' => __( '400', 'shoestrap' ), '600' => __( '600', 'shoestrap' ), '700' => __( '700', 'shoestrap' ), '800' => __( '800', 'shoestrap' ), '900' => __( '900', 'shoestrap' ) ) );
+  $select_controls[] = array( 'setting' => 'shoestrap_webfonts_character_set',  'label' => __( 'Webfont character set:', 'shoestrap' ),  'section' => 'shoestrap_typography',  'priority' => 5, 'choises' => array( 'cyrillic' => __( 'Cyrillic', 'shoestrap' ), 'cyrillic-ext' => __( 'Cyrillic Extended', 'shoestrap' ), 'greek' => __( 'Greek', 'shoestrap' ), 'greek-ext' => __( 'Greek Extended', 'shoestrap' ), 'latin' => __( 'Latin', 'shoestrap' ), 'latin-ext' => __( 'Latin Extended', 'shoestrap' ), 'vietnamese' => __( 'Vietnamese', 'shoestrap' ) ) );
+  $select_controls[] = array( 'setting' => 'shoestrap_webfonts_assign',         'label' => __( 'Apply Webfont to:', 'shoestrap' ),       'section' => 'shoestrap_typography',  'priority' => 6, 'choises' => array( 'sitename' => __( 'Site Name', 'shoestrap' ), 'headers' => __( 'Headers', 'shoestrap' ), 'all' => __( 'Everywhere', 'shoestrap' ) ) );
 
   foreach( $color_controls as $control ){
     $wp_customize->add_control( new WP_Customize_Color_Control(
       $wp_customize,
       $control['setting'],
       array(
-        'label'     => __( $control['label'], 'shoestrap' ),
+        'label'     => $control['label'],
         'section'   => $control['section'],
         'settings'  => $control['setting'],
         'priority'  => $control['priority'],
@@ -52,7 +52,7 @@ function shoestrap_typography_customizer( $wp_customize ){
 
   foreach ( $select_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'select',

@@ -30,14 +30,14 @@ function shoestrap_background_customizer( $wp_customize ){
   $color_controls   = array();
   
   // Background Color
-  $color_controls[] = array( 'setting' => 'shoestrap_background_color', 'label' => 'Background Color', 'section' => 'colors', 'priority' => 1 );
+  $color_controls[] = array( 'setting' => 'shoestrap_background_color', 'label' => __( 'Background Color', 'shoestrap' ), 'section' => 'colors', 'priority' => 1 );
   
   foreach( $color_controls as $control ){
     $wp_customize->add_control( new WP_Customize_Color_Control(
       $wp_customize,
       $control['setting'],
       array(
-        'label'     => __( $control['label'], 'shoestrap' ),
+        'label'     => $control['label'],
         'section'   => $control['section'],
         'settings'  => $control['setting'],
         'priority'  => $control['priority'],

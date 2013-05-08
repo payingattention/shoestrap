@@ -27,8 +27,8 @@ function shoestrap_general_customizer( $wp_customize ){
 
   // Checkbox Controls
   $checkbox_controls    = array();
-  $checkbox_controls[]  = array( 'setting' => 'shoestrap_general_no_gradients',       'label' => 'No Gradients',    'section' => 'shoestrap_general',  'priority' => 1 );
-  $checkbox_controls[]  = array( 'setting' => 'shoestrap_general_no_radius',          'label' => 'No Border Radius','section' => 'shoestrap_general',  'priority' => 3 );
+  $checkbox_controls[]  = array( 'setting' => 'shoestrap_general_no_gradients',       'label' => __( 'No Gradients', 'shoestrap' ),    'section' => 'shoestrap_general',  'priority' => 1 );
+  $checkbox_controls[]  = array( 'setting' => 'shoestrap_general_no_radius',          'label' => __( 'No Border Radius', 'shoestrap' ),'section' => 'shoestrap_general',  'priority' => 3 );
 
   $help_controls        = array();
   $help_controls[]      = array( 'setting' => 'shoestrap_general_no_gradients_help',  'label' => $no_gradients_help,'section' => 'shoestrap_general',  'priority' => 2 );
@@ -36,7 +36,7 @@ function shoestrap_general_customizer( $wp_customize ){
 
   foreach ( $checkbox_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'checkbox',

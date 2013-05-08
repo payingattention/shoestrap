@@ -22,7 +22,7 @@ function shoestrap_logo_customizer( $wp_customize ){
   }
 
   $image_controls   = array();
-  $image_controls[] = array( 'setting' => 'shoestrap_logo',           'label' => 'Logo Image',            'section' => 'shoestrap_logo',  'priority' => 2 );
+  $image_controls[] = array( 'setting' => 'shoestrap_logo',           'label' => __( 'Logo Image', 'shoestrap' ),             'section' => 'shoestrap_logo',  'priority' => 2 );
 
   $help_controls    = array();
   $help_controls[]  = array( 'setting' => 'shoestrap_logo_helptext',  'label' => $shoestrap_logo_helptext,'section' => 'shoestrap_logo',  'priority' => 3 );
@@ -32,7 +32,7 @@ function shoestrap_logo_customizer( $wp_customize ){
       $wp_customize,
       $control['setting'],
       array(
-        'label'     => __( $control['label'], 'shoestrap' ),
+        'label'     => $control['label'],
         'section'   => $control['section'],
         'settings'  => $control['setting'],
         'priority'  => $control['priority']

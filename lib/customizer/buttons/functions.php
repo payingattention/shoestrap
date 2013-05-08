@@ -28,7 +28,7 @@ function shoestrap_buttons_customizer( $wp_customize ){
 
   // Buttons Color
   $color_controls   = array();
-  $color_controls[] = array( 'setting' => 'shoestrap_buttons_color', 'label' => 'Buttons Color', 'section' => 'shoestrap_buttons', 'priority' => 1 );
+  $color_controls[] = array( 'setting' => 'shoestrap_buttons_color', 'label' => __( 'Buttons Color', 'shoestrap' ), 'section' => 'shoestrap_buttons', 'priority' => 1 );
 
   $help_controls    = array();
   $help_controls[]  = array( 'setting' => 'shoestrap_buttons_color_help', 'label' => $buttons_color_help, 'section' => 'shoestrap_buttons', 'priority' => 2 );
@@ -39,14 +39,14 @@ function shoestrap_buttons_customizer( $wp_customize ){
    */
   $checkbox_controls = array();
   // Flat buttons on/off
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_flat_buttons', 'label' => 'Flat Buttons (no gradients)', 'section' => 'shoestrap_buttons', 'priority' => 3 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_flat_buttons', 'label' => __( 'Flat Buttons (no gradients)', 'shoestrap' ), 'section' => 'shoestrap_buttons', 'priority' => 3 );
 
   foreach( $color_controls as $control ){
     $wp_customize->add_control( new WP_Customize_Color_Control(
       $wp_customize,
       $control['setting'],
       array(
-        'label'     => __( $control['label'], 'shoestrap' ),
+        'label'     => $control['label'],
         'section'   => $control['section'],
         'settings'  => $control['setting'],
         'priority'  => $control['priority'],
@@ -56,7 +56,7 @@ function shoestrap_buttons_customizer( $wp_customize ){
 
   foreach ( $checkbox_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'checkbox',

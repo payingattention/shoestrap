@@ -34,20 +34,20 @@ function shoestrap_header_customizer( $wp_customize ){
 
   // Color Controls
   $color_controls   = array();
-  $color_controls[] = array( 'setting' => 'shoestrap_header_backgroundcolor', 'label' => 'Header Region Background Color',  'section' => 'shoestrap_extra_header',  'priority' => 3 );
-  $color_controls[] = array( 'setting' => 'shoestrap_header_textcolor',       'label' => 'Header Region Text Color',        'section' => 'shoestrap_extra_header',  'priority' => 4 );
+  $color_controls[] = array( 'setting' => 'shoestrap_header_backgroundcolor', 'label' => __( 'Header Region Background Color', 'shoestrap' ),  'section' => 'shoestrap_extra_header',  'priority' => 3 );
+  $color_controls[] = array( 'setting' => 'shoestrap_header_textcolor',       'label' => __( 'Header Region Text Color', 'shoestrap' ),        'section' => 'shoestrap_extra_header',  'priority' => 4 );
   
   //Checkbox Controls
   $checkbox_controls = array();
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_extra_branding',      'label' => 'Display Extra Header',            'section' => 'shoestrap_extra_header',  'priority' => 1 );
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_header_social',       'label' => 'Display Social Links',            'section' => 'shoestrap_extra_header',  'priority' => 5 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_extra_branding',      'label' => __( 'Display Extra Header', 'shoestrap' ),            'section' => 'shoestrap_extra_header',  'priority' => 1 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_header_social',       'label' => __( 'Display Social Links', 'shoestrap' ),            'section' => 'shoestrap_extra_header',  'priority' => 5 );
   
   foreach( $color_controls as $control ){
     $wp_customize->add_control( new WP_Customize_Color_Control(
       $wp_customize,
       $control['setting'],
       array(
-        'label'     => __( $control['label'], 'shoestrap' ),
+        'label'     => $control['label'],
         'section'   => $control['section'],
         'settings'  => $control['setting'],
         'priority'  => $control['priority'],
@@ -57,7 +57,7 @@ function shoestrap_header_customizer( $wp_customize ){
 
   foreach ( $checkbox_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'checkbox',

@@ -26,19 +26,19 @@ function shoestrap_layout_customizer( $wp_customize ){
 
   // Checkbox Controls
   $checkbox_controls = array();
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_fluid',           'label' => 'Fluid Layout',                    'section' => 'shoestrap_layout',  'priority' => 7 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_fluid',           'label' => __( 'Fluid Layout', 'shoestrap' ),                    'section' => 'shoestrap_layout',  'priority' => 7 );
 
   // Dropdown (Select) Controls
   $select_controls = array();
-  $select_controls[] = array( 'setting' => 'shoestrap_responsive',        'label' => 'Responsive / Fixed-width',        'section' => 'shoestrap_layout',  'priority' => 1, 'choises' => array( '1' => __( 'Responsive', 'shoestrap' ), '0' => __( 'Fixed-Width', 'shoestrap' ) ) );
-  $select_controls[] = array( 'setting' => 'shoestrap_layout',            'label' => 'Layout',                          'section' => 'shoestrap_layout',  'priority' => 2, 'choises' => array( 'm' => __( 'Main only', 'shoestrap' ), 'mp' => __( 'Main-Primary', 'shoestrap' ), 'pm' => __( 'Primary-Main', 'shoestrap' ), 'ms' => __( 'Main-Secondary', 'shoestrap' ), 'sm' => __( 'Secondary-Main', 'shoestrap' ), 'mps' => __( 'Main-Primary-Secondary', 'shoestrap' ), 'msp' => __( 'Main-Secondary-Primary', 'shoestrap' ), 'pms' => __( 'Primary-Main-Secondary', 'shoestrap' ), 'psm' => __( 'Primary-Secondary-Main', 'shoestrap' ), 'smp' => __( 'Secondary-Main-Primary', 'shoestrap' ), 'spm' => __( 'Secondary-Primary-Main', 'shoestrap' ) ) );
-  $select_controls[] = array( 'setting' => 'shoestrap_aside_width',       'label' => 'Primary Sidebar Width',           'section' => 'shoestrap_layout',  'priority' => 3, 'choises' => array( '2' => '2/12', '3' => '3/12', '4' => '4/12', '5' => '5/12', '6' => '6/12' ) );
-  $select_controls[] = array( 'setting' => 'shoestrap_secondary_width',   'label' => 'Secondary Sidebar Width',         'section' => 'shoestrap_layout',  'priority' => 5, 'choises' => array( '2' => '2/12', '3' => '3/12', '4' => '4/12' ) );
-  $select_controls[] = array( 'setting' => 'shoestrap_sidebar_on_front',  'label' => 'Show sidebars on the Home Page',  'section' => 'shoestrap_layout',  'priority' => 6, 'choises' => array( 'show' => __( 'Show', 'shoestrap' ), 'hide' => __( 'Hide', 'shoestrap' ) ) );
+  $select_controls[] = array( 'setting' => 'shoestrap_responsive',        'label' => __( 'Responsive / Fixed-width', 'shoestrap' ),        'section' => 'shoestrap_layout',  'priority' => 1, 'choises' => array( '1' => __( 'Responsive', 'shoestrap' ), '0' => __( 'Fixed-Width', 'shoestrap' ) ) );
+  $select_controls[] = array( 'setting' => 'shoestrap_layout',            'label' => __( 'Layout', 'shoestrap' ),                          'section' => 'shoestrap_layout',  'priority' => 2, 'choises' => array( 'm' => __( 'Main only', 'shoestrap' ), 'mp' => __( 'Main-Primary', 'shoestrap' ), 'pm' => __( 'Primary-Main', 'shoestrap' ), 'ms' => __( 'Main-Secondary', 'shoestrap' ), 'sm' => __( 'Secondary-Main', 'shoestrap' ), 'mps' => __( 'Main-Primary-Secondary', 'shoestrap' ), 'msp' => __( 'Main-Secondary-Primary', 'shoestrap' ), 'pms' => __( 'Primary-Main-Secondary', 'shoestrap' ), 'psm' => __( 'Primary-Secondary-Main', 'shoestrap' ), 'smp' => __( 'Secondary-Main-Primary', 'shoestrap' ), 'spm' => __( 'Secondary-Primary-Main', 'shoestrap' ) ) );
+  $select_controls[] = array( 'setting' => 'shoestrap_aside_width',       'label' => __( 'Primary Sidebar Width', 'shoestrap' ),           'section' => 'shoestrap_layout',  'priority' => 3, 'choises' => array( '2' => '2/12', '3' => '3/12', '4' => '4/12', '5' => '5/12', '6' => '6/12' ) );
+  $select_controls[] = array( 'setting' => 'shoestrap_secondary_width',   'label' => __( 'Secondary Sidebar Width', 'shoestrap' ),         'section' => 'shoestrap_layout',  'priority' => 5, 'choises' => array( '2' => '2/12', '3' => '3/12', '4' => '4/12' ) );
+  $select_controls[] = array( 'setting' => 'shoestrap_sidebar_on_front',  'label' => __( 'Show sidebars on the Home Page', 'shoestrap' ),  'section' => 'shoestrap_layout',  'priority' => 6, 'choises' => array( 'show' => __( 'Show', 'shoestrap' ), 'hide' => __( 'Hide', 'shoestrap' ) ) );
 
   foreach ( $checkbox_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'checkbox',
@@ -48,7 +48,7 @@ function shoestrap_layout_customizer( $wp_customize ){
   
   foreach ( $select_controls as $control ) {
     $wp_customize->add_control( $control['setting'], array(
-      'label'       => __( $control['label'], 'shoestrap' ),
+      'label'       => $control['label'],
       'section'     => $control['section'],
       'settings'    => $control['setting'],
       'type'        => 'select',
