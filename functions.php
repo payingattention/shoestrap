@@ -20,8 +20,6 @@ $files[]  = array( 'filename' => '/lib/activation.php' );
 $files[]  = array( 'filename' => '/lib/cleanup.php' );
 // Custom nav modifications
 $files[]  = array( 'filename' => '/lib/nav.php' );
-// Custom template actions
-$files[]  = array( 'filename' => '/lib/template-actions.php' );
 // Custom comments modifications
 $files[]  = array( 'filename' => '/lib/comments.php' );
 // Rewrites
@@ -34,6 +32,14 @@ $files[]  = array( 'filename' => '/lib/scripts.php' );
 $files[]  = array( 'filename' => '/lib/resize.php' );
 // Slide-down widget area functions
 $files[]  = array( 'filename' => '/lib/slide-down.php' );
+// Custom template actions
+$files[]  = array( 'filename' => '/templates/template-actions/content-page.php' );
+$files[]  = array( 'filename' => '/templates/template-actions/content-single.php' );
+$files[]  = array( 'filename' => '/templates/template-actions/content.php' );
+$files[]  = array( 'filename' => '/templates/template-actions/header.php' );
+$files[]  = array( 'filename' => '/templates/template-actions/metadata.php' );
+$files[]  = array( 'filename' => '/templates/template-actions/page-header.php' );
+$files[]  = array( 'filename' => '/templates/template-actions/the-excerpt.php' );
 
 // Load the following options only on single-site installations
 // OR on multisite when the user is super-admin.
