@@ -24,8 +24,6 @@ $files[]  = array( 'filename' => '/lib/nav.php' );
 $files[]  = array( 'filename' => '/lib/template-actions.php' );
 // Custom comments modifications
 $files[]  = array( 'filename' => '/lib/comments.php' );
-// Rewrites for assets, H5BP .htaccess
-$files[]  = array( 'filename' => '/lib/htaccess.php' );
 // Sidebars and widgets
 $files[]  = array( 'filename' => '/lib/widgets.php' );
 // Scripts and stylesheets

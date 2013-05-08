@@ -14,7 +14,6 @@ if ( get_option( 'shoestrap_root_relative_urls' ) )
 if ( get_theme_mod( 'shoestrap_navbar_top' ) == 1 )
   add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
 
-add_theme_support('h5bp-htaccess');         // Enable HTML5 Boilerplate's .htaccess
 add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 
 /**
