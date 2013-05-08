@@ -1,5 +1,30 @@
 <?php
 
+/*
+ * Adds the Advanced menu item
+ */
+function shoestrap_admin_main_nav_item_advanced() {
+  global $pagenow;
+  if ( $pagenow == 'themes.php' && $_GET['page'] == 'shoestrap_options' && $_GET['tab'] == 'advanced' ) { 
+    echo '<a class="nav-tab nav-tab-active" href="?page=shoestrap_options&tab=advanced">' . __( 'Advanced Theme Options', 'Shoestrap') . '</a>';
+  } else {
+    echo '<a class="nav-tab" href="?page=shoestrap_options&tab=advanced">' . __( 'Advanced Theme Options', 'Shoestrap') . '</a>';
+  }
+}
+add_action( 'shoestrap_admin_main_nav_tab', 'shoestrap_admin_main_nav_item_advanced', 10 );
+
+
+/*
+ * Adds the Content to the Licencing menu page
+ */
+function shoestrap_admin_advanced_page_content() {
+  global $pagenow;
+  if ( $pagenow == 'themes.php' && $_GET['page'] == 'shoestrap_options' && $_GET['tab'] == 'advanced' ) {
+    add_action( 'shoestrap_admin_content', 'shoestrap_dev_mode_toggle', 10 );
+  }
+}
+add_action( 'shoestrap_admin_content', 'shoestrap_admin_advanced_page_content', 1 );
+
 add_action( 'admin_init', 'shoestrap_dev_mode_register_options', 11 );
 function shoestrap_dev_mode_register_options() {
   // creates our settings in the options table
@@ -16,7 +41,6 @@ function shoestrap_dev_mode_register_options() {
   register_setting( 'shoestrap_advanced', 'shoestrap_use_default_js_version' );
 }
 
-add_action( 'shoestrap_admin_content', 'shoestrap_dev_mode_toggle', 15 );
 function shoestrap_dev_mode_toggle() {
   $shoestrap_dev_mode = get_option( 'shoestrap_dev_mode' );
   $advanced           = get_option( 'shoestrap_advanced_compiler' );
