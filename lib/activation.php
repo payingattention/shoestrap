@@ -1,22 +1,16 @@
 <?php
-/*
+/**
  * Theme activation
  */
-
 if (is_admin() && isset($_GET['activated']) && 'themes.php' == $GLOBALS['pagenow']) {
   wp_redirect(admin_url('themes.php?page=theme_activation_options'));
   exit;
 }
 
 function shoestrap_theme_activation_options_init() {
-  if (shoestrap_get_theme_activation_options() === false) {
-    add_option('shoestrap_theme_activation_options', shoestrap_get_default_theme_activation_options());
-  }
-
   register_setting(
     'shoestrap_activation_options',
-    'shoestrap_theme_activation_options',
-    'shoestrap_theme_activation_options_validate'
+    'shoestrap_theme_activation_options'
   );
 }
 add_action('admin_init', 'shoestrap_theme_activation_options_init');
@@ -29,7 +23,7 @@ add_filter('option_page_capability_shoestrap_activation_options', 'shoestrap_act
 function shoestrap_theme_activation_options_add_page() {
   $shoestrap_activation_options = shoestrap_get_theme_activation_options();
 
-  if ($shoestrap_activation_options['first_run']) {
+  if (!$shoestrap_activation_options) {
     $theme_page = add_theme_page(
       __('Theme Activation', 'shoestrap'),
       __('Theme Activation', 'shoestrap'),
@@ -39,8 +33,7 @@ function shoestrap_theme_activation_options_add_page() {
     );
   } else {
     if (is_admin() && isset($_GET['page']) && $_GET['page'] === 'theme_activation_options') {
-      global $wp_rewrite;
-      $wp_rewrite->flush_rules();
+      flush_rewrite_rules();
       wp_redirect(admin_url('themes.php'));
       exit;
     }
@@ -48,21 +41,8 @@ function shoestrap_theme_activation_options_add_page() {
 }
 add_action('admin_menu', 'shoestrap_theme_activation_options_add_page', 50);
 
-function shoestrap_get_default_theme_activation_options() {
-  $default_theme_activation_options = array(
-    'first_run'                       => true,
-    'create_front_page'               => false,
-    'change_permalink_structure'      => false,
-    'change_uploads_folder'           => false,
-    'create_navigation_menus'         => false,
-    'add_pages_to_primary_navigation' => false,
-  );
-
-  return apply_filters('shoestrap_default_theme_activation_options', $default_theme_activation_options);
-}
-
 function shoestrap_get_theme_activation_options() {
-  return get_option('shoestrap_theme_activation_options', shoestrap_get_default_theme_activation_options());
+  return get_option('shoestrap_theme_activation_options');
 }
 
 function shoestrap_theme_activation_options_render_page() { ?>
@@ -75,11 +55,7 @@ function shoestrap_theme_activation_options_render_page() { ?>
 
       <?php
         settings_fields('shoestrap_activation_options');
-        $shoestrap_activation_options = shoestrap_get_theme_activation_options();
-        $shoestrap_default_activation_options = shoestrap_get_default_theme_activation_options();
       ?>
-
-      <input type="hidden" value="false" name="shoestrap_theme_activation_options[first_run]">
 
       <table class="form-table">
 
@@ -156,32 +132,16 @@ function shoestrap_theme_activation_options_render_page() { ?>
 
 <?php }
 
-function shoestrap_theme_activation_options_validate($input) {
-  $output = $defaults = shoestrap_get_default_theme_activation_options();
-
-  $options = array(
-    'first_run',
-    'create_front_page',
-    'change_permalink_structure',
-    'change_uploads_folder',
-    'create_navigation_menus',
-    'add_pages_to_primary_navigation'
-  );
-
-  foreach($options as $option_name) {
-    if (isset($input[$option_name])) {
-      $input[$option_name] = ($input[$option_name] === 'true') ? true : false;
-      $output[$option_name] = $input[$option_name];
-    }
+function shoestrap_theme_activation_action() {
+  if (!($shoestrap_theme_activation_options = shoestrap_get_theme_activation_options())) {
+    return;
   }
 
-  return apply_filters('shoestrap_theme_activation_options_validate', $output, $input, $defaults);
-}
+  if (strpos(wp_get_referer(), 'page=theme_activation_options') === false) {
+    return;
+  }
 
-function shoestrap_theme_activation_action() {
-  $shoestrap_theme_activation_options = shoestrap_get_theme_activation_options();
-
-  if ($shoestrap_theme_activation_options['create_front_page']) {
+  if ($shoestrap_theme_activation_options['create_front_page'] === 'true') {
     $shoestrap_theme_activation_options['create_front_page'] = false;
 
     $default_pages = array('Home');
@@ -216,30 +176,27 @@ function shoestrap_theme_activation_action() {
     wp_update_post($home_menu_order);
   }
 
-  if ($shoestrap_theme_activation_options['change_permalink_structure']) {
+  if ($shoestrap_theme_activation_options['change_permalink_structure'] === 'true') {
     $shoestrap_theme_activation_options['change_permalink_structure'] = false;
-    global $wp_rewrite;
 
     if (get_option('permalink_structure') !== '/%postname%/') {
+      global $wp_rewrite;
       $wp_rewrite->set_permalink_structure('/%postname%/');
+      flush_rewrite_rules();
     }
-
-    $wp_rewrite->init();
-    $wp_rewrite->flush_rules();
   }
 
-  if ($shoestrap_theme_activation_options['change_uploads_folder']) {
+  if ($shoestrap_theme_activation_options['change_uploads_folder'] === 'true') {
     $shoestrap_theme_activation_options['change_uploads_folder'] = false;
 
     update_option('uploads_use_yearmonth_folders', 0);
     update_option('upload_path', 'assets');
   }
 
-  if ($shoestrap_theme_activation_options['create_navigation_menus']) {
+  if ($shoestrap_theme_activation_options['create_navigation_menus'] === 'true') {
     $shoestrap_theme_activation_options['create_navigation_menus'] = false;
 
     $shoestrap_nav_theme_mod = false;
-    $shoestrap_secondary_nav_theme_mod = false;
 
     $primary_nav = wp_get_nav_menu_object('Primary Navigation');
 
@@ -253,22 +210,9 @@ function shoestrap_theme_activation_action() {
     if ($shoestrap_nav_theme_mod) {
       set_theme_mod('nav_menu_locations', $shoestrap_nav_theme_mod);
     }
-
-    $secondary_nav = wp_get_nav_menu_object('Secondary Navigation');
-
-    if (!$secondary_nav) {
-      $secondary_nav_id = wp_create_nav_menu('Secondary Navigation', array('slug' => 'secondary_navigation'));
-      $shoestrap_secondary_nav_theme_mod['secondary_navigation'] = $secondary_nav_id;
-    } else {
-      $shoestrap_secondary_nav_theme_mod['secondary_navigation'] = $secondary_nav->term_id;
-    }
-
-    if ($shoestrap_secondary_nav_theme_mod) {
-      set_theme_mod('nav_secondary_menu_locations', $shoestrap_secondary_nav_theme_mod);
-    }
   }
 
-  if ($shoestrap_theme_activation_options['add_pages_to_primary_navigation']) {
+  if ($shoestrap_theme_activation_options['add_pages_to_primary_navigation'] === 'true') {
     $shoestrap_theme_activation_options['add_pages_to_primary_navigation'] = false;
 
     $primary_nav = wp_get_nav_menu_object('Primary Navigation');
