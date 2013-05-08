@@ -264,3 +264,20 @@ a.toggle-nav {
 .navbar-brand {
   padding: 9px;
 }
+
+.widget-inner {
+  ul {
+    .list-group;
+    li {
+      .list-group-item;
+      ul {
+        display: none;
+      }
+      &:hover {
+        ul {
+          display: block;
+        }
+      }
+    }
+  }
+}
