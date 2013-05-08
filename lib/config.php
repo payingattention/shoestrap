@@ -9,7 +9,7 @@ if ( get_option( 'shoestrap_root_relative_urls' ) )
   add_theme_support('root-relative-urls');    // Enable relative URLs
 
 if ( get_option( 'shoestrap_root_relative_urls' ) )
-  add_theme_support('rewrite-urls');          // Enable URL rewrites
+  add_theme_support('rewrites');          // Enable URL rewrites
 
 if ( get_theme_mod( 'shoestrap_navbar_top' ) == 1 )
   add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
