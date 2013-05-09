@@ -12,7 +12,7 @@ function shoestrap_typography_webfont() {
   if ($f > 3){
     $webfontname = str_replace( ' ', '+', $webfont );
 
-  return '<link href="http://fonts.googleapis.com/css?family=' . $webfontname . ':' . $webfont_weight . '&subset=' . $webfont_character_set . '" rel="stylesheet" type="text/css">';
+  return '<link id="shoestrap_google_webfonts" href="http://fonts.googleapis.com/css?family=' . $webfontname . ':' . $webfont_weight . '&subset=' . $webfont_character_set . '" rel="stylesheet" type="text/css">';
 
   }
 }
