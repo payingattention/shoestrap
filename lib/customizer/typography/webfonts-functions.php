@@ -9,6 +9,7 @@ function shoestrap_typography_webfont() {
   	$webfont_character_set 	= get_theme_mod( 'shoestrap_webfonts_character_set' );
 
 	$href = "http://fonts.googleapis.com/css?family=";
+
 	if ($webfont == "") {
 		return;
 	}
@@ -17,11 +18,12 @@ function shoestrap_typography_webfont() {
 	}
 	$href .= $webfont;
 	if ($webfont_weight != "") {
-		$href .= ":"+$webfont_weight;
+		$href .= ":".$webfont_weight;
 	}
 	if ($webfont_character_set != "") {
-		$href += "&subset="+$webfont_character_set;
+		$href .= "&subset=".$webfont_character_set;
 	}
+
   	return '<link style="shoestrap_google_webfonts_style" href="'.$href.'" rel="stylesheet" type="text/css">';
 }
 
