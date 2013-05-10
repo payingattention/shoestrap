@@ -17,8 +17,6 @@ function shoestrap_custom_image_resize( $width = '', $height = '', $crop = true,
   }
 }
 
-<?php
-
 /**
  *  Resizes an image and returns an array containing the resized URL, width, height and file type. Uses native Wordpress functionality.
  *
