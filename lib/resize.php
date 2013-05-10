@@ -17,6 +17,8 @@ function shoestrap_custom_image_resize( $width = '', $height = '', $crop = true,
   }
 }
 
+<?php
+
 /**
  *  Resizes an image and returns an array containing the resized URL, width, height and file type. Uses native Wordpress functionality.
  *
@@ -32,7 +34,7 @@ function shoestrap_custom_image_resize( $width = '', $height = '', $crop = true,
  *  Both functions produce the exact same results when successful.
  *  Images are saved to the Wordpress uploads directory, just like images uploaded through the Media Library.
  * 
-    *  Copyright 2012 Matthew Ruddy (http://rivaslider.com)
+    *  Copyright 2013 Matthew Ruddy (http://easinglider.com)
     *  
     *  This program is free software; you can redistribute it and/or modify
     *  it under the terms of the GNU General Public License, version 2, as 
@@ -47,7 +49,7 @@ function shoestrap_custom_image_resize( $width = '', $height = '', $crop = true,
     *  along with this program; if not, write to the Free Software
     *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
- *  @author Matthew Ruddy (http://rivaslider.com)
+ *  @author Matthew Ruddy (http://easinglider.com)
  *  @return array   An array containing the resized image URL, width, height and file type.
  */
 if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
@@ -56,23 +58,14 @@ if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
         global $wpdb;
 
         if ( empty( $url ) )
-            return new WP_Error( 'no_image_url', __( 'No image URL has been entered.', 'shoestrap' ), $url );
+            return new WP_Error( 'no_image_url', __( 'No image URL has been entered.' ), $url );
 
         // Get default size from database
-	// $width  = $width  ?: get_option( 'thumbnail_size_w' );
-	// $height = $height ?: get_option( 'thumbnail_size_h' );
-		  
+        $width = ( $width )  ? get_option( 'thumbnail_size_w' ) : $width;
+        $height = ( $height ) ? get_option( 'thumbnail_size_h' ) : $height;
+          
         // Allow for different retina sizes
-	$retina = $retina ? ( $retina === true ? 2 : $retina ) : 1;
-			
-        /*
-         *  Bail if this image isn't in the Media Library.
-         *  We only want to resize Media Library images, so we can be sure they get deleted correctly when appropriate.
-         */
-        $query = $wpdb->prepare( "SELECT * FROM $wpdb->posts WHERE guid='%s'", $url );
-        $get_attachment = $wpdb->get_results( $query );
-        if ( !$get_attachment )
-            return array( 'url' => $url, 'width' => $width, 'height' => $height );
+        $retina = $retina ? ( $retina === true ? 2 : $retina ) : 1;
 
         // Get the image file path
         $file_path = parse_url( $url );
@@ -105,6 +98,15 @@ if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
         $dest_file_name = "{$dir}/{$name}-{$suffix}.{$ext}";
 
         if ( !file_exists( $dest_file_name ) ) {
+            
+            /*
+             *  Bail if this image isn't in the Media Library.
+             *  We only want to resize Media Library images, so we can be sure they get deleted correctly when appropriate.
+             */
+            $query = $wpdb->prepare( "SELECT * FROM $wpdb->posts WHERE guid='%s'", $url );
+            $get_attachment = $wpdb->get_results( $query );
+            if ( !$get_attachment )
+                return array( 'url' => $url, 'width' => $width, 'height' => $height );
 
             // Load Wordpress Image Editor
             $editor = wp_get_image_editor( $file_path );
@@ -168,7 +170,7 @@ if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
         else {
             $image_array = array(
                 'url' => str_replace( basename( $url ), basename( $dest_file_name ), $url ),
-                'width' => $dest_height,
+                'width' => $dest_width,
                 'height' => $dest_height,
                 'type' => $ext
             );
@@ -185,27 +187,18 @@ else {
         global $wpdb;
 
         if ( empty( $url ) )
-            return new WP_Error( 'no_image_url', __( 'No image URL has been entered.', 'shoestrap' ), $url );
+            return new WP_Error( 'no_image_url', __( 'No image URL has been entered.' ), $url );
 
         // Bail if GD Library doesn't exist
         if ( !extension_loaded('gd') || !function_exists('gd_info') )
             return array( 'url' => $url, 'width' => $width, 'height' => $height );
 
         // Get default size from database
-   	// $width  = $width  ?: get_option( 'thumbnail_size_w' );
-	// $height = $height ?: get_option( 'thumbnail_size_h' );
-		  
+        $width = ( $width ) ? get_option( 'thumbnail_size_w' ) : $width;
+        $height = ( $height ) ? get_option( 'thumbnail_size_h' ) : $height;
+
         // Allow for different retina sizes
-	$retina = $retina ? ( $retina === true ? 2 : $retina ) : 1;
-		
-        /*
-         *  Bail if this image isn't in the Media Library either.
-         *  We only want to resize Media Library images, so we can be sure they get deleted correctly when appropriate.
-         */
-        $query = $wpdb->prepare( "SELECT * FROM $wpdb->posts WHERE guid='%s'", $url );
-        $get_attachment = $wpdb->get_results( $query );
-        if ( !$get_attachment )
-            return array( 'url' => $url, 'width' => $width, 'height' => $height );
+        $retina = $retina ? ( $retina === true ? 2 : $retina ) : 1;
 
         // Destination width and height variables
         $dest_width = $width * $retina;
@@ -236,6 +229,15 @@ else {
 
         // No need to resize & create a new image if it already exists!
         if ( !file_exists( $dest_file_name ) ) {
+        
+            /*
+             *  Bail if this image isn't in the Media Library either.
+             *  We only want to resize Media Library images, so we can be sure they get deleted correctly when appropriate.
+             */
+            $query = $wpdb->prepare( "SELECT * FROM $wpdb->posts WHERE guid='%s'", $url );
+            $get_attachment = $wpdb->get_results( $query );
+            if ( !$get_attachment )
+                return array( 'url' => $url, 'width' => $width, 'height' => $height );
 
             $image = wp_load_image( $file_path );
             if ( !is_resource( $image ) )
@@ -287,11 +289,11 @@ else {
             // Check the image is the correct file type
             if ( IMAGETYPE_GIF == $orig_type ) {
                 if ( !imagegif( $new_image, $dest_file_name ) )
-                    return new WP_Error( 'resize_path_invalid', __( 'Resize path invalid (GIF)', 'shoestrap' ) );
+                    return new WP_Error( 'resize_path_invalid', __( 'Resize path invalid (GIF)' ) );
             }
             elseif ( IMAGETYPE_PNG == $orig_type ) {
                 if ( !imagepng( $new_image, $dest_file_name ) )
-                    return new WP_Error( 'resize_path_invalid', __( 'Resize path invalid (PNG).', 'shoestrap' ) );
+                    return new WP_Error( 'resize_path_invalid', __( 'Resize path invalid (PNG).' ) );
             }
             else {
 
@@ -299,7 +301,7 @@ else {
                 if ( 'jpg' != $ext && 'jpeg' != $ext )
                     $dest_file_name = "{$dir}/{$name}-{$suffix}.jpg";
                 if ( !imagejpeg( $new_image, $dest_file_name, apply_filters( 'resize_jpeg_quality', 90 ) ) )
-                    return new WP_Error( 'resize_path_invalid', __( 'Resize path invalid (JPG).', 'shoestrap' ) );
+                    return new WP_Error( 'resize_path_invalid', __( 'Resize path invalid (JPG).' ) );
 
             }
 
@@ -314,7 +316,7 @@ else {
             // Get some information about the resized image
             $new_size = @getimagesize( $dest_file_name );
             if ( !$new_size )
-                return new WP_Error( 'resize_path_getimagesize_failed', __( 'Failed to get $dest_file_name (resized image) info via @getimagesize', 'shoestrap' ), $dest_file_name );
+                return new WP_Error( 'resize_path_getimagesize_failed', __( 'Failed to get $dest_file_name (resized image) info via @getimagesize' ), $dest_file_name );
             list( $resized_width, $resized_height, $resized_type ) = $new_size;
 
             // Get the new image URL
@@ -339,7 +341,7 @@ else {
         else {
             $image_array = array(
                 'url' => str_replace( basename( $url ), basename( $dest_file_name ), $url ),
-                'width' => $dest_height,
+                'width' => $dest_width,
                 'height' => $dest_height,
                 'type' => $ext
             );
