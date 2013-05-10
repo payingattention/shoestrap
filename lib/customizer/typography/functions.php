@@ -23,7 +23,12 @@ function shoestrap_typography_customizer( $wp_customize ){
   $settings[] = array( 'slug' => 'shoestrap_webfonts_assign',           'default' => 'all' );
 
   foreach( $settings as $setting ){
-    $wp_customize->add_setting( $setting['slug'], array( 'default' => $setting['default'], 'type' => 'theme_mod', 'capability' => 'edit_theme_options' ) );
+    $wp_customize->add_setting( $setting['slug'], array(
+        'default' => $setting['default'],
+        'type' => 'theme_mod',
+        'capability' => 'edit_theme_options',
+        'transport' => 'postMessage'
+      ) );
   }
 
   // Color Controls
@@ -61,7 +66,6 @@ function shoestrap_typography_customizer( $wp_customize ){
     ));
   }
 
-  // Get the google fonts list from cache
   // Content of the Google Font
   $wp_customize->add_control( new Shoestrap_Google_WebFont_Control( $wp_customize, 'shoestrap_google_webfont', array(
     'label'       => 'Google Webfont',
@@ -70,7 +74,34 @@ function shoestrap_typography_customizer( $wp_customize ){
     'priority'    => 3,
   )));
 
+  //if ( $wp_customize->is_preview() && ! is_admin() )
+    //add_action( 'wp_footer', 'shoestrap_customizer_typography_preview', 21 );
 }
 add_action( 'customize_register', 'shoestrap_typography_customizer' );
 
 
+
+/**
+ * Used by shoestrap_typography_customizer
+ *
+ * Adds extra javascript actions to the theme customizer editor
+ */
+function shoestrap_customizer_typography_controls()
+{
+  wp_register_script('theme_customizer', get_template_directory_uri() . '/lib/customizer/typography/scripts-customizer.js', false, null, true);
+  wp_enqueue_script('theme_customizer');
+}
+add_action( 'customize_controls_init', 'shoestrap_customizer_typography_controls' );
+
+
+/**
+ * Used by shoestrap_typography_customizer
+ *
+ * Bind JS handlers to make Theme Customizer preview reload changes asynchronously.
+ */
+function shoestrap_customizer_typography_preview()
+{
+  wp_register_script('theme_customizer', get_template_directory_uri() . '/lib/customizer/typography/scripts-preview.js', false, null, true);
+  wp_enqueue_script('theme_customizer');
+}
+add_action( 'customize_preview_init', 'shoestrap_customizer_typography_preview' );

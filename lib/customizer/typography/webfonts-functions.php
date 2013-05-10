@@ -4,17 +4,27 @@
  * Extract the name of the webfont and enqueue its style.
  */
 function shoestrap_typography_webfont() {
-  $webfont           = get_theme_mod( 'shoestrap_google_webfonts' );
-  $webfont_weight      = get_theme_mod( 'shoestrap_webfonts_weight' );
-  $webfont_character_set = get_theme_mod( 'shoestrap_webfonts_character_set' );
+  	$webfont           		= get_theme_mod( 'shoestrap_google_webfonts' );
+  	$webfont_weight      	= get_theme_mod( 'shoestrap_webfonts_weight' );
+  	$webfont_character_set 	= get_theme_mod( 'shoestrap_webfonts_character_set' );
 
-  $f = strlen( $webfont );
-  if ($f > 3){
-    $webfontname = str_replace( ' ', '+', $webfont );
+	$href = "http://fonts.googleapis.com/css?family=";
 
-  return '<link href="http://fonts.googleapis.com/css?family=' . $webfontname . ':' . $webfont_weight . '&subset=' . $webfont_character_set . '" rel="stylesheet" type="text/css">';
+	if ($webfont == "") {
+		return;
+	}
+	if (strlen( $webfont ) > 3) {
+		$webfont = str_replace( ' ', '+', $webfont );
+	}
+	$href .= $webfont;
+	if ($webfont_weight != "") {
+		$href .= ":".$webfont_weight;
+	}
+	if ($webfont_character_set != "") {
+		$href .= "&subset=".$webfont_character_set;
+	}
 
-  }
+  	return '<link style="shoestrap_google_webfonts_style" href="'.$href.'" rel="stylesheet" type="text/css">';
 }
 
 
