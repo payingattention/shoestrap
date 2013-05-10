@@ -4334,14 +4334,6 @@ a.list-group-item.active > .badge,
     font-size: 63px;
   }
 }
-.clearfixed:before,
-.clearfixed:after {
-  content: " ";
-  display: table;
-}
-.clearfixed:after {
-  clear: both;
-}
 .clearfix:before,
 .clearfix:after {
   content: " ";
