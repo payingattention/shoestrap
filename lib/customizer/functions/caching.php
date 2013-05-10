@@ -2,9 +2,9 @@
 
 function shoestrap_customizer_combined_data() {
   $data = '';
-  //$data .= shoestrap_typography_webfont();
+  $data .= shoestrap_typography_webfont();
   $data .= shoestrap_text_css();
-  //$data .= shoestrap_typography_css();
+  $data .= shoestrap_typography_css();
   $data .= shoestrap_buttons_css();
   $data .= shoestrap_navbar_css();
   $data .= shoestrap_navbar_dropdown_css();

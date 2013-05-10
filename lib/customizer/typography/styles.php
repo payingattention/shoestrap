@@ -31,3 +31,23 @@ function shoestrap_text_css() {
   return $styles;
 }
 
+
+/*
+ * Apply the webfont to the selected elements.
+ */
+function shoestrap_typography_css() {
+  $webfont        = get_theme_mod( 'shoestrap_google_webfonts' );
+  $assign_webfont = get_theme_mod( 'shoestrap_webfonts_assign' );
+
+  $styles = '<style id="shoestrap_google_webfonts_style_css">';
+  if ( $assign_webfont == 'sitename' ) {
+    $styles .= '.brand {';
+  } elseif ( $assign_webfont == 'headers' ) {
+    $styles .= '.brand, h1, h2, h3, h4, h5 {';
+  } else {
+    $styles .= 'body, input, button, select, textarea, .search-query {';
+  }
+  $styles .= 'font-family: ' . $webfont . ';}</style>';
+
+   return $styles;
+ }
