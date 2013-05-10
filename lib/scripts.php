@@ -22,6 +22,7 @@ function shoestrap_scripts() {
   $no_gradients           = get_theme_mod( 'shoestrap_general_no_gradients' );
   $use_default_js_version = get_option( 'shoestrap_use_default_js_version' );
   $hero_title_fittext     = get_theme_mod( 'shoestrap_hero_title_fittext' );
+  $less_js_compiler       = get_option( 'shoestrap_use_lessjs_compiler' );
 
   if ( $footer_scripts == 1 )
     $h_f = true;
@@ -30,15 +31,32 @@ function shoestrap_scripts() {
 
   if ( $no_gradients == 1 ) {
     if ( $no_radius == 1 ) {
-      wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/css/app-no-gradients-no-radius.css', false, null);
+      if ( $less_js_compiler != 1 ) {
+        wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/css/app-no-gradients-no-radius.css', false, null);
+      // } else {
+      //   wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/less/app-no-gradients-no-radius.less', false, null);
+      }
+      
     } else {
-      wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/css/app-no-gradients.css', false, null);
+      if ( $less_js_compiler != 1 ) {
+        wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/css/app-no-gradients.css', false, null);
+      // } else {
+      //   wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/less/app-no-gradients.less', false, null);
+      }
     }
   } else {
     if ( $no_radius == 1 ) {
-      wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/css/app-no-radius.css', false, null);
+      if ( $less_js_compiler != 1 ) {
+        wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/css/app-no-radius.css', false, null);
+      // } else {
+      //   wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/less/app-no-radius.less', false, null);
+      }
     } else {
-      wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/css/app.css', false, null);
+      if ( $less_js_compiler != 1 ) {
+        wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/css/app.css', false, null);
+      // } else {
+      //   wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/less/app.less', false, null);
+      }
     }
   }
 
@@ -70,7 +88,11 @@ function shoestrap_scripts() {
     wp_register_script('shoestrap_fittext', get_template_directory_uri() . '/assets/js/vendor/jquery.fittext.js', false, null, $h_f);
   }
 
-
+  // Load the less.js compiler
+  if ( $less_js_compiler == 1 ) {
+    wp_register_script('shoestrap_lessjs', get_template_directory_uri() . '/assets/js/vendor/less-1.3.3.min.js', false, null, $h_f);
+    wp_enqueue_script('shoestrap_lessjs');
+  }
 
   wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js', false, null, $h_f);
   wp_register_script('shoestrap_main', get_template_directory_uri() . '/assets/js/main.js', false, null, $h_f);
@@ -83,6 +105,38 @@ function shoestrap_scripts() {
   }
 }
 add_action('wp_enqueue_scripts', 'shoestrap_scripts', 100);
+
+function shoestrap_styles_less() {
+  $shoestrap_responsive   = get_theme_mod( 'shoestrap_responsive' );
+  $footer_scripts         = get_option( 'shoestrap_load_scripts_on_footer' );
+  $no_radius              = get_theme_mod( 'shoestrap_general_no_radius' );
+  $no_gradients           = get_theme_mod( 'shoestrap_general_no_gradients' );
+  $use_default_js_version = get_option( 'shoestrap_use_default_js_version' );
+  $hero_title_fittext     = get_theme_mod( 'shoestrap_hero_title_fittext' );
+  $less_js_compiler       = get_option( 'shoestrap_use_lessjs_compiler' );
+
+  if ( $footer_scripts == 1 )
+    $h_f = true;
+  else
+    $h_f = false;
+
+  if ( $no_gradients == 1 ) {
+    if ( $no_radius == 1 && $less_js_compiler == 1 ) {
+      echo '<link rel="stylesheet/less" type="text/css" href="' . get_template_directory_uri() . '/assets/less/app-no-gradients-no-radius.less" />';
+    } elseif ( $no_radius != 1 && $less_js_compiler == 1 ) {
+      echo '<link rel="stylesheet/less" type="text/css" href="' . get_template_directory_uri() . '/assets/less/app-no-gradients.less" />';
+    }
+  } else {
+    if ( $no_radius == 1 && $less_js_compiler == 1 ) {
+      echo '<link rel="stylesheet/less" type="text/css" href="' . get_template_directory_uri() . '/assets/less/app-no-radius.less" />';
+    } elseif ( $no_radius != 1 && $less_js_compiler == 1 ) {
+      echo '<link rel="stylesheet/less" type="text/css" href="' . get_template_directory_uri() . '/assets/less/app.less" />';
+    }
+  }
+}
+add_action('wp_head', 'shoestrap_styles_less', 2);
+
+
 
 // http://wordpress.stackexchange.com/a/12450
 function shoestrap_jquery_local_fallback($src, $handle) {

@@ -39,6 +39,8 @@ function shoestrap_dev_mode_register_options() {
   register_setting( 'shoestrap_advanced', 'shoestrap_load_scripts_on_footer' );
 
   register_setting( 'shoestrap_advanced', 'shoestrap_use_default_js_version' );
+
+  register_setting( 'shoestrap_advanced', 'shoestrap_use_lessjs_compiler' );
 }
 
 function shoestrap_dev_mode_toggle() {
@@ -48,6 +50,8 @@ function shoestrap_dev_mode_toggle() {
   $footer_scripts     = get_option( 'shoestrap_load_scripts_on_footer' );
   
   $override_js        = get_option( 'shoestrap_use_default_js_version' );
+
+  $less_js_compiler   = get_option( 'shoestrap_use_lessjs_compiler' );
 
   $current_url        = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
   $customizeurl       = add_query_arg( 'url', urlencode( $current_url ), wp_customize_url() );
@@ -91,6 +95,20 @@ function shoestrap_dev_mode_toggle() {
         <p><?php _e( 'Once you enable the developer mode, you will also be able to select to minimize your css files, as well as enable the', 'shoestrap' ); ?> <strong><?php _e( 'Advanced Customizer', 'shoestrap' ); ?></strong></p>
         
         <hr />
+
+        <div class="shoestrap_use_lessjs_compiler">
+          <?php if ( get_option( 'shoestrap_dev_mode' ) != 1 ) { ?>
+            <style>
+              div.shoestrap_minimize_toggling{
+                opacity: 0.5;
+              }
+            </style>
+          <?php } ?>
+          <input id="shoestrap_use_lessjs_compiler" name="shoestrap_use_lessjs_compiler" <?php echo $disabled; ?> type="checkbox" value="1" <?php checked('1', get_option('shoestrap_use_lessjs_compiler')); ?> />
+          <label class="description" for="shoestrap_use_lessjs_compiler">
+            <?php _e( 'Use less.js (javascript) compiler for LESS files instead of the PHP-CSS Compiler', 'shoestrap' ); ?>
+          </label>
+        </div>
 
         <div class="shoestrap_minimize_toggling">
           <?php if ( get_option( 'shoestrap_dev_mode' ) != 1 ) { ?>
