@@ -3245,21 +3245,25 @@ button.close {
 .dropup .btn .caret {
   border-bottom-color: #fff;
 }
-.btn-group {
+.btn-group,
+.btn-group-vertical {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
-.btn-group > .btn {
+.btn-group > .btn,
+.btn-group-vertical > .btn {
   position: relative;
   float: left;
 }
-.btn-group > .btn + btn {
-  margin-left: -1px;
-}
 .btn-group > .btn:hover,
-.btn-group > .btn:active {
+.btn-group > .btn:active,
+.btn-group-vertical > .btn:hover,
+.btn-group-vertical > .btn:active {
   z-index: 2;
+}
+.btn-group .btn + .btn {
+  margin-left: -1px;
 }
 .btn-toolbar:before,
 .btn-toolbar:after {
@@ -3286,24 +3290,17 @@ button.close {
 .btn-toolbar > .btn-group + .btn-group {
   margin-left: 5px;
 }
-.btn-group > .btn {
-  position: relative;
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
 }
 .btn-group > .btn:first-child {
   margin-left: 0;
 }
-.btn-group > .btn.large:first-child {
-  margin-left: 0;
-}
 .btn-group > .btn-group {
   float: left;
 }
-.btn-group > .btn-group > .btn {
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
-}
-.btn-group > .btn-group:first-child > .btn {
-  margin-left: 0;
 }
 .btn-group .dropdown-toggle:active,
 .btn-group.open .dropdown-toggle {
@@ -3341,10 +3338,10 @@ button.close {
   width: 100%;
   max-width: 100%;
 }
-.btn-group-vertical .btn:first-child {
-  border-radius: 0;
+.btn-group-vertical > .btn + .btn {
+  margin-top: -1px;
 }
-.btn-group-vertical .btn:last-child {
+.btn-group-vertical .btn:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
 .btn-group-justified {
