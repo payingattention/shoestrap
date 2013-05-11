@@ -4445,12 +4445,6 @@ a.list-group-item.active > .badge,
     display: none !important;
   }
 }
-body.top-navbar {
-  padding-top: 60px;
-}
-body.admin-bar .navbar-fixed-top {
-  top: 28px;
-}
 .aligncenter {
   display: block;
   margin: 0 auto;
@@ -4460,49 +4454,6 @@ body.admin-bar .navbar-fixed-top {
 }
 .alignright {
   float: right;
-}
-figure.alignnone {
-  margin-left: 0;
-  margin-right: 0;
-}
-.logo-wrapper .logo {
-  padding: 20px 0;
-}
-.logo-wrapper .logo a.brand {
-  text-decoration: none;
-}
-.logo-wrapper .dropdown .dropdown-menu a {
-  color: #333;
-}
-.logo-wrapper .dropdown .dropdown-menu a:hover {
-  color: #fff;
-}
-.logo-wrapper .nav-pills > li > a:hover {
-  background: rgba(255,255,255,0.2);
-}
-.logo-wrapper .nav-tabs .open .dropdown-toggle,
-.logo-wrapper .nav-pills .open .dropdown-toggle,
-.logo-wrapper .nav > li.dropdown.open.active > a:hover {
-  background: rgba(255,255,255,0.2);
-}
-.jumbotron {
-  padding: 50px 0;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 0 30px rgba(0,0,0,0.075);
-  font-size: 40px;
-  line-height: 1.25;
-}
-.jumbotron h1 {
-  font-size: 100px;
-  line-height: 1;
-  letter-spacing: -2;
-}
-.jumbotron p {
-  margin-bottom: 10px;
-}
-.jumbotron p a.btn {
-  padding: 14px 24px;
-  font-size: 24px;
 }
 .admin-customize {
   position: fixed;
@@ -4524,139 +4475,6 @@ figure.alignnone {
 }
 .admin-customize:hover {
   opacity: 1;
-}
-ul.social-networks {
-  min-width: 120px;
-}
-li.social-networks {
-  font-size: 16px;
-  float: left;
-  list-style: none;
-  list-style-type: none;
-}
-li.social-networks a {
-  text-decoration: none;
-  opacity: 0.8;
-}
-li.social-networks a:hover {
-  opacity: 1;
-}
-.navbar .nav > li.social-networks > a {
-  padding: 12px 0 0 0;
-}
-.navbar .nav a.login-link {
-  padding: 10px 10px 0 10px;
-}
-.navbar .brand {
-  padding: 9px 20px 9px;
-}
-#shoestrap_icon {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-#shoestrap_icon a {
-  width: 100px;
-  height: 20px;
-  display: block;
-  background: url("../img/bottom-corner.png") no-repeat bottom left;
-  color: #fff;
-  font-size: 40px;
-  opacity: 0.3;
-  text-decoration: none;
-  padding: 80px 0 40px 5px;
-  -webkit-transition: all 350ms linear;
-  -moz-transition: all 350ms linear;
-  -ms-transition: all 350ms linear;
-  -o-transition: all 350ms linear;
-  transition: all 350ms linear;
-}
-#shoestrap_icon a:hover {
-  opacity: 1;
-}
-#main-subnav .container,
-#main-subnav .navbar-inner {
-  min-height: 40px;
-}
-.subnav-fixed {
-  position: relative;
-  margin-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-  background-color: #eee;
-  border-radius: 4px;
-  padding-left: 0;
-  padding-right: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1020;
-}
-.subnav-fixed:before,
-.subnav-fixed:after {
-  content: " ";
-  display: table;
-}
-.subnav-fixed:after {
-  clear: both;
-}
-.subnav-fixed:before,
-.subnav-fixed:after {
-  content: " ";
-  display: table;
-}
-.subnav-fixed:after {
-  clear: both;
-}
-.subnav-fixed .nav > li.social-networks > a {
-  padding: 12px 0 0 0;
-}
-.subnav-fixed .nav a.login-link {
-  padding: 10px 10px 0 10px;
-}
-.subnav-fixed .brand {
-  padding: 9px 20px 9px;
-}
-.subnav-fixed:before,
-.subnav-fixed:after {
-  content: " ";
-  display: table;
-}
-.subnav-fixed:after {
-  clear: both;
-}
-.subnav-fixed:before,
-.subnav-fixed:after {
-  content: " ";
-  display: table;
-}
-.subnav-fixed:after {
-  clear: both;
-}
-.subnav-fixed .nav {
-  margin: 0 auto;
-}
-.subnav-fixed .navbar-inner {
-  border: 0px !important;
-  -webkit-box-shadow: 0 0 0 rgba(0,0,0,0);
-  box-shadow: 0 0 0 rgba(0,0,0,0);
-}
-body.admin-bar .subnav-fixed {
-  top: 28px;
-}
-#main-subnav .container,
-#main-subnav .navbar-inner {
-  min-height: 40px;
-}
-.shareme .social_icon {
-  display: none;
-  text-decoration: none;
-  margin-left: 5px;
-  padding: 0 3px;
-}
-.shareme:hover .social_icon {
-  display: inline-block;
 }
 a.toggle-nav {
   background: url("../img/plus-toggle-white.png") no-repeat center center;
@@ -4690,10 +4508,6 @@ a.toggle-nav.black {
 #megaDrop {
   display: none;
   padding: 20px 10px;
-}
-.navbar {
-  padding-left: 0;
-  padding-right: 0;
 }
 .button {
   display: inline-block;
