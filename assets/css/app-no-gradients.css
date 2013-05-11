@@ -4845,3 +4845,6 @@ fieldset[disabled] .button {
 .widget-inner ul li:hover ul {
   display: block;
 }
+.thumbnail {
+  max-width: 100%;
+}
