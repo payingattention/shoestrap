@@ -130,7 +130,7 @@ function shoestrap_styles_less() {
     if ( $no_radius == 1 && $less_js_compiler == 1 ) {
       echo '<link rel="stylesheet/less" type="text/css" href="' . get_template_directory_uri() . '/assets/less/app-no-radius.less" />';
     } elseif ( $no_radius != 1 && $less_js_compiler == 1 ) {
-      echo '<link rel="stylesheet/less" type="text/css" href="' . get_template_directory_uri() . '/assets/less/app.less" />';
+      echo '<link rel="stylesheet/less" type="text/css" href="' . get_template_directory_uri() . '/assets/less/app-gradients-radius.less" />';
     }
   }
 }
