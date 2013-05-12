@@ -17,7 +17,6 @@ function shoestrap_layout_customizer( $wp_customize ){
   $settings[] = array( 'slug' => 'shoestrap_aside_width',       'default' => '4' );
   $settings[] = array( 'slug' => 'shoestrap_secondary_width',   'default' => '3' );
   $settings[] = array( 'slug' => 'shoestrap_sidebar_on_front',  'default' => 'hide' );
-  $settings[] = array( 'slug' => 'shoestrap_responsive',        'default' => '1' );
   $settings[] = array( 'slug' => 'shoestrap_fluid',             'default' => '0' );
     
   foreach( $settings as $setting ){
@@ -30,7 +29,6 @@ function shoestrap_layout_customizer( $wp_customize ){
 
   // Dropdown (Select) Controls
   $select_controls = array();
-  $select_controls[] = array( 'setting' => 'shoestrap_responsive',        'label' => __( 'Responsive / Fixed-width', 'shoestrap' ),        'section' => 'shoestrap_layout',  'priority' => 1, 'choises' => array( '1' => __( 'Responsive', 'shoestrap' ), '0' => __( 'Fixed-Width', 'shoestrap' ) ) );
   $select_controls[] = array( 'setting' => 'shoestrap_layout',            'label' => __( 'Layout', 'shoestrap' ),                          'section' => 'shoestrap_layout',  'priority' => 2, 'choises' => array( 'm' => __( 'Main only', 'shoestrap' ), 'mp' => __( 'Main-Primary', 'shoestrap' ), 'pm' => __( 'Primary-Main', 'shoestrap' ), 'ms' => __( 'Main-Secondary', 'shoestrap' ), 'sm' => __( 'Secondary-Main', 'shoestrap' ), 'mps' => __( 'Main-Primary-Secondary', 'shoestrap' ), 'msp' => __( 'Main-Secondary-Primary', 'shoestrap' ), 'pms' => __( 'Primary-Main-Secondary', 'shoestrap' ), 'psm' => __( 'Primary-Secondary-Main', 'shoestrap' ), 'smp' => __( 'Secondary-Main-Primary', 'shoestrap' ), 'spm' => __( 'Secondary-Primary-Main', 'shoestrap' ) ) );
   $select_controls[] = array( 'setting' => 'shoestrap_aside_width',       'label' => __( 'Primary Sidebar Width', 'shoestrap' ),           'section' => 'shoestrap_layout',  'priority' => 3, 'choises' => array( '2' => '2/12', '3' => '3/12', '4' => '4/12', '5' => '5/12', '6' => '6/12' ) );
   $select_controls[] = array( 'setting' => 'shoestrap_secondary_width',   'label' => __( 'Secondary Sidebar Width', 'shoestrap' ),         'section' => 'shoestrap_layout',  'priority' => 5, 'choises' => array( '2' => '2/12', '3' => '3/12', '4' => '4/12' ) );

@@ -264,7 +264,6 @@ function shoestrap_check_files_permissions( $check = false ) {
     'appng'       =>  locate_template( 'assets/css/app-no-gradients.css' ),
     'appngnr'     =>  locate_template( 'assets/css/app-no-gradients-no-radius.css' ),
     'appnr'       =>  locate_template( 'assets/css/app-no-radius.css' ),
-    'responsive'  =>  locate_template( 'assets/css/responsive.css' ),
   );
   
   // Set $error to false by default
