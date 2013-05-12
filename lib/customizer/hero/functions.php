@@ -164,7 +164,7 @@ function shoestrap_hero_content() {
     </div>
   <?php }
 }
-add_action( 'shoestrap_hero', 'shoestrap_hero_content' );
+add_action( 'shoestrap_below_top_navbar', 'shoestrap_hero_content', 10 );
 
 function shoestrap_hero_title_fittext_script() {
   if ( get_theme_mod( 'shoestrap_hero_title_fittext' ) == 1 ) {

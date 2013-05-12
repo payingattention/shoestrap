@@ -1,5 +1,5 @@
 <div id="footer-wrapper" class="container">
-  <footer id="content-info" class="<?php shoestrap_fluid_body_classes( 'container' ); ?>" role="contentinfo">
+  <footer id="content-info" class="container" role="contentinfo">
     <div class="row">
       <div class="col col-lg-4"><?php dynamic_sidebar( 'sidebar-footer-left' ); ?></div>
       <div class="col col-lg-4"><?php dynamic_sidebar( 'sidebar-footer-center' ); ?></div>

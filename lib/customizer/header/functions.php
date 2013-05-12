@@ -87,4 +87,4 @@ function shoestrap_branding() {
     </div>
   <?php }
 }
-add_action( 'shoestrap_branding', 'shoestrap_branding' );
+add_action( 'shoestrap_below_top_navbar', 'shoestrap_branding', 5 );

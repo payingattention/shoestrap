@@ -6,7 +6,7 @@ else
 ?>
 
 <header id="banner" class="topnavbar <?php echo $navbar_class; ?>" role="banner">
-  <div class="<?php shoestrap_fluid_body_classes( 'container' ); ?>">
+  <div class="container">
     <a class="btn navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>

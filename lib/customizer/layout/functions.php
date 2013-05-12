@@ -61,25 +61,6 @@ function shoestrap_layout_customizer( $wp_customize ){
 add_action( 'customize_register', 'shoestrap_layout_customizer' );
 
 /*
- * This function is necessary for fluid layouts to work properly.
- */
-function shoestrap_fluid_body_classes( $context ) {
-  
-  $layout = get_theme_mod( 'shoestrap_layout' );
-  $fluid  = get_theme_mod( 'shoestrap_fluid' );
-
-  if ( $context == 'row' ) {
-    $class = 'row';
-  }
-
-  if ( $context == 'container' ) {
-    $class = 'container';
-  }
-  
-  echo $class;
-}
-
-/*
  * Calculates the classes of the main area, main sidebar and secondary sidebar
  */
 function shoestrap_sidebar_class_calc( $target, $offset = '', $echo = false ) {
