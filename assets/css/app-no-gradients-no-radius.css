@@ -4479,6 +4479,9 @@ figure.alignnone {
   padding: 14px 24px;
   font-size: 24px;
 }
+.container.fluid {
+  max-width: 98%;
+}
 .admin-customize {
   position: fixed;
   bottom: 0;
@@ -4606,9 +4609,6 @@ fieldset[disabled] .button {
   position: relative;
   top: -1px;
 }
-.navbar-brand {
-  padding: 9px;
-}
 .widget-inner ul {
   margin: 0 0 20px;
   background-color: #fff;
@@ -4628,4 +4628,142 @@ fieldset[disabled] .button {
 }
 .thumbnail {
   max-width: 100%;
+}
+#social-sharing:before,
+#social-sharing:after {
+  content: " ";
+  display: table;
+}
+#social-sharing:after {
+  clear: both;
+}
+#social-sharing:before,
+#social-sharing:after {
+  content: " ";
+  display: table;
+}
+#social-sharing:after {
+  clear: both;
+}
+#social-sharing .shareme .box {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.428;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  white-space: nowrap;
+  padding: 2px 10px;
+  font-size: 12px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  float: left;
+  clear: both;
+  overflow: hidden;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+#social-sharing .shareme .box:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+#social-sharing .shareme .box:hover,
+#social-sharing .shareme .box:focus {
+  color: #fff;
+  text-decoration: none;
+}
+#social-sharing .shareme .box:active,
+#social-sharing .shareme .box.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+}
+#social-sharing .shareme .box.disabled,
+#social-sharing .shareme .box[disabled],
+fieldset[disabled] #social-sharing .shareme .box {
+  cursor: default;
+  pointer-events: none;
+  opacity: .65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#social-sharing .shareme .box [class^="glyphicon-"],
+#social-sharing .shareme .box [class*=" glyphicon-"] {
+  line-height: .9em;
+}
+#social-sharing .shareme .box .badge {
+  position: relative;
+  top: -1px;
+}
+#social-sharing .shareme .left {
+  display: block;
+  white-space: nowrap;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#social-sharing .shareme .middle {
+  position: absolute;
+  top: 0px;
+  right: 40px;
+  width: 0px;
+  white-space: nowrap;
+  text-align: left;
+  overflow: hidden;
+  -webkit-transition: width 0.3s linear;
+  -moz-transition: width 0.3s linear;
+  -o-transition: width 0.3s linear;
+  transition: width 0.3s linear;
+}
+#social-sharing .shareme .middle a {
+  padding: 3px 0;
+  display: inline-block;
+  width: 30px;
+  height: 100%;
+  text-align: center;
+  float: left;
+}
+#social-sharing .shareme .middle a:hover {
+  text-decoration: none;
+}
+#social-sharing .shareme .right {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  width: 3em;
+  text-align: center;
+  line-height: 22px;
+}
+@media (max-width: ) {
+  body.top-navbar {
+    padding-top: 0;
+  }
+}
+@media (max-width:  - 1) {
+  body {
+    padding: 0;
+    overflow-x: hidden;
+  }
+  .navbar-fixed-top .navbar-inner,
+  .navbar-fixed-bottom .navbar-inner {
+    padding-left: 25px;
+    padding-right: 5px;
+    margin-right: 20px;
+  }
+  .admin-customize {
+    display: none;
+  }
 }

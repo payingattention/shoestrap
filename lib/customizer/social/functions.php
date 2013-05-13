@@ -199,7 +199,7 @@ function shoestrap_social_links( $network = '' ) {
 function shoestrap_social_share_singular( $content ) { 
   global $post; ?>
   <div id="social-sharing">
-    <div id="shareme" data-url="<?php the_permalink(); ?>" data-text="<?php the_title(); ?>"></div>
+    <div class="shareme" data-url="<?php the_permalink(); ?>" data-text="<?php the_title(); ?> <?php the_permalink(); ?>"></div>
   </div>
   <?php
 }
@@ -252,7 +252,7 @@ function shoestrap_social_share_script() {
   $social_template .= '</div><div class="right">{total}</div></div>';
   
   $script = '<script>';
-  $script .= "$('#shareme').sharrre({";
+  $script .= "$('.shareme').sharrre({";
   $script .= 'share: {';
 
   if ( $googleplus == 1 )
@@ -277,7 +277,14 @@ function shoestrap_social_share_script() {
   $script .= "template: '" . $social_template . "',";
   $script .= 'enableHover: false,';
   $script .= 'enableTracking: true,';
-  $script .= "urlCurl: '" . get_template_directory_uri() . "/assets/js/vendor/sharrre.php',";
+
+  // If curl is present, then load the PHP file.
+  if ( function_exists( 'curl_init' ) ) {
+    $script .= "urlCurl: '" . get_template_directory_uri() . "/assets/js/vendor/sharrre.php',";
+  } else {
+    $script .= "urlCurl: '',";
+  }
+
   $script .= 'render: function(api, options){';
 
   if ( $googleplus == 1 )

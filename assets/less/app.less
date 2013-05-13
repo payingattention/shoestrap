@@ -45,6 +45,10 @@ figure.alignnone {
   }
 }
 
+.container.fluid {
+  max-width: 98%;
+}
+
 .admin-customize {
   position: fixed;
   bottom: 0;
@@ -131,10 +135,6 @@ a.toggle-nav {
   .btn;
 }
 
-.navbar-brand {
-  padding: 9px;
-}
-
 .widget-inner {
   ul {
     .list-group;
@@ -154,4 +154,87 @@ a.toggle-nav {
 
 .thumbnail {
   max-width: 100%;
+}
+
+#social-sharing{
+  .clearfix;
+  .shareme {
+    .box{
+      .btn;
+      .btn-small;
+      display:inline-block;
+      position:relative;
+      float:left;
+      clear:both;
+      overflow:hidden;
+      -webkit-transition:all 0.3s linear;
+      -moz-transition:all 0.3s linear;
+      -o-transition:all 0.3s linear;
+      transition:all 0.3s linear;
+    }
+    .left{
+      display:block;
+      white-space:nowrap;
+      -webkit-transition:all 0.2s linear;
+      -moz-transition:all 0.2s linear;
+      -o-transition:all 0.2s linear;
+      transition:all 0.2s linear;
+    }
+    .middle{
+      position:absolute;
+      top:0px;
+      right:40px;
+      width:0px;
+      white-space:nowrap;
+      text-align:left;
+      overflow:hidden;
+      -webkit-transition:width 0.3s linear;
+      -moz-transition:width 0.3s linear;
+      -o-transition:width 0.3s linear;
+      transition:width 0.3s linear;
+      a{
+        padding: 3px 0;
+        display: inline-block;
+        width: 30px;
+        height: 100%;
+        text-align:center;
+        float:left;
+        &:hover{
+          text-decoration:none;
+        }
+      }
+    }
+    .right{
+      position:absolute;
+      right:0px;
+      top:0px;
+      height:100%;
+      width: 3em;
+      text-align:center;
+      line-height:22px;
+    }
+  }
+}
+
+@media (max-width: @navbarCollapseWidth) {
+  /* Fix top padding when using the responsive grid with the fixed topbar */
+  body.top-navbar {
+    padding-top: 0;
+  }
+}
+
+
+@media (max-width: @gridColumnWidth768 - 1) {
+  body{
+    padding: 0; overflow-x: hidden;
+  }
+  .navbar-fixed-top .navbar-inner,
+  .navbar-fixed-bottom .navbar-inner {
+    padding-left: 25px;
+    padding-right: 5px;
+    margin-right: 20px;
+  }
+  .admin-customize {
+    display: none;
+  }
 }
