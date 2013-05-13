@@ -29,7 +29,12 @@
   <?php dynamic_sidebar('hero-area'); ?>
   
   <?php do_action('shoestrap_pre_wrap'); ?>
-  <div id="wrap" class="container" role="document">
+
+  <?php if ( get_theme_mod( 'shoestrap_fluid' ) != 1 ) : ?>
+    <div id="wrap" class="container" role="document">
+  <?php else : ?>
+    <div id="wrap" class="container fluid" role="document">
+  <?php endif; ?>
     <?php do_action('shoestrap_pre_content'); ?>
     <div id="content" class="row">
 
