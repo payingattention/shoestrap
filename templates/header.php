@@ -1,2 +1,1 @@
-<?php
-do_action( 'shoestrap_header' );
+<?php do_action( 'shoestrap_header' ); ?>

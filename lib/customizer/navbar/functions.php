@@ -112,9 +112,9 @@ add_action( 'customize_register', 'shoestrap_navbar_customizer' );
 
 function shoestrap_nav_class_pull() {
   if ( get_theme_mod( 'shoestrap_nav_pull' ) == '1' ) {
-    $ul = 'nav pull-right';
+    $ul = 'nav navbar-nav pull-right';
   } else {
-    $ul = 'nav';
+    $ul = 'nav navbar-nav';
   }
   return $ul;
 }
