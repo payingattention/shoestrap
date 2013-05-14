@@ -2,6 +2,7 @@
 
 function shoestrap_customizer_combined_data() {
   $data = '';
+  $data .= shoestrap_background_css();
   $data .= shoestrap_typography_webfont();
   $data .= shoestrap_text_css();
   $data .= shoestrap_typography_css();
