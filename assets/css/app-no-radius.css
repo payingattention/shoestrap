@@ -4486,8 +4486,10 @@ figure.alignnone {
 .container.fluid {
   max-width: 98%;
 }
-#wrap {
-  padding-top: 20px;
+@media screen and (min-width: 768px) {
+  #wrap {
+    padding: 30px;
+  }
 }
 body.top-navbar.admin-bar {
   padding-top: 53px;
@@ -4764,13 +4766,28 @@ fieldset[disabled] #social-sharing .shareme .box {
     display: none;
   }
 }
+.label.label-tag {
+  background: #eeeeee;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
 .label.label-tag a {
-  color: #fff;
-  text-decoration: none;
+  color: #333333;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
 .label.label-tag a:hover {
-  color: #fff;
   text-decoration: none;
+}
+.label.label-tag:hover {
+  background: #555555;
+}
+.label.label-tag:hover a {
+  color: #fff;
 }
 @media (min-width: 768px) {
   .meta-row {

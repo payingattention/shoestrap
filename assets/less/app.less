@@ -30,9 +30,11 @@ figure.alignnone {
   max-width: 98%;
 }
 
-// Add a 20px padding on the top of #wrap
-#wrap {
-  padding-top: 20px;
+// Add a 30px padding on the top of #wrap
+@media screen and (min-width: @screen-small) {
+  #wrap {
+    padding: @grid-gutter-width;
+  }
 }
 
 // Add padding & margins to the body and navbarsaccording to our primary navbar selections
@@ -56,7 +58,7 @@ body {
 }
 
 // responsive hacks for the navbar
-@media screen and (min-width: 768px) {
+@media screen and (min-width: @screen-small) {
   body {
     &.top-navbar {
       padding-top: 60px;
@@ -234,20 +236,34 @@ a.toggle-nav {
   }
 }
 
+// Styling the '.label-tag' tag
 .label {
   &.label-tag {
-    a{
-      color: #fff;
-      text-decoration: none;
+    background: @gray-lighter;
+    -webkit-transition:all 0.2s linear;
+    -moz-transition:all 0.2s linear;
+    -o-transition:all 0.3s linear;
+    transition:all 0.3s linear;
+    a {
+      color: @text-color;
+      -webkit-transition:all 0.3s linear;
+      -moz-transition:all 0.3s linear;
+      -o-transition:all 0.3s linear;
+      transition:all 0.3s linear;
       &:hover {
-        color: #fff;
         text-decoration: none;
       }
     }
-
+    &:hover {
+      background: @gray;
+      a {
+        color: @body-bg;
+      }
+    }
   }
 }
 
+// 
 @media (min-width: @screen-small) {
   .meta-row {
     height: 1.7em;
