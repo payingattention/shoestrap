@@ -5006,3 +5006,11 @@ fieldset[disabled] #social-sharing .shareme .box {
     display: none;
   }
 }
+.label.label-tag a {
+  color: #fff;
+  text-decoration: none;
+}
+.label.label-tag a:hover {
+  color: #fff;
+  text-decoration: none;
+}
