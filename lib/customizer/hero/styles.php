@@ -13,6 +13,7 @@ function shoestrap_css_hero() {
   $shoestrap_hero_background        = get_theme_mod( 'shoestrap_hero_background' );
   $shoestrap_hero_cta_color         = get_theme_mod( 'shoestrap_hero_cta_color' );
   $no_gradients                     = get_theme_mod( 'shoestrap_general_no_gradients' );
+  $center_content                   = get_theme_mod( 'shoestrap_hero_center_align' );
   
   if ( $shoestrap_hero_cta_color == 'default' ) {
     $shoestrap_hero_cta_color = '#ffffff';
@@ -38,21 +39,24 @@ function shoestrap_css_hero() {
   }
   
   $styles = '<style>';
-  if ( get_theme_mod( 'shoestrap_extra_branding' ) != 1 ) {
+  if ( $center_content == 1 )
+    $styles .= '.jumbotron { text-align: center; }';
+
+  if ( get_theme_mod( 'shoestrap_extra_branding' ) != 1 )
     $styles .= '.top-navbar .jumbotron{margin-top: -20px;}';
-  }
+
   $styles .= '.jumbotron{';
-  if ( $shoestrap_header_mode == 'navbar' ) {
+
+  if ( $shoestrap_header_mode == 'navbar' )
     $styles .= 'margin-top: -17px;';
-  }
+
   $styles .= 'background: ' . $shoestrap_hero_background_color . ' url("' . $shoestrap_hero_background . '");';
   $styles .= 'color: ' . $shoestrap_hero_textcolor . ';}';
   
-  if ( shoestrap_get_brightness( $shoestrap_hero_cta_color ) <= 160) {
+  if ( shoestrap_get_brightness( $shoestrap_hero_cta_color ) <= 160)
     $textColor = '#ffffff';
-  } else {
+  else
     $textColor = '#333333';
-  }
   
   $startColor = $shoestrap_hero_cta_color;
   $endColor   = shoestrap_adjust_brightness( $startColor, -63 );

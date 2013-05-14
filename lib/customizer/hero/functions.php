@@ -23,6 +23,7 @@ function shoestrap_hero_customizer( $wp_customize ){
   $settings[] = array( 'slug' => 'shoestrap_hero_textcolor',            'default' => '#ffffff' );
   $settings[] = array( 'slug' => 'shoestrap_hero_visibility',           'default' => 'front' );
   $settings[] = array( 'slug' => 'shoestrap_hero_title_fittext',        'default' => '' );
+  $settings[] = array( 'slug' => 'shoestrap_hero_center_align',        'default' => '' );
 
   foreach( $settings as $setting ){
     $wp_customize->add_setting( $setting['slug'], array( 'default' => $setting['default'], 'type' => 'theme_mod', 'capability' => 'edit_theme_options' ) );
@@ -51,6 +52,7 @@ function shoestrap_hero_customizer( $wp_customize ){
   //Checkbox Controls
   $checkbox_controls = array();
   $checkbox_controls[] = array( 'setting' => 'shoestrap_hero_title_fittext',  'label' => __( 'Use FitText for the Title', 'shoestrap' ),     'section' => 'shoestrap_hero',  'priority' => 2 );
+  $checkbox_controls[] = array( 'setting' => 'shoestrap_hero_center_align',   'label' => __( 'Center the content', 'shoestrap' ),            'section' => 'shoestrap_hero',  'priority' => 10 );
 
   foreach( $color_controls as $control ){
     $wp_customize->add_control( new WP_Customize_Color_Control(
@@ -146,20 +148,19 @@ function shoestrap_hero_content() {
   }
 
   if ($hero == true) { ?>
-    <div class="jumbotron masthead">
+    <div class="jumbotron">
       <div class="container">
         <?php do_action('shoestrap_hero_inside'); ?>
 
-        <h1 class="hero-title"><?php echo $herotitle; ?></h1>
-        <p class="hero-content"><?php echo $herocontent; ?></p>
-        <?php if ( !empty( $cta_text ) ) { ?>
-          <p class="hero-button">
+        <h1><?php echo $herotitle; ?></h1>
+        <p><?php echo $herocontent; ?></p>
+        <?php if ( !empty( $cta_text ) ) : ?>
+          <div class="clearfix"></div>
             <a class="btn btn-large" href="<?php echo $cta_link; ?>">
               <?php echo $cta_text; ?>
             </a>
-          </p>
-        <?php } ?>
-
+          </div>
+        <?php endif; ?>
       </div>
     </div>
   <?php }
