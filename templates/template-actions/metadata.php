@@ -13,7 +13,7 @@ function shoestrap_article_metadata() { ?>
       </div>
     </div>
     <div class="col col-lg-3">
-      <i class="glyphicon time-icon glyphicon-time-alt"></i>
+      <i class="glyphicon time-icon glyphicon-time"></i>
       <time class="updated" datetime="<?php echo get_the_time( 'c' ); ?>" pubdate><?php echo get_the_date(); ?></time>
     </div>
     <div class="col col-lg-3">
