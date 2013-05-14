@@ -12,7 +12,7 @@ function shoestrap_article_metadata() {
   elseif ( !has_tag() && get_comments_number() < 1 )
     $columnclass = 6;
   ?>
-  <div class="row">
+  <div class="row meta-row">
     <div class="col col-lg-<?php echo $columnclass; ?>">
       <div class="byline author vcard">
         <i class="glyphicon glyphicon-user"></i>
@@ -26,8 +26,10 @@ function shoestrap_article_metadata() {
     </div>
     <?php if ( has_tag() ) { ?>
       <div class="col col-lg-<?php echo $columnclass; ?>">
-        <i class="glyphicon glyphicon-tags"></i>
-        <?php the_tags('<span class="label label-tag">', '</span> <span class="label label-tag">', '</span>'); ?>
+        <div class="tags-container">
+          <i class="glyphicon glyphicon-tags"></i>
+          <?php the_tags('<span class="label label-tag">', '</span> <span class="label label-tag">', '</span>'); ?>
+        </div>
       </div>
     <?php } ?>
     <div class="col col-lg-<?php echo $columnclass; ?>">
