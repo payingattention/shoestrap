@@ -4876,6 +4876,7 @@ fieldset[disabled] .button {
 }
 .thumbnail {
   max-width: 100%;
+  height: auto;
 }
 #social-sharing:before,
 #social-sharing:after {
@@ -5001,16 +5002,6 @@ fieldset[disabled] #social-sharing .shareme .box {
   }
 }
 @media (max-width:  - 1) {
-  body {
-    padding: 0;
-    overflow-x: hidden;
-  }
-  .navbar-fixed-top .navbar-inner,
-  .navbar-fixed-bottom .navbar-inner {
-    padding-left: 25px;
-    padding-right: 5px;
-    margin-right: 20px;
-  }
   .admin-customize {
     display: none;
   }
