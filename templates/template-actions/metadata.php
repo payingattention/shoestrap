@@ -7,7 +7,7 @@ function shoestrap_article_metadata() { ?>
   <div class="row">
     <div class="col col-lg-3">
       <div class="byline author vcard">
-        <i class="glyphicon glyphicon-torso"></i>
+        <i class="glyphicon glyphicon-user"></i>
         <?php echo __( 'By', 'shoestrap' ); ?>
         <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" rel="author" class="fn"><?php echo get_the_author(); ?></a>
       </div>
