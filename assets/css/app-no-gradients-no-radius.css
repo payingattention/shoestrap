@@ -4482,27 +4482,6 @@ body.bottom-navbar {
     padding-bottom: 60px;
   }
 }
-.admin-customize {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
-  background: url("../img/bottom-corner.png") no-repeat bottom left;
-  opacity: 0.5;
-}
-.admin-customize a {
-  display: block;
-  color: #fff !important;
-  text-decoration: none;
-  position: fixed;
-  bottom: 13px;
-  left: 3px;
-  font-size: 50px;
-}
-.admin-customize:hover {
-  opacity: 1;
-}
 #shoestrap_icon {
   position: fixed;
   bottom: 0;

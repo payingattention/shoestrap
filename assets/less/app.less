@@ -10,10 +10,12 @@
   margin: 0 auto;
 }
 
+// alignleft floating for images
 .alignleft {
   float: left;
 }
 
+// alignright floating for images
 .alignright {
   float: right;
 }
@@ -23,10 +25,12 @@ figure.alignnone {
   margin-right: 0;
 }
 
+// Hack for the fluid layouts
 .container.fluid {
   max-width: 98%;
 }
 
+// Add padding & margins to the body and navbarsaccording to our primary navbar selections
 body {
   &.top-navbar {
     &.admin-bar {
@@ -46,6 +50,7 @@ body {
   }
 }
 
+// responsive hacks for the navbar
 @media screen and (min-width: 768px) {
   body {
     &.top-navbar {
@@ -57,28 +62,7 @@ body {
   }
 }
 
-.admin-customize {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
-  background: url("../img/bottom-corner.png") no-repeat bottom left;
-  opacity: 0.5;
-  a {
-    display: block;
-    color: #fff !important;
-    text-decoration: none;
-    position: fixed;
-    bottom: 13px;
-    left: 3px;
-    font-size: 50px;
-  }
-  &:hover {
-    opacity: 1;
-  }
-}
-
+// styling the bottom left corner button
 #shoestrap_icon {
   position: fixed;
   bottom: 0;
@@ -104,6 +88,7 @@ body {
   }
 }
 
+// Styling the (+) button on the navbar 
 a.toggle-nav {
   background: url("../img/plus-toggle-white.png") no-repeat center center;
   position: relative;
@@ -134,15 +119,18 @@ a.toggle-nav {
   }
 }
 
+// Megadrop styles
 #megaDrop {
   display: none;
   padding: 20px 10px;
 }
 
+// Adding bootstrap btn styles to wordpress's .button elements
 .button {
   .btn;
 }
 
+// Styling lists in widgets
 .widget-inner {
   ul {
     .list-group;
@@ -160,10 +148,13 @@ a.toggle-nav {
   }
 }
 
+// make sure that images do don exceed the maximum width of their parent element
 .thumbnail {
   max-width: 100%;
+  height: auto;
 }
 
+// Styles for the social sharing buttons that are generated from the sharrre script
 #social-sharing{
   .clearfix;
   .shareme {
@@ -231,17 +222,8 @@ a.toggle-nav {
   }
 }
 
-
+// Hide the bottom left corner button (customizer) on small screens
 @media (max-width: @gridColumnWidth768 - 1) {
-  body{
-    padding: 0; overflow-x: hidden;
-  }
-  .navbar-fixed-top .navbar-inner,
-  .navbar-fixed-bottom .navbar-inner {
-    padding-left: 25px;
-    padding-right: 5px;
-    margin-right: 20px;
-  }
   .admin-customize {
     display: none;
   }
