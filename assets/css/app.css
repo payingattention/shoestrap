@@ -5017,20 +5017,18 @@ fieldset[disabled] #social-sharing .shareme .box {
   color: #fff;
   text-decoration: none;
 }
-.meta-row {
-  height: 1.7em;
-  overflow: hidden;
-  -webkit-transition: all 0.3s linear;
-  -moz-transition: all 0.3s linear;
-  -o-transition: all 0.3s linear;
-  transition: all 0.3s linear;
-}
-.meta-row:hover {
-  overflow: visible;
-}
-.meta-row .tags-container {
-  background: #fff;
-  position: absolute;
-  line-height: 1.7em;
-  z-index: 99;
+@media (min-width: 768px) {
+  .meta-row {
+    height: 1.7em;
+    overflow: hidden;
+  }
+  .meta-row:hover {
+    overflow: visible;
+  }
+  .meta-row .tags-container {
+    background: #fff;
+    position: absolute;
+    line-height: 1.7em;
+    z-index: 99;
+  }
 }

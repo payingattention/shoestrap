@@ -248,20 +248,18 @@ a.toggle-nav {
   }
 }
 
-.meta-row {
-  height: 1.7em;
-  overflow: hidden;
-  -webkit-transition:all 0.3s linear;
-  -moz-transition:all 0.3s linear;
-  -o-transition:all 0.3s linear;
-  transition:all 0.3s linear;
- &:hover {
-    overflow: visible;
-  }
-  .tags-container {
-    background: @body-bg;
-    position: absolute;
-    line-height: 1.7em;
-    z-index: 99;
+@media (min-width: @screen-small) {
+  .meta-row {
+    height: 1.7em;
+    overflow: hidden;
+   &:hover {
+      overflow: visible;
+    }
+    .tags-container {
+      background: @body-bg;
+      position: absolute;
+      line-height: 1.7em;
+      z-index: 99;
+    }
   }
 }
