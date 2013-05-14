@@ -1,4 +1,5 @@
-<?php if ( get_theme_mod( 'shoestrap_navbar_fixed' ) == '1' ) $navbar_class = 'navbar navbar-fixed-top';
+<?php if ( get_theme_mod( 'shoestrap_navbar_fixed' ) == 1 ) $navbar_class = 'navbar navbar-fixed-top';
+elseif ( get_theme_mod( 'shoestrap_navbar_fixed' ) == 2 ) $navbar_class = 'navbar navbar-fixed-bottom';
 else $navbar_class = 'navbar navbar-static-top'; ?>
 
 <header id="banner" class="topnavbar <?php echo $navbar_class; ?>" role="banner">

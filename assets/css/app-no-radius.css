@@ -4489,6 +4489,7 @@ figure.alignnone {
   text-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 0 30px rgba(0,0,0,0.075);
   font-size: 2em;
   line-height: 1.25;
+  border-radius: 0;
 }
 .jumbotron h1 {
   line-height: 1;
@@ -4497,14 +4498,19 @@ figure.alignnone {
   display: block;
 }
 .jumbotron p {
-  margin-bottom: 10px;
-}
-.jumbotron p a.btn {
-  padding: 14px 24px;
-  font-size: 24px;
+  margin-bottom: 1em;
 }
 .container.fluid {
   max-width: 98%;
+}
+body.top-navbar.admin-bar {
+  padding-top: 53px;
+}
+body.top-navbar.admin-bar .topnavbar.navbar-fixed-top {
+  margin-top: 32px;
+}
+body .navbar.navbar-static-top {
+  margin-bottom: 0;
 }
 .admin-customize {
   position: fixed;
@@ -4789,5 +4795,13 @@ fieldset[disabled] #social-sharing .shareme .box {
   }
   .admin-customize {
     display: none;
+  }
+}
+body.bottom-navbar {
+  padding-bottom: 64px;
+}
+@media screen and (min-width: 768px) {
+  body.bottom-navbar {
+    padding-bottom: 60px;
   }
 }

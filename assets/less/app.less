@@ -29,6 +29,7 @@ figure.alignnone {
   text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
   font-size: 2em;
   line-height: 1.25;
+  border-radius: 0;
   h1 {
     // font-size: 3em;
     line-height: 1;
@@ -37,16 +38,28 @@ figure.alignnone {
     display: block;
   }
   p {
-    margin-bottom: 10px;
-    a.btn {
-      padding: 14px 24px;
-      font-size: 24px;
-    }
+    margin-bottom: 1em;
   }
 }
 
 .container.fluid {
   max-width: 98%;
+}
+
+body {
+  &.top-navbar {
+    &.admin-bar {
+      padding-top: 53px;
+      .topnavbar {
+        &.navbar-fixed-top {
+          margin-top: 32px;
+        }
+      }
+    }
+  }
+  .navbar.navbar-static-top {
+    margin-bottom: 0;
+  }
 }
 
 .admin-customize {
@@ -236,5 +249,15 @@ a.toggle-nav {
   }
   .admin-customize {
     display: none;
+  }
+}
+
+// Adding padding to the bottom of <body> when navbar is at the bottom
+body.bottom-navbar {
+  padding-bottom: 64px;
+}
+@media screen and (min-width: 768px) {
+  body.bottom-navbar {
+    padding-bottom: 60px;
   }
 }

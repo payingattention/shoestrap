@@ -62,13 +62,16 @@ function shoestrap_navbar_customizer( $wp_customize ){
   $checkbox_controls[] = array( 'setting' => 'shoestrap_nav_pull',            'label' => __( 'Menu on the Right', 'shoestrap' ),                     'section' => 'shoestrap_primary_navbar',  'priority' => 15 );
   $checkbox_controls[] = array( 'setting' => 'shoestrap_navbar_original_logo','label' => __( 'Original Logo Size', 'shoestrap' ),                    'section' => 'shoestrap_primary_navbar',  'priority' => 20 );
   $checkbox_controls[] = array( 'setting' => 'shoestrap_navbar_no_gradient',  'label' => __( 'Disable gradients', 'shoestrap' ),                     'section' => 'shoestrap_primary_navbar',  'priority' => 30 );
-  $checkbox_controls[] = array( 'setting' => 'shoestrap_navbar_fixed',        'label' => __( 'Fixed Positioning', 'shoestrap' ),                     'section' => 'shoestrap_primary_navbar',  'priority' => 32 );
   $checkbox_controls[] = array( 'setting' => 'shoestrap_navbar_loginlink',    'label' => __( 'Show Login/Logout Link', 'shoestrap' ),                'section' => 'shoestrap_primary_navbar',  'priority' => 5 );
   $checkbox_controls[] = array( 'setting' => 'shoestrap_navbar_secondary',    'label' => __( 'Display Secondary NavBar', 'shoestrap' ),              'section' => 'shoestrap_secondary_navbar','priority' => 1 );
   $checkbox_controls[] = array( 'setting' => 'shoestrap_navbar2_loginlink',   'label' => __( 'Show Login/Logout Link', 'shoestrap' ),                'section' => 'shoestrap_secondary_navbar','priority' => 5 );
   $checkbox_controls[] = array( 'setting' => 'shoestrap_navbar2_social',      'label' => __( 'Display Social Links in the Navbar', 'shoestrap' ),    'section' => 'shoestrap_secondary_navbar','priority' => 6 );
   $checkbox_controls[] = array( 'setting' => 'shoestrap_navbar_no_border',    'label' => __( 'Disable NavBar border and Shadow', 'shoestrap' ),      'section' => 'shoestrap_primary_navbar',  'priority' => 35 );
   $checkbox_controls[] = array( 'setting' => 'shoestrap_navbar_alt_menu',     'label' => __( '"Alternative" Menu styling', 'shoestrap' ),            'section' => 'shoestrap_primary_navbar',  'priority' => 37 );
+
+  // Dropdown (Select) Controls
+  $select_controls = array();
+  $select_controls[] = array( 'setting' => 'shoestrap_navbar_fixed',          'label' => __( 'NavBar Positioning', 'shoestrap' ),                    'section' => 'shoestrap_primary_navbar',  'priority' => 32, 'choises' => array( 0 => __( 'Normal', 'shoestrap' ), 1 => __( 'Fixed to Top', 'shoestrap' ), 2 => __( 'Fixed to Bottom', 'shoestrap' ) ) );
 
   // Text Controls
   $text_controls = array();
@@ -105,6 +108,17 @@ function shoestrap_navbar_customizer( $wp_customize ){
       'settings'    => $control['setting'],
       'type'        => 'text',
       'priority'    => $control['priority']
+    ));
+  }
+
+  foreach ( $select_controls as $control ) {
+    $wp_customize->add_control( $control['setting'], array(
+      'label'       => $control['label'],
+      'section'     => $control['section'],
+      'settings'    => $control['setting'],
+      'type'        => 'select',
+      'priority'    => $control['priority'],
+      'choices'     => $control['choises']
     ));
   }
 }
