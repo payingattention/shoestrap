@@ -4844,6 +4844,9 @@ a.toggle-nav.black {
   border: 1px solid transparent;
   border-radius: 4px;
   white-space: nowrap;
+  color: #fff;
+  background-color: #a7a9aa;
+  border-color: #a7a9aa;
 }
 .button:focus {
   outline: thin dotted #333;
@@ -4879,6 +4882,28 @@ fieldset[disabled] .button {
 .button .badge {
   position: relative;
   top: -1px;
+}
+.button:hover,
+.button:focus,
+.button:active,
+.button.active {
+  background-color: #9a9c9d;
+  border-color: #8d9091;
+}
+.button.disabled:hover,
+.button.disabled:focus,
+.button.disabled:active,
+.button.disabled.active,
+.button[disabled]:hover,
+.button[disabled]:focus,
+.button[disabled]:active,
+.button[disabled].active,
+fieldset[disabled] .button:hover,
+fieldset[disabled] .button:focus,
+fieldset[disabled] .button:active,
+fieldset[disabled] .button.active {
+  background-color: #a7a9aa;
+  border-color: #a7a9aa;
 }
 .widget-inner ul {
   margin: 0 0 20px;
