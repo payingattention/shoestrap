@@ -54,7 +54,7 @@ function shoestrap_login_scripts() {
   $styles .= 'background-color: transparent;';
   $styles .= 'background-size: contain !important;';
   $styles .= 'padding-bottom: 30px;';
-  $styles .= 'margin: 0 auto;';
+  $styles .= 'margin: 0 auto 20px;';
   $styles .= 'width: 100% !important;';
   if ( $login_logo == '') {
     $styles .= 'text-indent: 0px !important;';
