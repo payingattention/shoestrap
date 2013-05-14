@@ -56,6 +56,10 @@ function shoestrap_login_scripts() {
   $styles .= 'padding-bottom: 30px;';
   $styles .= 'margin: 0 auto;';
   $styles .= 'width: 100% !important;';
+  if ( $login_logo == '') {
+    $styles .= 'text-indent: 0px !important;';
+    $styles .= 'text-align: center !important;';
+  }
   $styles .= '}';
 
   $styles .= 'body.login div#login form#loginform, .login label, .login .message {';
@@ -78,7 +82,7 @@ function shoestrap_login_scripts() {
   $styles .= '}';
 
   $styles .= '.login #nav a, .login #backtoblog a, a, a.active, a:hover, a.hover, a.visited, a:visited, a.link, a:link {';
-  $styles .= 'color:' . $link_color . ';';
+  $styles .= 'color:' . $link_color . '!important;';
   $styles .= 'text-decoration: none;';
   $styles .= '}';
 
@@ -98,6 +102,15 @@ function shoestrap_login_scripts() {
   $styles .= 'color:' . $textColor . ';';
   $styles .= 'background-color:' . $endColor . ';';
   $styles .= '*background-color:' . shoestrap_adjust_brightness( $endColor, -12 ) . ';';
+  $styles .= '}';
+
+  $styles .= '.login label, .login .message, textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="url"]:focus, select:focus {';
+  $styles .= 'color: '. $textColor .'!important;';
+  $styles .= 'border-color: '. $link_color .'!important;';
+  $styles .= '}';
+  
+  $styles .= 'textarea, input[type="text"], input[type="password"], input[type="file"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="url"], select {';
+  $styles .= 'border-color: transparent!important;';
   $styles .= '}';
 
   $styles .= '</style>';
