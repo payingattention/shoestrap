@@ -154,7 +154,7 @@ function shoestrap_hero_content() {
         <p class="hero-content"><?php echo $herocontent; ?></p>
         <?php if ( !empty( $cta_text ) ) { ?>
           <p class="hero-button">
-            <a class="btn" href="<?php echo $cta_link; ?>">
+            <a class="btn btn-large" href="<?php echo $cta_link; ?>">
               <?php echo $cta_text; ?>
             </a>
           </p>
