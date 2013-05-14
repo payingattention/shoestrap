@@ -32,12 +32,12 @@ function shoestrap_article_metadata() {
         </div>
       </div>
     <?php } ?>
-    <div class="col col-lg-<?php echo $columnclass; ?>">
-      <?php if ( get_comments_number() >= 1 ) { ?>
+    <?php if ( get_comments_number() >= 1 ) : ?>
+      <div class="col col-lg-<?php echo $columnclass; ?>">
         <i class="glyphicon glyphicon-comment"></i>
-        <?php comments_number(); ?>
-      <?php } ?>
-    </div>
+        <a href="<?php comments_link(); ?>"><?php comments_number(); ?></a>
+      </div>
+    <?php endif; ?>
   </div>
   <?php
 }
