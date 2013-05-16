@@ -64,7 +64,7 @@ function shoestrap_navbar_slidedown_content() {
 add_action( 'shoestrap_nav_top_bottom', 'shoestrap_navbar_slidedown_content', 1 );
 
 function shoestrap_navbar_slidedown_toggle() {
-  $navbar_color     = get_theme_mod( 'shoestrap_navbar_color' );
+  $navbar_color     = get_theme_mod( 'navbar_bg' );
   
   if ( is_active_sidebar( 'navbar-slide-down-top' ) || is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) ) {
     if ( shoestrap_get_brightness( $navbar_color ) >= 160 ) {

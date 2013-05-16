@@ -115,9 +115,9 @@ add_filter('style_loader_tag', 'shoestrap_clean_style_tag');
 function shoestrap_body_class($classes) {
   // Add 'top-navbar' or 'bottom-navabr' class if using Bootstrap's Navbar
   // Used to add styling to account for the WordPress admin bar
-  if ( current_theme_supports( 'bootstrap-top-navbar' ) && get_theme_mod( 'shoestrap_navbar_fixed' ) == 1 ) {
+  if ( current_theme_supports( 'bootstrap-top-navbar' ) && get_theme_mod( 'navbar_position' ) == 1 ) {
     $classes[] = 'top-navbar';
-  } elseif ( current_theme_supports( 'bootstrap-top-navbar' ) && get_theme_mod( 'shoestrap_navbar_fixed' ) == 2 ) {
+  } elseif ( current_theme_supports( 'bootstrap-top-navbar' ) && get_theme_mod( 'navbar_position' ) == 2 ) {
     $classes[] = 'bottom-navbar';
   }
 

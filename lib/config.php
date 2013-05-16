@@ -11,7 +11,7 @@ if ( get_option( 'shoestrap_root_relative_urls' ) )
 if ( get_option( 'shoestrap_root_relative_urls' ) )
   add_theme_support('rewrites');          // Enable URL rewrites
 
-if ( get_theme_mod( 'shoestrap_navbar_top' ) == 1 )
+if ( get_theme_mod( 'navbar_toggle' ) == 1 )
   add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
 
 add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
@@ -22,7 +22,7 @@ add_theme_support('jquery-cdn');            // Enable to load jQuery from the Go
  * See lib/sidebar.php for more details
  */
 function shoestrap_display_sidebar() {
-  if ( get_theme_mod( 'shoestrap_sidebar_on_front' ) != 'show') {
+  if ( get_theme_mod( 'layout_sidebar_on_front' ) != 'show') {
     $sidebar_config = new Shoestrap_Sidebar(
       array(
         'is_404',
@@ -52,7 +52,7 @@ function shoestrap_display_sidebar() {
  * See lib/sidebar.php for more details
  */
 function shoestrap_display_primary_sidebar() {
-  if ( get_theme_mod( 'shoestrap_sidebar_on_front' ) != 'show') {
+  if ( get_theme_mod( 'layout_sidebar_on_front' ) != 'show') {
     $sidebar_config = new Shoestrap_Sidebar(
       array(
         'is_404',
@@ -82,7 +82,7 @@ function shoestrap_display_primary_sidebar() {
  * See lib/sidebar.php for more details
  */
 function shoestrap_display_secondary_sidebar() {
-  if ( get_theme_mod( 'shoestrap_sidebar_on_front' ) != 'show') {
+  if ( get_theme_mod( 'layout_sidebar_on_front' ) != 'show') {
     $sidebar_config = new Shoestrap_Sidebar(
       array(
         'is_404',
