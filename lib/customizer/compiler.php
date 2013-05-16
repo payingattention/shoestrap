@@ -113,6 +113,7 @@ function shoestrap_variables_less() {
   $screen_medium    = filter_var( get_theme_mod( 'layout_screen_medium' ), FILTER_SANITIZE_NUMBER_INT );
   $screen_large     = filter_var( get_theme_mod( 'layout_screen_large' ), FILTER_SANITIZE_NUMBER_INT );
   $gutter           = filter_var( get_theme_mod( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
+  $navbar_height    = filter_var( get_theme_mod( 'navbar_height' ), FILTER_SANITIZE_NUMBER_INT );
 
   // Calculate the gray shadows based on the body background.
   // We basically create 2 "presets": light and dark.
@@ -335,7 +336,7 @@ function shoestrap_variables_less() {
 // -------------------------
 
 // Basics of a navbar
-@navbar-height:                    50px;
+@navbar-height:                    ' . $navbar_height . 'px;
 @navbar-color:                     ' . $navbar_color . ';
 @navbar-bg:                        ' . $navbar_bg . ';
 
