@@ -139,7 +139,7 @@ function shoestrap_add_social_links_header() {
   $pinterest_link = get_theme_mod( 'shoestrap_pinterest_link' );
   
   if ( $header_social != 0 ) {
-    echo '<ul class="pull-right social-networks">';
+    echo '<ul class="list-inline list-unstyled pull-right">';
     if ( !empty( $facebook_link ) )   { shoestrap_social_links( 'fb' ); }
     if ( !empty( $twitter_link ) )    { shoestrap_social_links( 'tw' ); }
     if ( !empty( $gplus_link ) )      { shoestrap_social_links( 'gp' ); }
@@ -179,16 +179,16 @@ function shoestrap_social_links( $network = '' ) {
 
   // Echoing the links
   if ( $network == 'fb' ){ ?>
-    <li class="social-networks"><a href="<?php echo $facebook_link; ?>" target="_blank"><i class="icon-facebook"></i></a></li>
+    <li class="social-networks"><a href="<?php echo $facebook_link; ?>" target="_blank"><i class="glyphicon glyphicon-facebook"></i></a></li>
   <?php }
   elseif ( $network == 'tw' ) { ?>
-    <li class="social-networks"><a href="<?php echo $twitter_link; ?>" target="_blank"><i class="icon-twitter"></i></a></li>
+    <li class="social-networks"><a href="<?php echo $twitter_link; ?>" target="_blank"><i class="glyphicon glyphicon-twitter"></i></a></li>
   <?php }
   elseif ( $network == 'gp' ) { ?>
-    <li class="social-networks"><a href="<?php echo $gplus_link; ?>" target="_blank"><i class="icon-googleplus"></i></a></li>
+    <li class="social-networks"><a href="<?php echo $gplus_link; ?>" target="_blank"><i class="glyphicon glyphicon-googleplus"></i></a></li>
   <?php }
   elseif ( $network == 'pi' ) { ?>
-    <li class="social-networks"><a href="<?php echo $pinterest_link; ?>" target="_blank"><i class="icon-pinterest"></i></a></li>
+    <li class="social-networks"><a href="<?php echo $pinterest_link; ?>" target="_blank"><i class="glyphicon glyphicon-pinterest"></i></a></li>
   <?php }
 }
 
