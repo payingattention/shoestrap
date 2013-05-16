@@ -58,11 +58,6 @@ $files[]  = array( 'filename' => '/lib/admin/admin.php' );
 // Licencing to allow auto-updates
 $files[]  = array( 'filename' => '/lib/admin/licencing.php' );
 
-// Less Compiling functions
-if ( shoestrap_check_files_permissions( true ) != true )
-  $files[]  = array( 'filename' => '/lib/less.php' );
-
-
 foreach( $files as $file ) {
   if ( file_exists( locate_template( $file ) ) ) {
     require_once locate_template( $file );
