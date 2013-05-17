@@ -6,9 +6,7 @@ $files    = array();
 $files[]  = array( 'filename' => '/lib/customizer/misc-color-functions.php' );
 $files[]  = array( 'filename' => '/lib/customizer/custom-controls.php' );
 
-$files[]  = array( 'filename' => '/lib/customizer/customizer-sections.php' );
 $files[]  = array( 'filename' => '/lib/customizer/customizer-settings.php' );
-$files[]  = array( 'filename' => '/lib/customizer/customizer-controls.php' );
 
 $files[]  = array( 'filename' => '/lib/customizer/functions-advanced.php' );
 $files[]  = array( 'filename' => '/lib/customizer/functions-featured-image.php' );
