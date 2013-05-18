@@ -627,9 +627,11 @@ function shoestrap_customizer_register( $wp_customize ) {
       ));
     } elseif ( $setting['type'] == 'color' ) {
       $wp_customize->add_setting( $setting[ 'setting' ], array(
-        'default'     => $setting['default'],
-        'type'        => 'theme_mod',
-        'capability'  => 'edit_theme_options'
+        'default'           => $setting['default'],
+        'sanitize_callback' => 'sanitize_hex_color',
+        'transport'         => 'postMessage',
+        'type'              => 'theme_mod',
+        'capability'        => 'edit_theme_options'
       ));
       $wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, $setting['setting'],array(
         'label'     => $setting['label'],
