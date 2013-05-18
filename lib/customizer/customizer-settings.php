@@ -134,7 +134,7 @@ function shoestrap_customizer_register( $wp_customize ) {
 
   $settings[] = array(
     'setting'   => 'jumbotron_color',
-    'default'   => '#ffffff',
+    'default'   => '#333333',
     'type'      => 'color',
     'label'     => __( 'Hero Region Text Color', 'shoestrap' ),
     'section'   => 'jumbotron',
