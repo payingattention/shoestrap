@@ -1,5 +1,15 @@
 <?php
 
+function shoestrap_footer_css() {
+  $bg = get_theme_mod( 'footer_bg' );
+  $cl = get_theme_mod( 'footer_color' );
+  
+  echo '<style>';
+  echo '#footer-wrapper{background:' . $bg . '; color:' . $cl . ';}';
+  echo '</style>';
+}
+add_action( 'wp_head', 'shoestrap_footer_css' );
+
 /*
  * Creates the customizer icon on the bottom-left corner of our site
  * (visible only by admins)
