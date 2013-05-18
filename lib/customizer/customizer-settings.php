@@ -8,11 +8,12 @@ function shoestrap_customizer_sections( $wp_customize ){
   $sections[] = array( 'slug' => 'logo',            'title' => __( 'Logo', 'shoestrap' ),             'priority' => 2 );
   $sections[] = array( 'slug' => 'layout',          'title' => __( 'Layout', 'shoestrap' ),           'priority' => 3 );
   $sections[] = array( 'slug' => 'navbar',          'title' => __( 'Navbar', 'shoestrap' ),           'priority' => 4 );
-  $sections[] = array( 'slug' => 'typography',      'title' => __( 'Typography', 'shoestrap' ),       'priority' => 5 );
-  $sections[] = array( 'slug' => 'featured_image',  'title' => __( 'Featured Image', 'shoestrap' ),   'priority' => 6 );
-  $sections[] = array( 'slug' => 'jumbotron',       'title' => __( 'Jumbotron (Hero)', 'shoestrap' ), 'priority' => 7 );
-  $sections[] = array( 'slug' => 'footer',          'title' => __( 'Footer', 'shoestrap' ),           'priority' => 8 );
-  $sections[] = array( 'slug' => 'advanced',        'title' => __( 'Advanced', 'shoestrap' ),         'priority' => 9 );
+  $sections[] = array( 'slug' => 'header',          'title' => __( 'Header', 'shoestrap' ),           'priority' => 5 );
+  $sections[] = array( 'slug' => 'typography',      'title' => __( 'Typography', 'shoestrap' ),       'priority' => 6 );
+  $sections[] = array( 'slug' => 'featured_image',  'title' => __( 'Featured Image', 'shoestrap' ),   'priority' => 7 );
+  $sections[] = array( 'slug' => 'jumbotron',       'title' => __( 'Jumbotron (Hero)', 'shoestrap' ), 'priority' => 8 );
+  $sections[] = array( 'slug' => 'footer',          'title' => __( 'Footer', 'shoestrap' ),           'priority' => 9 );
+  $sections[] = array( 'slug' => 'advanced',        'title' => __( 'Advanced', 'shoestrap' ),         'priority' => 10 );
 
   foreach( $sections as $section ){
     $wp_customize->add_section( $section['slug'], array( 'title' => $section['title'], 'priority' => $section['priority'] ) );
@@ -542,6 +543,42 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Footer Scripts (CSS/JS)', 'shoestrap' ),
     'section'   => 'advanced',
     'priority'  => 3
+  );
+
+  $settings[] = array(
+    'setting'   => 'header_bg',
+    'type'      => 'color',
+    'default'   => '#EEEEEE',
+    'label'     => __( 'Background Color', 'shoestrap' ),
+    'section'   => 'header',
+    'priority'  => 3
+  );
+
+  $settings[] = array(
+    'setting'   => 'header_color',
+    'type'      => 'color',
+    'default'   => '#333333',
+    'label'     => __( 'Text Color', 'shoestrap' ),
+    'section'   => 'header',
+    'priority'  => 4
+  );
+
+  $settings[] = array(
+    'setting'   => 'header_toggle',
+    'type'      => 'checkbox',
+    'default'   => '',
+    'label'     => __( 'Display Header', 'shoestrap' ),
+    'section'   => 'header',
+    'priority'  => 1
+  );
+
+  $settings[] = array(
+    'setting'   => 'header_branding',
+    'type'      => 'checkbox',
+    'default'   => '',
+    'label'     => __( 'Display Branding', 'shoestrap' ),
+    'section'   => 'header',
+    'priority'  => 2
   );
 
   foreach ( $settings as $setting ) {

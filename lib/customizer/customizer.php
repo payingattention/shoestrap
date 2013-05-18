@@ -16,6 +16,7 @@ $files[]  = array( 'filename' => '/lib/customizer/functions-layout.php' );
 $files[]  = array( 'filename' => '/lib/customizer/functions-logo.php' );
 $files[]  = array( 'filename' => '/lib/customizer/functions-navbar.php' );
 $files[]  = array( 'filename' => '/lib/customizer/functions-typography.php' );
+$files[]  = array( 'filename' => '/lib/customizer/functions-header.php' );
 
 $files[]  = array( 'filename' => '/lib/customizer/compiler.php' );
 

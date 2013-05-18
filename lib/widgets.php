@@ -30,6 +30,15 @@ function shoestrap_widgets_init() {
   ));
 
   register_sidebar(array(
+    'name'          => __('Header Area', 'shoestrap'),
+    'id'            => 'header-area',
+    'before_widget' => '<div class="container">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h1>',
+    'after_title'   => '</h1>',
+  ));
+
+  register_sidebar(array(
     'name'          => __('Footer Left', 'shoestrap'),
     'id'            => 'sidebar-footer-left',
     'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
