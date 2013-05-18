@@ -324,13 +324,6 @@ function shoestrap_customizer_register( $wp_customize ) {
     'section'   => 'typography', 'priority' => 3
   );
   $settings[] = array(
-    'setting'   => 'typography_headings', 
-    'default'   => '"Helvetica Neue", Helvetica, Arial, sans-serif',
-    'type'      => 'text', 
-    'label'     => __( 'Headings Font Family', 'shoestrap' ),
-    'section'   => 'typography', 'priority' => 3
-  );
-  $settings[] = array(
     'setting'   => 'typography_font_size_base', 
     'default'   => 14,
     'type'      => 'text', 
