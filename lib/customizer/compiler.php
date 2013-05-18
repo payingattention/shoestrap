@@ -102,7 +102,6 @@ function shoestrap_variables_less() {
   $sans_serif       = get_theme_mod( 'typography_sans_serif' );
   $serif            = get_theme_mod( 'typography_serif' );
   $font_size_base   = filter_var( get_theme_mod( 'typography_font_size_base', '14' ), FILTER_SANITIZE_NUMBER_INT );
-  $font_headings    = get_theme_mod( 'typography_headings' );
   $border_radius    = filter_var( get_theme_mod( 'general_border_radius', '4' ), FILTER_SANITIZE_NUMBER_INT );
   $navbar_color     = '#' . str_replace( '#', '', get_theme_mod( 'navbar_color' ) );
   $navbar_bg        = '#' . str_replace( '#', '', get_theme_mod( 'navbar_bg' ) );
@@ -214,21 +213,25 @@ function shoestrap_variables_less() {
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 @font-size-mini:          ceil(@font-size-base * 0.75); // ~11px
 
-@line-height-base:        1.428; // 20/14
-@line-height-computed:    ceil(@font-size-base * @line-height-base); // ~20px
-@line-height-headings:    1.1;
+@line-height-base:        1.428571429; // 20/14
+@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
-@headings-font-family:    ' . $font_headings . ';
 @headings-font-weight:    500;
+@headings-line-height:    1.1;
 
 
 // Components
 // -------------------------
-// Based on 14px font-size and 1.5 line-height
+// Based on 14px font-size and 1.428 line-height (~20px to start)
 
-@padding-large:           11px 14px; // 44px
-@padding-small:           2px 10px;  // 26px
-@padding-mini:            0 6px;   // 22px
+@padding-base-vertical:          8px;
+@padding-base-horizontal:        12px;
+
+@padding-large-vertical:         14px;
+@padding-large-horizontal:       16px;
+
+@padding-small-vertical:         5px;
+@padding-small-horizontal:       10px;
 
 @border-radius-base:      ' . $border_radius . 'px;
 @border-radius-large:     ceil(@border-radius-base * 1.5);
@@ -287,9 +290,9 @@ function shoestrap_variables_less() {
 
 @input-color-placeholder:        @gray-light;
 
-@input-height-base:              (@line-height-computed + 14px); // base line-height + 12px vertical padding + 2px top/bottom border
-@input-height-large:             (@line-height-computed + 24px); // base line-height + 22px vertical padding + 2px top/bottom border
-@input-height-small:             (@line-height-computed + 6px);  // base line-height + 4px vertical padding + 2px top/bottom border
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2));
+@input-height-large:             (@line-height-computed + (@padding-large-vertical * 2));
+@input-height-small:             (@line-height-computed + (@padding-small-vertical * 2));
 
 @form-actions-bg:                 ' . $table_bg_hover . ';
 
@@ -495,6 +498,7 @@ function shoestrap_variables_less() {
 @panel-border:                @list-group-border;
 @panel-border-radius:         @border-radius-base;
 @panel-heading-bg:            @list-group-hover-bg;
+@panel-footer-bg:             @list-group-hover-bg;
 
 @panel-primary-text:          ' . $body_bg . ';
 @panel-primary-border:        @brand-primary;
