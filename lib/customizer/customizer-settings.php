@@ -484,14 +484,9 @@ function shoestrap_customizer_register( $wp_customize ) {
       'm'       => __( 'Main only', 'shoestrap' ),
       'mp'      => __( 'Main-Primary', 'shoestrap' ),
       'pm'      => __( 'Primary-Main', 'shoestrap' ),
-      'ms'      => __( 'Main-Secondary', 'shoestrap' ),
-      'sm'      => __( 'Secondary-Main', 'shoestrap' ),
       'mps'     => __( 'Main-Primary-Secondary', 'shoestrap' ),
-      'msp'     => __( 'Main-Secondary-Primary', 'shoestrap' ),
       'pms'     => __( 'Primary-Main-Secondary', 'shoestrap' ),
       'psm'     => __( 'Primary-Secondary-Main', 'shoestrap' ),
-      'smp'     => __( 'Secondary-Main-Primary', 'shoestrap' ),
-      'spm'     => __( 'Secondary-Primary-Main', 'shoestrap' )
     )
   );
 
