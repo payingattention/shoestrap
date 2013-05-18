@@ -158,7 +158,6 @@ function shoestrap_customizer_register( $wp_customize ) {
     'priority'  => 40 
   );
  
-  // Checkbox Controls
   $settings[] = array(
     'setting'   => 'feat_img_archive',
     'default'   => '',
@@ -167,6 +166,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'section'   => 'featured_image',
     'priority'  => 1
   );
+
   $settings[] = array(
     'setting'   => 'feat_img_post',
     'default'   => '',
@@ -174,6 +174,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Show featured images on single posts', 'shoestrap' ),
     'section'   => 'featured_image', 'priority' => 2
   );
+
   $settings[] = array(
     'setting'   => 'general_flat',
     'default'   => '',
@@ -181,6 +182,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'No Gradients - Flat look', 'shoestrap' ),
     'section'   => 'general', 'priority' => 1
   );
+
   $settings[] = array(
     'setting'   => 'jumbotron_title_fit',
     'default'   => '',
@@ -188,6 +190,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Use FitText for the Title', 'shoestrap' ),
     'section'   => 'jumbotron', 'priority' => 2
   );
+
   $settings[] = array(
     'setting'   => 'jumbotron_center',
     'default'   => '',
@@ -195,6 +198,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Center the content', 'shoestrap' ), 
     'section'   => 'jumbotron', 'priority' => 10
   );
+
   $settings[] = array(
     'setting'   => 'navbar_toggle',
     'default'   => 1,
@@ -202,12 +206,14 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Display NavBar on the top of the page', 'shoestrap' ),
     'section'   => 'navbar', 'priority' => 1
   );
+
   $settings[] = array(
     'setting'   => 'navbar_brand',
     'default'   => 1,
     'type'      => 'checkbox', 
     'label'     => __( 'Display Branding (Sitename or Logo)', 'shoestrap' ),
     'section'   => 'navbar', 'priority' => 2 );
+
   $settings[] = array(
     'setting'   => 'navbar_logo',
     'default'   => 1,
@@ -215,6 +221,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Use Logo (if available) for branding', 'shoestrap' ),
     'section'   => 'navbar', 'priority' => 3
   );
+
   $settings[] = array(
     'setting'   => 'navbar_social',
     'default'   => '',
@@ -222,6 +229,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Display Social Links in the Navbar', 'shoestrap' ),
     'section'   => 'navbar', 'priority' => 6
   );
+
   $settings[] = array(
     'setting'   => 'navbar_search',
     'default'   => '',
@@ -229,6 +237,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Display Search', 'shoestrap' ), 
     'section'   => 'navbar', 'priority' => 7
   );
+
   $settings[] = array(
     'setting'   => 'navbar_nav_right',
     'default'   => '',
@@ -236,6 +245,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Menu on the Right', 'shoestrap' ), 
     'section'   => 'navbar', 'priority' => 15
   );
+
   $settings[] = array(
     'setting'   => 'navbar_usermenu',
     'default'   => '',
@@ -243,6 +253,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Show Login/Logout Link', 'shoestrap' ), 
     'section'   => 'navbar', 'priority' => 5
   );
+
   $settings[] = array(
     'setting'   => 'navbar_altmenu',
     'default'   => '',
@@ -250,6 +261,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( '"Alternative" Menu styling', 'shoestrap' ),
     'section'   => 'navbar', 'priority' => 37
   );
+
   $settings[] = array(
     'setting'   => 'layout_fluid',
     'default'   => '',
@@ -258,7 +270,6 @@ function shoestrap_customizer_register( $wp_customize ) {
     'section'   => 'layout', 'priority' => 7
   );
 
-// Text Controls
   $settings[] = array(
     'setting'   => 'general_border_radius', 
     'default'   => 4,
@@ -266,6 +277,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Border Radius (px)', 'shoestrap' ),
     'section'   => 'general', 'priority' => 3
   );
+
   $settings[] = array(
     'setting'   => 'feat_img_archive_width', 
     'default'   => 550,
@@ -273,6 +285,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Image width (archives)', 'shoestrap' ),
     'section'   => 'featured_image', 'priority' => 4
   );
+
   $settings[] = array(
     'setting'   => 'feat_img_archive_height', 
     'default'   => 300,
@@ -280,6 +293,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Image height (archives)', 'shoestrap' ),
     'section'   => 'featured_image', 'priority' => 5
   );
+
   $settings[] = array(
     'setting'   => 'feat_img_post_width', 
     'default'   => 550,
@@ -287,6 +301,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Image width (single posts)', 'shoestrap' ),
     'section'   => 'featured_image', 'priority' => 7
   );
+
   $settings[] = array(
     'setting'   => 'feat_img_post_height', 
     'default'   => 300,
@@ -294,6 +309,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Image height (single posts)', 'shoestrap' ),
     'section'   => 'featured_image', 'priority' => 8
   );
+
   $settings[] = array(
     'setting'   => 'footer_text',
     'default'   => get_bloginfo( 'name' ),
@@ -301,6 +317,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Footer Text', 'shoestrap' ), 
     'section'   => 'footer', 'priority' => 3
   );
+
   $settings[] = array(
     'setting'   => 'navbar_height', 
     'default'   => 50,
@@ -309,6 +326,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'section'   => 'navbar',
     'priority'  => 40
   );
+
   $settings[] = array(
     'setting'   => 'typography_sans_serif', 
     'default'   => '"Helvetica Neue", Helvetica, Arial, sans-serif',
@@ -316,6 +334,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Sans Serif Font Family', 'shoestrap' ),
     'section'   => 'typography', 'priority' => 3
   );
+
   $settings[] = array(
     'setting'   => 'typography_serif', 
     'default'   => 'Georgia, "Times New Roman", Times, serif',
@@ -323,6 +342,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Serif Font Family', 'shoestrap' ),
     'section'   => 'typography', 'priority' => 3
   );
+
   $settings[] = array(
     'setting'   => 'typography_font_size_base', 
     'default'   => 14,
@@ -330,6 +350,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Sans Serif Font Family', 'shoestrap' ),
     'section'   => 'typography', 'priority' => 3
   );
+
   $settings[] = array(
     'setting'   => 'layout_screen_tiny', 
     'default'   => 480,
@@ -337,6 +358,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Tiny Screen Size (px)', 'shoestrap' ),
     'section'   => 'layout', 'priority' => 3
   );
+
   $settings[] = array(
     'setting'   => 'layout_screen_small', 
     'default'   => 768,
@@ -344,6 +366,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Small Screen Size (px)', 'shoestrap' ),
     'section'   => 'layout', 'priority' => 3
   );
+
   $settings[] = array(
     'setting'   => 'layout_screen_medium', 
     'default'   => 992,
@@ -351,6 +374,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Medium Screen Size (px)', 'shoestrap' ),
     'section'   => 'layout', 'priority' => 3
   );
+
   $settings[] = array(
     'setting'   => 'layout_screen_large', 
     'default'   => 1200,
@@ -358,6 +382,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'label'     => __( 'Large Screen Size (px)', 'shoestrap' ),
     'section'   => 'layout', 'priority' => 3
   );
+
   $settings[] = array(
     'setting'   => 'layout_gutter', 
     'default'   => 30,
@@ -366,7 +391,6 @@ function shoestrap_customizer_register( $wp_customize ) {
     'section'   => 'layout', 'priority' => 3
   );
 
-  // Dropdown (Select) Controls
   $settings[] = array(
     'setting'   => 'jumbotron_visibility', 
     'default'   => '',
@@ -398,6 +422,7 @@ function shoestrap_customizer_register( $wp_customize ) {
       2         => __( 'Fixed to Bottom', 'shoestrap' )
     )
   );
+
   $settings[] = array(
     'setting'   => 'typography_webfont_weight', 
     'default'   => 400,
@@ -415,6 +440,7 @@ function shoestrap_customizer_register( $wp_customize ) {
       900     => __( '900', 'shoestrap' ) 
     )
   );
+
   $settings[] = array(
     'setting'   => 'typography_webfont', 
     'default'   => 'latin',
@@ -432,6 +458,7 @@ function shoestrap_customizer_register( $wp_customize ) {
       'vietnamese'    => __( 'Vietnamese', 'shoestrap' )
     )
   );
+
   $settings[] = array(
     'setting'   => 'typography_webfont_assign', 
     'default'   => 'all',
@@ -445,6 +472,7 @@ function shoestrap_customizer_register( $wp_customize ) {
       'all'       => __( 'Everywhere', 'shoestrap' )
     )
   );
+
   $settings[] = array(
     'setting'   => 'layout_layout', 
     'default'   => 'mp',
@@ -466,6 +494,7 @@ function shoestrap_customizer_register( $wp_customize ) {
       'spm'     => __( 'Secondary-Primary-Main', 'shoestrap' )
     )
   );
+
   $settings[] = array(
     'setting'   => 'layout_primary_width', 
     'default'   => 4,
@@ -481,6 +510,7 @@ function shoestrap_customizer_register( $wp_customize ) {
       6         => '6/12'
     )
   );
+
   $settings[] = array(
     'setting'   => 'layout_secondary_width',
     'default'   => 3,
@@ -494,6 +524,7 @@ function shoestrap_customizer_register( $wp_customize ) {
       4         => '4/12'
     )
   );
+
   $settings[] = array(
     'setting'   => 'layout_sidebar_on_front', 
     'default'   => 'hide',
@@ -507,7 +538,6 @@ function shoestrap_customizer_register( $wp_customize ) {
     )
   );
 
-  // Image Controls
   $settings[] = array(
     'setting'   => 'jumbotron_bg_img', 
     'type'      => 'image', 
@@ -516,6 +546,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'section'   => 'jumbotron',
     'priority'  => 6
   );
+
   $settings[] = array(
     'setting'   => 'logo',
     'type'      => 'image', 
@@ -525,7 +556,6 @@ function shoestrap_customizer_register( $wp_customize ) {
     'priority'  => 2
   );
 
-  // Texatarea Controls
   $settings[] = array(
     'setting'   => 'advanced_head',
     'type'      => 'textarea',
@@ -580,14 +610,14 @@ function shoestrap_customizer_register( $wp_customize ) {
     'priority'  => 2
   );
 
-  foreach ( $settings as $setting ) {
-    $wp_customize->add_setting( $setting[ 'setting' ], array(
-      'default'     => $setting['default'],
-      'type'        => 'theme_mod',
-      'capability'  => 'edit_theme_options'
-    ));
+  // Create the 
 
     if ( $setting['type'] == 'text' ) {
+      $wp_customize->add_setting( $setting[ 'setting' ], array(
+        'default'     => $setting['default'],
+        'type'        => 'theme_mod',
+        'capability'  => 'edit_theme_options'
+      ));
       $wp_customize->add_control( $setting['setting'], array(
         'label'     => $setting['label'],
         'section'   => $setting['section'],
@@ -596,6 +626,11 @@ function shoestrap_customizer_register( $wp_customize ) {
         'priority'  => $setting['priority']
       ));
     } elseif ( $setting['type'] == 'color' ) {
+      $wp_customize->add_setting( $setting[ 'setting' ], array(
+        'default'     => $setting['default'],
+        'type'        => 'theme_mod',
+        'capability'  => 'edit_theme_options'
+      ));
       $wp_customize->add_control( new WP_Customize_Color_Control($wp_customize, $setting['setting'],array(
         'label'     => $setting['label'],
         'section'   => $setting['section'],
@@ -603,6 +638,11 @@ function shoestrap_customizer_register( $wp_customize ) {
         'priority'  => $setting['priority'],
       )));
     } elseif ( $setting['type'] == 'image' ) {
+      $wp_customize->add_setting( $setting[ 'setting' ], array(
+        'default'     => $setting['default'],
+        'type'        => 'theme_mod',
+        'capability'  => 'edit_theme_options'
+      ));
       $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $setting['setting'], array(
         'label'     => $setting['label'],
         'section'   => $setting['section'],
@@ -610,6 +650,11 @@ function shoestrap_customizer_register( $wp_customize ) {
         'priority'  => $setting['priority']
       )));
     } elseif ( $setting['type'] == 'select' ) {
+      $wp_customize->add_setting( $setting[ 'setting' ], array(
+        'default'     => $setting['default'],
+        'type'        => 'theme_mod',
+        'capability'  => 'edit_theme_options'
+      ));
       $wp_customize->add_control( $setting['setting'], array(
         'label'     => $setting['label'],
         'section'   => $setting['section'],
@@ -619,6 +664,11 @@ function shoestrap_customizer_register( $wp_customize ) {
         'choices'   => $setting['choises']
       ));
     } elseif ( $setting['type'] == 'checkbox' ) {
+      $wp_customize->add_setting( $setting[ 'setting' ], array(
+        'default'     => $setting['default'],
+        'type'        => 'theme_mod',
+        'capability'  => 'edit_theme_options'
+      ));
       $wp_customize->add_control( $setting['setting'], array(
         'label'     => $setting['label'],
         'section'   => $setting['section'],
@@ -627,6 +677,11 @@ function shoestrap_customizer_register( $wp_customize ) {
         'priority'  => $setting['priority'],
       ));
     } elseif ( $setting['type'] == 'textarea' ) {
+      $wp_customize->add_setting( $setting[ 'setting' ], array(
+        'default'     => $setting['default'],
+        'type'        => 'theme_mod',
+        'capability'  => 'edit_theme_options'
+      ));
       $wp_customize->add_control( new Shoestrap_Customize_Textarea_Control( $wp_customize, 'advanced_head', array(
         'label'     => $setting['label'],
         'section'   => $setting['section'],
