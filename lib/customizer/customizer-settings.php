@@ -369,16 +369,22 @@ function shoestrap_customizer_register( $wp_customize ) {
   // Dropdown (Select) Controls
   $settings[] = array(
     'setting'   => 'jumbotron_visibility', 
-    'default'   => 'front',
-    'type'      => 'select', 
-    'label'     => __( 'Hero Region Visibility', 'shoestrap' ),
+    'default'   => '',
+    'type'      => 'checkbox', 
+    'label'     => __( 'Display only on Frontpage', 'shoestrap' ),
     'section'   => 'jumbotron',
-    'priority'  => 9,
-    'choises'   => array(
-      'front'   => __( 'Frontpage', 'shoestrap' ),
-      'site'    => __( 'Site-Wide', 'shoestrap' ) 
-    )
+    'priority'  => 9
   );
+
+  $settings[] = array(
+    'setting'   => 'jumbotron_nocontainer', 
+    'default'   => '',
+    'type'      => 'checkbox', 
+    'label'     => __( 'Remove Container - Make Full Width', 'shoestrap' ),
+    'section'   => 'jumbotron',
+    'priority'  => 15
+  );
+
   $settings[] = array(
     'setting'   => 'navbar_position', 
     'default'   => 0,

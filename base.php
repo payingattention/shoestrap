@@ -25,9 +25,6 @@
     //   get_template_part('templates/navbar');
     // }
   ?>
-
-  <?php dynamic_sidebar('hero-area'); ?>
-  
   <?php do_action('shoestrap_pre_wrap'); ?>
 
   <?php if ( get_theme_mod( 'shoestrap_fluid' ) != 1 ) : ?>

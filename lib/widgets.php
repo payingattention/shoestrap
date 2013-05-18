@@ -23,8 +23,8 @@ function shoestrap_widgets_init() {
   register_sidebar(array(
     'name'          => __('Hero Area', 'shoestrap'),
     'id'            => 'hero-area',
-    'before_widget' => '<div class="jumbotron masthead"><div class="container">',
-    'after_widget'  => '</div></div>',
+    'before_widget' => '<section id="%1$s"><div class="section-inner">',
+    'after_widget'  => '</div></section>',
     'before_title'  => '<h1>',
     'after_title'   => '</h1>',
   ));
