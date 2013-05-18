@@ -615,6 +615,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     if ( $setting['type'] == 'text' ) {
       $wp_customize->add_setting( $setting[ 'setting' ], array(
         'default'     => $setting['default'],
+        'transport'   => 'postMessage',
         'type'        => 'theme_mod',
         'capability'  => 'edit_theme_options'
       ));
