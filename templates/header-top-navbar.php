@@ -16,7 +16,11 @@ else $navbar_class = 'navbar navbar-static-top'; ?>
 
     <?php if ( get_theme_mod( 'navbar_brand' ) != 0 ) : ?>
       <a class="navbar-brand" href="<?php echo home_url(); ?>/">
-        <?php shoestrap_logo(); ?>
+        <?php if ( get_theme_mod( 'navbar_logo' ) == 1 ) : ?>
+          <?php shoestrap_logo(); ?>
+        <?php else : ?>
+          <?php bloginfo('name'); ?>
+        <?php endif; ?>
       </a>
     <?php endif; ?>
 
