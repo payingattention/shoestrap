@@ -544,7 +544,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'default'   => '',
     'label'     => __( 'Hero Background Image', 'shoestrap' ),
     'section'   => 'jumbotron',
-    'priority'  => 6
+    'priority'  => 20
   );
 
   $settings[] = array(
@@ -610,6 +610,35 @@ function shoestrap_customizer_register( $wp_customize ) {
     'priority'  => 2
   );
 
+  $settings[] = array(
+    'setting'   => 'jumbotron_bg_repeat',
+    'type'      => 'radio',
+    'default'   => 'repeat',
+    'label'     => __( 'Background Repeat', 'shoestrap' ),
+    'section'   => 'jumbotron',
+    'choices'   => array(
+      'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
+      'repeat'     => __( 'Tile', 'shoestrap' ),
+      'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
+      'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
+    ),
+    'priority'  => 21
+  );
+
+  $settings[] = array(
+    'setting'   => 'jumbotron_bg_pos_x',
+    'type'      => 'radio',
+    'default'   => 'l',
+    'label'     => __( 'Background Repeat', 'shoestrap' ),
+    'section'   => 'jumbotron',
+    'choices'   => array(
+      'left'    => __( 'Left', 'shoestrap' ),
+      'right'   => __( 'Right', 'shoestrap' ),
+      'center'  => __( 'Center', 'shoestrap' ),
+    ),
+    'priority'  => 22
+  );
+
   foreach ( $settings as $setting ) {
     if ( $setting['type'] == 'text' ) {
       $wp_customize->add_setting( $setting[ 'setting' ], array(
@@ -623,6 +652,19 @@ function shoestrap_customizer_register( $wp_customize ) {
         'section'   => $setting['section'],
         'settings'  => $setting['setting'],
         'type'      => 'text',
+        'priority'  => $setting['priority']
+      ));
+    } elseif ( $setting['type'] == 'radio' ) {
+      $wp_customize->add_setting( $setting[ 'setting' ], array(
+        'default'     => $setting['default'],
+        'type'        => 'theme_mod',
+        'capability'  => 'edit_theme_options'
+      ));
+      $wp_customize->add_control( $setting[ 'setting' ], array(
+        'label'     => $setting['label'],
+        'section'   => $setting['section'],
+        'type'      => 'radio',
+        'choices'   => $setting['choices'],
         'priority'  => $setting['priority']
       ));
     } elseif ( $setting['type'] == 'color' ) {
