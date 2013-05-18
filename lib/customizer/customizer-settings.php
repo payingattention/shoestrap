@@ -610,8 +610,7 @@ function shoestrap_customizer_register( $wp_customize ) {
     'priority'  => 2
   );
 
-  // Create the 
-
+  foreach ( $settings as $setting ) {
     if ( $setting['type'] == 'text' ) {
       $wp_customize->add_setting( $setting[ 'setting' ], array(
         'default'     => $setting['default'],
