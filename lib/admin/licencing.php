@@ -1,30 +1,5 @@
 <?php
 
-/*
- * Adds the Licencing menu item
- */
-function shoestrap_admin_main_nav_item_licence() {
-  global $pagenow;
-  if ( $pagenow == 'themes.php' && $_GET['page'] == 'shoestrap_options' && $_GET['tab'] == 'licence' ) { 
-    echo '<a class="nav-tab nav-tab-active" href="?page=shoestrap_options&tab=licence">' . __( 'Licence', 'Shoestrap') . '</a>';
-  } else {
-    echo '<a class="nav-tab" href="?page=shoestrap_options&tab=licence">Licence</a>';
-  }
-}
-add_action( 'shoestrap_admin_main_nav_tab', 'shoestrap_admin_main_nav_item_licence', 10 );
-
-
-/*
- * Adds the Content to the Licencing menu page
- */
-function shoestrap_admin_licence_page_content() {
-  global $pagenow;
-  if ( $pagenow == 'themes.php' && $_GET['page'] == 'shoestrap_options' && $_GET['tab'] == 'licence' ) {
-    add_action( 'shoestrap_admin_content', 'shoestrap_license_page', 10 );
-  }
-}
-add_action( 'shoestrap_admin_content', 'shoestrap_admin_licence_page_content', 1 );
-
 define( 'SHOESTRAP_STORE_URL',  'http://shoestrap.org' );
 define( 'SHOESTRAP_THEME_NAME', 'Shoestrap' );
 define( 'SHOESTRAP_URL', 'http://shoestrap.org/downloads/shoestrap/' );
@@ -45,6 +20,7 @@ $edd_updater = new EDD_SL_Theme_Updater( array(
   'author'          => 'Aristeides Stathopoulos'  // author of this theme
 ));
 
+add_action( 'shoestrap_admin_content', 'shoestrap_license_page', 10 );
 function shoestrap_license_page() {
   $license      = get_option( 'shoestrap_license_key' );
   $status       = get_option( 'shoestrap_license_key_status' );

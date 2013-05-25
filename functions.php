@@ -52,13 +52,10 @@ $files[]  = array( 'filename' => '/lib/admin/admin.php' );
 // Licencing to allow auto-updates
 $files[]  = array( 'filename' => '/lib/admin/licencing.php' );
 
-// Load the less compiling function only on single-site installations
-// OR on multisite when the user is super-admin.
-if ( ( is_multisite() && is_super_admin() ) || !is_multisite() ) {
-  if ( shoestrap_check_files_permissions( true ) != true ) {
-    $files[]  = array( 'filename' => '/lib/less.php' );
-  }
-}
+// Less Compiling functions
+if ( shoestrap_check_files_permissions( true ) != true )
+  $files[]  = array( 'filename' => '/lib/less.php' );
+
 
 foreach( $files as $file ) {
   if ( file_exists( locate_template( $file ) ) ) {
